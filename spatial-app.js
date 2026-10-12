@@ -1,0 +1,206 @@
+(() => {
+  'use strict';
+  const root = document.documentElement;
+  const $ = (selector, scope = document) => scope.querySelector(selector);
+  const $$ = (selector, scope = document) => [...scope.querySelectorAll(selector)];
+  const windows = new Map($$('[data-window]').map(panel => [panel.dataset.window, panel]));
+  const base = new URL(document.body.dataset.base, document.baseURI);
+  const caseNames = { bmw: 'BMW × Apple Vision Pro', chemistry: 'Chemistry on Myntra', bloom: 'Bloom' };
+  const caseCache = new Map();
+  let activeView = 'home';
+  let activeCase = '';
+  let requestId = 0;
+  let toastTimer;
+  const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
+  let reduceMotion = motionPreference.matches;
+  function followMotionPreference() { reduceMotion = motionPreference.matches; root.classList.toggle('reduce-motion', reduceMotion); }
+  followMotionPreference();
+  motionPreference.addEventListener('change', followMotionPreference);
+
+  function toast(message) {
+    clearTimeout(toastTimer);
+    const element = $('.space-toast');
+    element.textContent = message;
+    element.classList.add('visible');
+    toastTimer = setTimeout(() => element.classList.remove('visible'), 2600);
+  }
+  function showWindow(view, { focus = true } = {}) {
+    activeView = view;
+    windows.forEach((panel, id) => { panel.hidden = id !== view; });
+    $$('[data-home-orbit]').forEach(el => { el.hidden = view !== 'home'; });
+    $('.space-idle').hidden = view !== 'idle';
+    root.dataset.view = view;
+    $$('[data-app]').forEach(link => {
+      const selected = link.dataset.app === (view === 'case' ? 'work' : view);
+      if (selected) link.setAttribute('aria-current', 'page'); else link.removeAttribute('aria-current');
+    });
+    if (focus && windows.has(view)) windows.get(view).focus({ preventScroll: true });
+  }
+  function updateHash(hash) { if (location.hash !== hash) history.pushState({ spatial: hash }, '', hash); }
+  function openWindow(view, push = true, focus = true) {
+    if (!windows.has(view) && view !== 'idle') view = 'home';
+    requestId++;
+    activeCase = '';
+    if (push) updateHash(view === 'idle' ? '#space' : `#${view}`);
+    showWindow(view, { focus });
+  }
+  function normalizeArticle(article, pageURL) {
+    $$('[src]', article).forEach(el => el.setAttribute('src', new URL(el.getAttribute('src'), pageURL).href));
+    $$('a[href]', article).forEach(el => el.setAttribute('href', new URL(el.getAttribute('href'), pageURL).href));
+    $('.back-link', article)?.setAttribute('data-open', 'work');
+    return article.outerHTML;
+  }
+  const seededArticle = $('.panel-case .case-article');
+  if (seededArticle && caseNames[document.body.dataset.initialCase]) caseCache.set(document.body.dataset.initialCase, normalizeArticle(seededArticle, location.href));
+
+  async function openCase(slug, push = true, focus = true) {
+    if (!caseNames[slug]) return openWindow('work', push, focus);
+    const id = ++requestId;
+    activeCase = slug;
+    const casePanel = windows.get('case');
+    const content = $('.spatial-scroll', casePanel);
+    const pageURL = new URL(`projects/${slug}/`, base);
+    $('.window-grip>span', casePanel).textContent = caseNames[slug];
+    casePanel.setAttribute('aria-label', `${caseNames[slug]} window`);
+    if (push) updateHash(`#case-${slug}`);
+    showWindow('case', { focus });
+    content.innerHTML = '<div class="case-loading"><p>Opening case study…</p></div>';
+    content.scrollTop = 0;
+    try {
+      if (!caseCache.has(slug)) {
+        const response = await fetch(pageURL.href);
+        if (!response.ok) throw new Error('Case study unavailable');
+        const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+        const article = $('.case-article', doc);
+        if (!article) throw new Error('Missing case study');
+        caseCache.set(slug, normalizeArticle(article, pageURL));
+      }
+      if (id !== requestId || activeView !== 'case') return;
+      content.innerHTML = caseCache.get(slug);
+      content.scrollTop = 0;
+      if (focus) casePanel.focus({ preventScroll: true });
+    } catch {
+      if (id !== requestId || activeView !== 'case') return;
+      content.innerHTML = `<div class="case-error"><h2>Let’s take another look.</h2><p>The story couldn’t load. Try opening its direct page.</p><a class="space-button" href="${pageURL.href}">Open full case study ↗</a></div>`;
+    }
+  }
+  function route(focus = true) {
+    const hash = location.hash.slice(1);
+    if (hash.startsWith('case-')) return openCase(hash.slice(5), false, focus);
+    if (!hash && document.body.dataset.initialCase) return openCase(document.body.dataset.initialCase, false, focus);
+    openWindow(hash === 'space' ? 'idle' : (windows.has(hash) && hash !== 'case' ? hash : 'home'), false, focus);
+  }
+  document.addEventListener('click', e => {
+    const link = e.target.closest('a[data-open], a[data-case]');
+    if (!link || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    if (link.dataset.case) openCase(link.dataset.case); else openWindow(link.dataset.open);
+  });
+  // Native links still work without this enhancement, including direct case-study pages.
+  root.classList.add('spatial-ready');
+  route(false);
+  window.addEventListener('popstate', () => route());
+  window.addEventListener('hashchange', () => route());
+  $('.skip-link').addEventListener('click', e => { e.preventDefault(); windows.get(activeView)?.focus({ preventScroll: true }); });
+
+  function dismissWindow() {
+    openWindow(activeView === 'home' ? 'idle' : activeView === 'case' ? 'work' : 'home');
+  }
+  $$('.window-dismiss').forEach(button => button.addEventListener('click', dismissWindow));
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); if (activeView === 'idle') openWindow('home'); else dismissWindow(); }
+  });
+  $$('.window-expand').forEach(button => button.addEventListener('click', () => {
+    const panel = button.closest('[data-window]');
+    const expanded = panel.classList.toggle('is-expanded');
+    panel.style.setProperty('--drag-x', '0px'); panel.style.setProperty('--drag-y', '0px');
+    button.setAttribute('aria-pressed', String(expanded));
+    button.setAttribute('aria-label', `${expanded ? 'Restore' : 'Expand'} ${panel.dataset.window === 'case' ? 'case study' : panel.dataset.window} window`);
+  }));
+  function recenter() {
+    windows.forEach(panel => {
+      panel.style.setProperty('--drag-x', '0px'); panel.style.setProperty('--drag-y', '0px');
+      panel.classList.remove('is-expanded');
+      const expand = $('.window-expand', panel);
+      expand.setAttribute('aria-pressed', 'false');
+      expand.setAttribute('aria-label', `Expand ${panel.dataset.window === 'case' ? 'case study' : panel.dataset.window} window`);
+    });
+    toast('Windows recentered');
+  }
+  $('.space-recenter').addEventListener('click', recenter);
+
+  // Drag only the title or grab handle: scrolling and selecting case-study text stay natural.
+  const panelPositions = panel => ({ x: parseFloat(panel.style.getPropertyValue('--drag-x')) || 0, y: parseFloat(panel.style.getPropertyValue('--drag-y')) || 0 });
+  function constrainMove(panel, x, y, origin, rect) {
+    const safeTop = 78, safeBottom = innerHeight - 115;
+    const minX = origin.x + 16 - rect.left, maxX = origin.x + innerWidth - 16 - rect.right;
+    const minY = origin.y + safeTop - rect.top, maxY = origin.y + safeBottom - rect.bottom;
+    const clamp = (n, a, b) => Math.min(Math.max(n, Math.min(a,b)), Math.max(a,b));
+    panel.style.setProperty('--drag-x', `${clamp(x,minX,maxX)}px`);
+    panel.style.setProperty('--drag-y', `${clamp(y,minY,maxY)}px`);
+  }
+  $$('[data-drag]').forEach(handle => {
+    const panel = handle.closest('[data-window]');
+    let drag = null;
+    handle.addEventListener('pointerdown', e => {
+      if (e.button !== 0 || innerWidth <= 780) return;
+      e.preventDefault();
+      drag = { pointer: e.pointerId, startX: e.clientX, startY: e.clientY, origin: panelPositions(panel), rect: panel.getBoundingClientRect() };
+      panel.classList.add('is-dragging');
+      handle.setPointerCapture(e.pointerId);
+    });
+    handle.addEventListener('pointermove', e => {
+      if (!drag || drag.pointer !== e.pointerId) return;
+      constrainMove(panel, drag.origin.x + e.clientX - drag.startX, drag.origin.y + e.clientY - drag.startY, drag.origin, drag.rect);
+    });
+    const stopDrag = () => { drag = null; panel.classList.remove('is-dragging'); };
+    handle.addEventListener('pointerup', stopDrag); handle.addEventListener('pointercancel', stopDrag); handle.addEventListener('lostpointercapture', stopDrag);
+    handle.addEventListener('keydown', e => {
+      if (innerWidth <= 780 || !['ArrowLeft','ArrowRight','ArrowUp','ArrowDown'].includes(e.key)) return;
+      e.preventDefault();
+      const origin = panelPositions(panel), amount = e.shiftKey ? 40 : 16;
+      const x = origin.x + (e.key === 'ArrowLeft' ? -amount : e.key === 'ArrowRight' ? amount : 0);
+      const y = origin.y + (e.key === 'ArrowUp' ? -amount : e.key === 'ArrowDown' ? amount : 0);
+      constrainMove(panel,x,y,origin,panel.getBoundingClientRect());
+    });
+  });
+  let resizeFrame;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(resizeFrame);
+    resizeFrame = requestAnimationFrame(() => windows.forEach(panel => { panel.style.setProperty('--drag-x','0px'); panel.style.setProperty('--drag-y','0px'); }));
+  });
+  let lookFrame;
+  document.addEventListener('pointermove', e => {
+    if (reduceMotion || e.pointerType !== 'mouse' || innerWidth <= 780 || e.target.closest('.is-dragging')) return;
+    const x = e.clientX / innerWidth * 2 - 1, y = e.clientY / innerHeight * 2 - 1;
+    cancelAnimationFrame(lookFrame);
+    lookFrame = requestAnimationFrame(() => { root.style.setProperty('--look-x',x.toFixed(3)); root.style.setProperty('--look-y',y.toFixed(3)); });
+  }, { passive: true });
+  document.addEventListener('pointerleave', () => { cancelAnimationFrame(lookFrame); root.style.setProperty('--look-x','0'); root.style.setProperty('--look-y','0'); });
+
+  const cards = $$('.space-project');
+  $$('[data-filter]').forEach(button => button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+    $$('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    cards.forEach(card => { card.hidden = filter !== 'all' && card.dataset.category !== filter; });
+    $('.space-projects').classList.toggle('filtered',filter !== 'all');
+    const count = cards.filter(card => !card.hidden).length;
+    $('.filter-status').textContent = `Showing ${count} ${filter === 'all' ? '' : filter+' '}project${count === 1 ? '' : 's'}`;
+  }));
+  const lab = $('.spatial-material'), pane = $('.material-pane');
+  const materials = { sage:'#91b4a2', blue:'#92b5d1', rose:'#d1a1a2' };
+  $$('[data-material]').forEach(button => button.addEventListener('click', () => {
+    lab.style.setProperty('--material',materials[button.dataset.material]);
+    $$('[data-material]').forEach(b => b.setAttribute('aria-pressed',String(b === button)));
+  }));
+  lab.addEventListener('pointermove', e => {
+    if (reduceMotion || e.pointerType !== 'mouse') return;
+    const r = lab.getBoundingClientRect();
+    pane.style.transform = `rotateY(${((e.clientX-r.left)/r.width-.5)*32}deg) rotateX(${((e.clientY-r.top)/r.height-.5)*-24}deg) rotate(-4deg)`;
+  });
+  lab.addEventListener('pointerleave', () => { pane.style.transform = ''; });
+  $('[data-copy-email]').addEventListener('click', async e => {
+    try { await navigator.clipboard.writeText(e.currentTarget.dataset.copyEmail); toast('Email address copied'); }
+    catch { toast('Email: '+e.currentTarget.dataset.copyEmail); }
+  });
+})();

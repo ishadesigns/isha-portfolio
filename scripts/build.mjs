@@ -1,15 +1,15 @@
 import { mkdir, cp, writeFile, rm, readFile } from "node:fs/promises";
-import { home, casePage } from "../site.mjs";
+import { spatialPage } from "../spatial.mjs";
 import { projects } from "../content.mjs";
 import { siteUrl } from "../config.mjs";
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist", { recursive: true });
 await cp("public", "dist", { recursive: true });
-for (const file of ["styles.css", "app.js"]) await cp(file, `dist/${file}`);
-await writeFile("dist/index.html", home());
+for (const file of ["styles.css", "app.js", "spatial.css", "spatial-app.js"]) await cp(file, `dist/${file}`);
+await writeFile("dist/index.html", spatialPage());
 for (const p of projects) {
   await mkdir(`dist/projects/${p.slug}`, { recursive: true });
-  await writeFile(`dist/projects/${p.slug}/index.html`, casePage(p));
+  await writeFile(`dist/projects/${p.slug}/index.html`, spatialPage(p));
 }
 await writeFile("dist/.nojekyll", "");
 await writeFile(
