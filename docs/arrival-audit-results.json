@@ -1,0 +1,93 @@
+[
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 840,
+      "width": 1920
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 38
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 740,
+      "width": 320
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 39
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "width": 320,
+      "height": 740
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 39
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 1024,
+      "width": 768
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 39
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 740,
+      "width": 320
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 39
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "home",
+    "viewport": {
+      "height": 840,
+      "width": 1920
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 41
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 840,
+      "width": 1920
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 38
+  }
+]
