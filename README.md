@@ -1,4 +1,4 @@
-# Isha Kumari — Spatial Portfolio
+# Isha — Spatial Portfolio
 
 An independent, static UX design portfolio inspired by spatial interfaces. The existing Framer site and custom domain are untouched.
 

@@ -1,6 +1,6 @@
 // Editable portfolio content. All factual project material comes from Isha's original site.
 export const profile = {
-  name: "Isha Kumari",
+  name: "Isha",
   email: "mehtaisha132@gmail.com",
   linkedin: "https://www.linkedin.com/in/ishakumari7/",
   instagram: "https://www.instagram.com/isha_mehta16/",

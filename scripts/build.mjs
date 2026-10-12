@@ -15,7 +15,7 @@ for (const p of projects) {
 await writeFile("dist/.nojekyll", "");
 await writeFile(
   "dist/404.html",
-  '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — Isha Kumari</title><body style="font-family:system-ui;background:#f2f3ef;color:#242a2c;margin:10vh 10vw"><p>ISHA KUMARI / PRODUCT DESIGNER</p><h1 style="font-weight:500;font-size:48px">A little outside the frame.</h1><p>This page couldn’t be found.</p><a href="/isha-portfolio/">Back to the portfolio →</a></body></html>',
+  '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Page not found — Isha</title><body style="font-family:system-ui;background:#f2f3ef;color:#242a2c;margin:10vh 10vw"><p>ISHA / PRODUCT DESIGNER</p><h1 style="font-weight:500;font-size:48px">A little outside the frame.</h1><p>This page couldn’t be found.</p><a href="/isha-portfolio/">Back to the portfolio →</a></body></html>',
 );
 console.log("Built static portfolio: home + 3 complete case studies.");
 

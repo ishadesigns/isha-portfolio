@@ -34,26 +34,26 @@ const img = (name, alt, cls = "", lazy = true, base = "./") =>
 const external = (href, text, cls = "") =>
   `<a class="${cls}" href="${href}" target="_blank" rel="noopener noreferrer">${text}${icon("up")}</a>`;
 export function header(base = "./", isHome = true) {
-  return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="wordmark" href="${base}" aria-label="Isha Kumari home"><span>Isha Kumari<span class="wordmark-sub">Product designer</span></span></a><nav class="top-nav glass" aria-label="Main navigation"><a href="${isHome ? "" : base}#work">Work</a><a href="${isHome ? "" : base}#about">About</a><a href="${isHome ? "" : base}#playground">Playground</a><a href="${profile.resume}" target="_blank" rel="noopener noreferrer">Résumé ${icon("up")}</a></nav></header>`;
+  return `<a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="wordmark" href="${base}" aria-label="Isha home"><span>Isha<span class="wordmark-sub">Product designer</span></span></a><nav class="top-nav glass" aria-label="Main navigation"><a href="${isHome ? "" : base}#work">Work</a><a href="${isHome ? "" : base}#about">About</a><a href="${isHome ? "" : base}#playground">Playground</a><a href="${profile.resume}" target="_blank" rel="noopener noreferrer">Résumé ${icon("up")}</a></nav></header>`;
 }
 export function dock(base = "./", isHome = true) {
   return `<nav class="dock glass" aria-label="Quick navigation"><a href="${isHome ? "#home" : base}" aria-label="Home" data-section="home">${icon("home")}<span>Home</span></a><a href="${isHome ? "" : base}#work" aria-label="Selected work" data-section="work">${icon("work")}<span>Work</span></a><a href="${isHome ? "" : base}#about" aria-label="About Isha" data-section="about">${icon("person")}<span>About</span></a><a href="${isHome ? "" : base}#playground" aria-label="Playground" data-section="playground">${icon("spark")}<span>Play</span></a><div class="dock-divider"></div><a href="mailto:${profile.email}" aria-label="Email Isha">${icon("mail")}<span>Say hello</span></a></nav>`;
 }
 export function footer(base = "./") {
-  return `<footer class="footer" id="contact"><div class="section-marker"><span class="status-dot"></span> OPEN TO PRODUCT DESIGN & UX ROLES</div><h2>Good things start<br>with a conversation<span class="accent">.</span></h2><a class="contact-email" href="mailto:${profile.email}">${profile.email} ${icon("up")}</a><div class="footer-bottom"><span>© ${new Date().getFullYear()} Isha Kumari</span><div>${external(profile.linkedin, "LinkedIn")}${external(profile.instagram, "Instagram")}${external(profile.github, "GitHub")}</div><span>Thoughtfully made. Independently built.</span></div></footer>`;
+  return `<footer class="footer" id="contact"><div class="section-marker"><span class="status-dot"></span> OPEN TO PRODUCT DESIGN & UX ROLES</div><h2>Good things start<br>with a conversation<span class="accent">.</span></h2><a class="contact-email" href="mailto:${profile.email}">${profile.email} ${icon("up")}</a><div class="footer-bottom"><span>© ${new Date().getFullYear()} Isha</span><div>${external(profile.linkedin, "LinkedIn")}${external(profile.instagram, "Instagram")}${external(profile.github, "GitHub")}</div><span>Thoughtfully made. Independently built.</span></div></footer>`;
 }
 export function shell(
   body,
   {
-    title = "Isha Kumari — Product Designer",
-    description = "Product design, UX research, and spatial experiences. Explore Isha Kumari’s work across e-commerce, physical products, and Apple Vision Pro.",
+    title = "Isha — Product Designer",
+    description = "Product design, UX research, and spatial experiences. Explore Isha’s work across e-commerce, physical products, and Apple Vision Pro.",
     base = "./",
     home = false,
     pagePath = "",
     imageName = "bmw-cover",
   } = {},
 ) {
-  return `<!doctype html><html lang="en" data-theme="day"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#edf0ee"><meta name="description" content="${description}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:type" content="website"><meta property="og:image" content="${siteUrl}assets/${imageName}.webp"><meta property="og:url" content="${siteUrl}${pagePath}"><meta property="og:site_name" content="Isha Kumari"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${siteUrl}${pagePath}"><title>${title}</title><link rel="icon" href="${base}favicon.svg?v=${assetVersion}" type="image/svg+xml"><link rel="stylesheet" href="${base}styles.css?v=${assetVersion}"><script src="${base}app.js?v=${assetVersion}" defer></script></head><body class="${home ? "home-page" : "case-page"}"><div class="ambient" aria-hidden="true"><div class="ambient-blue"></div><div class="ambient-peach"></div><div class="ambient-light"></div></div>${header(base, home)}${body}${footer(base)}${dock(base, home)}<div class="toast glass" role="status" aria-live="polite"></div>${home ? '<dialog class="case-dialog" aria-labelledby="dialog-title"><div class="dialog-topbar glass"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="dialog-title">Case study</span><div><a class="dialog-full-page" href="#" aria-label="Open case study as full page">' + icon("up") + '</a><button class="dialog-close" type="button" aria-label="Close case study">' + icon("close") + '</button></div></div><div class="dialog-content"></div></dialog>' : ""}</body></html>`;
+  return `<!doctype html><html lang="en" data-theme="day"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#edf0ee"><meta name="description" content="${description}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:type" content="website"><meta property="og:image" content="${siteUrl}assets/${imageName}.webp"><meta property="og:url" content="${siteUrl}${pagePath}"><meta property="og:site_name" content="Isha"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${siteUrl}${pagePath}"><title>${title}</title><link rel="icon" href="${base}favicon.svg?v=${assetVersion}" type="image/svg+xml"><link rel="stylesheet" href="${base}styles.css?v=${assetVersion}"><script src="${base}app.js?v=${assetVersion}" defer></script></head><body class="${home ? "home-page" : "case-page"}"><div class="ambient" aria-hidden="true"><div class="ambient-blue"></div><div class="ambient-peach"></div><div class="ambient-light"></div></div>${header(base, home)}${body}${footer(base)}${dock(base, home)}<div class="toast glass" role="status" aria-live="polite"></div>${home ? '<dialog class="case-dialog" aria-labelledby="dialog-title"><div class="dialog-topbar glass"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="dialog-title">Case study</span><div><a class="dialog-full-page" href="#" aria-label="Open case study as full page">' + icon("up") + '</a><button class="dialog-close" type="button" aria-label="Close case study">' + icon("close") + '</button></div></div><div class="dialog-content"></div></dialog>' : ""}</body></html>`;
 }
 export function home() {
   const p = projects;
@@ -67,7 +67,7 @@ export function caseArticle(p, base = "../../") {
 }
 export function casePage(p) {
   return shell(`<main id="main" class="container">${caseArticle(p)}</main>`, {
-    title: `${p.name} — Isha Kumari`,
+    title: `${p.name} — Isha`,
     description: p.summary,
     base: "../../",
     pagePath: `projects/${p.slug}/`,
