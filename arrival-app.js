@@ -37,14 +37,16 @@ function stopSound() {
 function finish() {
   clearTimeout(finishTimer); clearTimeout(loadTimer); clearTimeout(window.ishaArrivalFallback);
   ++generation; playing=false; delete root.dataset.arrival; layer.hidden=true; stopSound();
+  root.classList.add('arrival-complete');
   document.querySelectorAll('[data-arrival-inert]').forEach(el=>{el.inert=false;delete el.dataset.arrivalInert;});
   if (layer.contains(document.activeElement)) (restore || document.querySelector('.panel-home .spatial-scroll'))?.focus({preventScroll:true});
   restore=null;
 }
 function start() {
-  if (motion.matches || document.hidden || root.dataset.view!=='home') { finish(); return; }
+  if (motion.matches || root.classList.contains('space-reflow') || document.hidden || root.dataset.view!=='home') { finish(); return; }
   clearTimeout(window.ishaArrivalFallback); clearTimeout(loadTimer); clearTimeout(finishTimer);
   ++generation; playing=true; stopSound(); layer.hidden=false;
+  document.querySelector('.panel-home .spatial-scroll').scrollTop=0;
   document.querySelectorAll('.space-status,.spatial-dock,.spatial-workspace,.portfolio-guide').forEach(el=>{if(!el.inert){el.inert=true;el.dataset.arrivalInert='';}});
   root.dataset.arrival='pending';
   // Restart the one-shot CSS timeline after replay, without a continuous JS frame loop.
@@ -53,7 +55,7 @@ function start() {
   status.textContent='Entering Isha’s space. You can skip the intro.';
   finishTimer=setTimeout(finish,3950);
 }
-soundButton.addEventListener('click',()=>audio?stopSound():playSound());
+soundButton.addEventListener('click',()=>{if(audio)stopSound();else {start();playSound();}});
 document.querySelector('[data-arrival-skip]').addEventListener('click',finish);
 document.querySelector('[data-arrival-replay]').addEventListener('click',e=>{restore=e.currentTarget;start();});
 document.addEventListener('keydown',e=>{if(!playing)return;if(e.key==='Escape'){e.preventDefault();finish();}else if(e.key==='Tab'&&!layer.contains(document.activeElement)&&!document.activeElement.matches('.skip-link')){e.preventDefault();document.querySelector('[data-arrival-skip]').focus();}});

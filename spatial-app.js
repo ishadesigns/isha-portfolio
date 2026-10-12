@@ -99,9 +99,9 @@
     if (focus && windows.has(view)) {
       const content = $(".spatial-scroll", windows.get(view));
       content.scrollTop = 0;
-      if (innerHeight <= 540) window.scrollTo(0, 0);
+      if ((innerHeight <= 540 || root.classList.contains("space-reflow"))) window.scrollTo(0, 0);
       content.focus({ preventScroll: true });
-      if (innerHeight <= 540)
+      if ((innerHeight <= 540 || root.classList.contains("space-reflow")))
         windows
           .get(view)
           .scrollIntoView({ block: "start", behavior: "instant" });
@@ -162,7 +162,7 @@
         source.y + source.height / 2 - target.y - target.height / 2,
       ),
     );
-    const baseTransform = innerHeight <= 540 ? "" : "translate(-50%, -50%)";
+    const baseTransform = (innerHeight <= 540 || root.classList.contains("space-reflow")) ? "" : "translate(-50%, -50%)";
     panel.animate(
       [
         {
@@ -256,8 +256,8 @@
       const heading = primaryHeading(content, 1);
       if (focus && heading) {
         heading.tabIndex = -1;
-        if (innerHeight <= 540) window.scrollTo(0, 0);
-        heading.focus({ preventScroll: innerHeight > 540 });
+        if ((innerHeight <= 540 || root.classList.contains("space-reflow"))) window.scrollTo(0, 0);
+        heading.focus({ preventScroll: (innerHeight > 540 && !root.classList.contains("space-reflow")) });
         announce(`${caseNames[slug]} case study loaded.`);
       }
     } catch {
@@ -312,8 +312,8 @@
     const target = windows.has(activeView)
       ? $(".spatial-scroll", windows.get(activeView))
       : $(".space-idle a");
-    target?.focus({ preventScroll: innerHeight > 540 });
-    if (innerHeight <= 540)
+    target?.focus({ preventScroll: (innerHeight > 540 && !root.classList.contains("space-reflow")) });
+    if ((innerHeight <= 540 || root.classList.contains("space-reflow")))
       target?.scrollIntoView({ block: "start", behavior: "instant" });
   });
 
@@ -435,7 +435,7 @@
     const panel = handle.closest("[data-window]");
     let drag = null;
     handle.addEventListener("pointerdown", (e) => {
-      if (e.button !== 0 || innerWidth <= 780 || innerHeight <= 540) return;
+      if (e.button !== 0 || innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"))) return;
       e.preventDefault();
       drag = {
         pointer: e.pointerId,
@@ -467,7 +467,7 @@
     handle.addEventListener("keydown", (e) => {
       if (
         innerWidth <= 780 ||
-        innerHeight <= 540 ||
+        (innerHeight <= 540 || root.classList.contains("space-reflow")) ||
         !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)
       )
         return;
@@ -485,13 +485,14 @@
   });
   function updateMoveControls() {
     $$("[data-drag]").forEach((handle) => {
-      handle.disabled = innerWidth <= 780 || innerHeight <= 540;
+      handle.disabled = innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"));
     });
   }
   updateMoveControls();
   // Text preferences and wrapping can change navigation height without a viewport resize.
   // Keep the reading window outside those occupied areas.
   function updateAvailableSpace() {
+    root.classList.toggle("space-reflow", innerWidth < 1000 && parseFloat(getComputedStyle(root).fontSize) > 22);
     const header = $(".space-status").getBoundingClientRect();
     const dock = $(".spatial-dock").getBoundingClientRect();
     root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);

@@ -8,7 +8,7 @@ The expanded illustrative room supports bounded horizontal and vertical panning.
 
 Scrolling remains native for touch, wheels, trackpads, and keyboard. Reading progress, custom scrollbar styling, scroll-edge shadows, short entry transitions, and Back to top add motion and feedback without hijacking wheel events. Site-level motion switches are removed; device reduced-motion preferences remain respected.
 
-Open to opportunities is a distinct green, non-interactive callout inside the unified status capsule. Its visual order is availability, a lighter Siri action, local time, and battery. The status bar shows local time and the browser-reported battery value when available. Unsupported browsers show a labeled Demo battery illustration; the site does not claim to read Vision Pro hardware.
+Open to opportunities is a distinct green, non-interactive callout inside the unified status capsule. Its visual order is availability, a lighter Siri action, local time, and battery. The status bar shows local time and a decorative 100% battery illustration. Its tooltip and screen-reader description identify it as illustrative; no hardware status is read.
 
 ## Siri
 

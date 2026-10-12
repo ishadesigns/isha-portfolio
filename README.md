@@ -67,7 +67,7 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
-- A spatial status bar with local time and browser-reported battery, or a clearly labeled Demo indicator.
+- A spatial status bar with local time and an illustrative 100% full-charge indicator.
 - Siri, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and device reduced-motion support.
 - Isha’s Orbit: ten bouncing projects and favorite things, drag/toss interaction, keyboard movement, click-to-explore stories, and Remix.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.

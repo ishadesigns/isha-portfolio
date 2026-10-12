@@ -61,7 +61,7 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
-- A spatial status bar with local time and browser-reported battery, or a clearly labeled Demo indicator.
+- A spatial status bar with local time and an illustrative 100% full-charge indicator.
 - Lumi, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and motion controls.
 - Spatial Pairs, an untimed memory game with keyboard/touch play, score, matching feedback, and restart.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.
