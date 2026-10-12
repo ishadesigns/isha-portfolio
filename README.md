@@ -23,6 +23,10 @@ npm run check
 
 | File | Controls |
 | --- | --- |
+| `world.mjs` | Room status, game markup, Lumi UI, and public guide knowledge |
+| `world-app.js` | Room camera controls, scrolling effects, game, guide movement, and browser voice |
+| `world.css` | Spatial status, game cards, Lumi, and room styling |
+| `guide-engine.js` | Deterministic answers and follow-up routing; no API calls |
 | `resume.mjs` | Source-backed résumé content and résumé window |
 | `artifact-studio.mjs` | Project galleries and focused image viewer markup |
 | `experience-app.js` | Artifact selection, focused viewing, zoom, and résumé section navigation |
@@ -56,7 +60,11 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - In-site résumé reader with career disclosures, section navigation, skills, education, awards, and an optional PDF source link.
 - Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
 - Responsive desktop, tablet, and mobile layouts.
-- A consistent daylight appearance.
+- A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
+- A spatial status bar with local time and browser-reported battery, or a clearly labeled Demo indicator.
+- Lumi, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and motion controls.
+- Spatial Pairs, an untimed memory game with keyboard/touch play, score, matching feedback, and restart.
+- Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.
 - Project filters, animated window transitions, and pointer-driven environmental depth.
 - Interactive glass material study with three palettes.
 - Native FAQ disclosure controls, résumé and social links, and email contact.
@@ -95,3 +103,11 @@ npm run preview
 ```
 
 Visit `http://127.0.0.1:4173/?audit=1`. Reports appear as JSON in `#audit-results`. Optional local stress modes: `contrast=dark`, `contrast=light`, `text=200`, and `spacing=1`. Navigate through all windows and projects. Rebuild with `npm run build` afterward; `npm run check` intentionally rejects an instrumented build. The deployed site includes neither axe nor the audit runner.
+
+## Browser voice and Lumi
+
+No AI API key or backend is used. Answers are retrieved from the portfolio and résumé data in `world.mjs`; `npm test` checks routing, follow-ups, unknown/private questions, and source-entry validity. GitHub Actions runs these checks before deployment.
+
+Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring an English local device voice. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; only the ambient-motion preference is stored locally.
+
+See `docs/world-features.md` for verification and remaining hardware/assistive-technology checks.

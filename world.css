@@ -1145,3 +1145,66 @@ html:not(.world-ready) .window-reading-progress {
     inset 0 0 0 2px #567651,
     0 6px 18px #35554120;
 }
+
+/* Browser text preferences must not introduce horizontal dialog scrolling. */
+.guide-panel {
+  max-width: none;
+}
+.guide-header > div:not(.guide-mini) {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.guide-form-actions {
+  flex-wrap: wrap;
+}
+.guide-form-actions button {
+  flex: 1;
+  min-width: 44px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.world-hud button,
+.guide-panel button,
+.room-controls button {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+@media (max-width: 540px) {
+  .game-board {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.guide-launch {
+  transition:
+    left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.lumi-dragging .guide-launch,
+.world-quiet .guide-launch {
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-launch {
+    transition: none;
+  }
+}
+
+/* Keep status peripheral and the complete game board comfortable to scan. */
+@media (min-width: 781px) {
+  .world-status {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+.game-card {
+  min-height: calc(44px + 3rem);
+}
+@media (max-width: 540px) {
+  .game-card {
+    min-height: calc(26px + 4rem);
+  }
+}

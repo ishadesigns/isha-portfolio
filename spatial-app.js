@@ -218,6 +218,14 @@
       ),
     );
     content.setAttribute("aria-label", `${caseNames[slug]} content`);
+    $(".window-reading-progress", casePanel).setAttribute(
+      "aria-label",
+      `${caseNames[slug]} reading progress`,
+    );
+    $("[data-scroll-top]", casePanel).setAttribute(
+      "aria-label",
+      `Back to top of ${caseNames[slug]} content`,
+    );
     content.setAttribute("aria-busy", "true");
     const pageURL = new URL(`projects/${slug}/`, base);
     $(".window-grip>span", casePanel).textContent = caseNames[slug];

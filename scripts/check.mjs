@@ -33,6 +33,24 @@ for (const file of htmlFiles) {
   checks++;
   assert.match(html, /data-window="resume"/, `${file}: in-site résumé window`);
   checks++;
+  assert.match(html, /world-app.js/, `${file}: spatial world behavior`);
+  checks++;
+  assert.match(
+    html,
+    /id="guide-knowledge"/,
+    `${file}: built-in guide knowledge`,
+  );
+  checks++;
+  assert.match(html, /aria-modal="true"/, `${file}: native focused dialogs`);
+  checks++;
+  assert.match(html, /data-game-reset/, `${file}: replayable game`);
+  checks++;
+  assert.match(
+    html,
+    /data-room-clear/,
+    `${file}: room exploration alternative`,
+  );
+  checks++;
   assert.match(html, /experience-app.js/, `${file}: inspection interactions`);
   checks++;
   assert.match(html, /<meta name="description"/);

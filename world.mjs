@@ -7,7 +7,9 @@ const thirdPerson = (text) =>
     .replace(/\bI connect\b/g, "She connects")
     .replace(/\bI\b/g, "Isha")
     .replace(/\bWe\b/g, "The team")
-    .replace(/\bwe\b/g, "the team");
+    .replace(/\bwe\b/g, "the team")
+    .replace(/\bus\b/g, "the team")
+    .replace(/\bour\b/g, "their");
 export function guideKnowledge() {
   const entries = [
     {
@@ -342,6 +344,60 @@ export function guideKnowledge() {
       label: "Explore the process",
     });
   }
+  for (const p of projects) {
+    const sectionText = (section) =>
+      `${section.title}\n${thirdPerson(section.text)}${section.points ? "\n" + section.points.map(([t, d]) => `${t}: ${thirdPerson(d)}`).join("\n") : ""}`;
+    const select = (pattern) =>
+      p.sections
+        .filter((section) => pattern.test(section.label))
+        .map(sectionText)
+        .join("\n\n");
+    for (const [kind, title, words, copy] of [
+      ["tools", "Tools & platform", ["tools", "software", "figma"], p.tools],
+      [
+        "design",
+        "The experience",
+        [
+          "design",
+          "solution",
+          "concept",
+          "features",
+          "interface",
+          "device",
+          "app",
+        ],
+        select(/design|concept|product|interface|experience/i) || p.overview,
+      ],
+      [
+        "constraints",
+        "Constraints & trade-offs",
+        ["constraints", "limitations", "challenges", "trade-offs"],
+        select(/constraints|trade.off/i) || thirdPerson(p.reflection),
+      ],
+      [
+        "reflection",
+        "What stayed with Isha",
+        ["reflection", "lessons", "learned"],
+        thirdPerson(p.reflection),
+      ],
+      [
+        "process",
+        "The full process",
+        ["process", "stages", "steps"],
+        p.sections.map(sectionText).join("\n\n"),
+      ],
+    ])
+      entries.push({
+        id: p.slug + "-" + kind,
+        topic: p.slug,
+        kind,
+        tags: words,
+        title: `${p.name}: ${title}`,
+        answer: copy,
+        project: p.slug,
+        label: "Read the full case study",
+      });
+  }
   for (const job of resume.experience.slice(1))
     entries.push({
       id: "job-" + job.company,
@@ -386,7 +442,7 @@ export function guideKnowledge() {
         .split(/\s+/)
         .filter((w) => w.length > 4),
       title: q,
-      answer: a,
+      answer: `From Isha’s published portfolio: “${a}”`,
       link: "about",
       label: "Read the portfolio FAQ",
     });

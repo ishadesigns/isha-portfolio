@@ -15,6 +15,14 @@ const checks = [
   ["What tools does she use?", "bmw", "skills", /Figma/],
   ["Show her resume", "", "resume", /Geny/],
   ["What happened at Tindoori Labs?", "", "job-Tindoori Labs", /18%/],
+  [
+    "What were the constraints for Apple Vision Pro?",
+    "",
+    "bmw-constraints",
+    /eye tracking|pinch/i,
+  ],
+  ["How does the Bloom device work?", "", "bloom-design", /aroma|ambient/i],
+  ["What tools were used on BMW?", "", "bmw-tools", /Figma/],
   ["Tell me about Bloom", "", "bloom", /sleep/],
   ["How can I contact her?", "", "contact", /mehtaisha132/],
   ["What about the confidential Chemistry process?", "", "nda", /NDA/],
@@ -45,5 +53,5 @@ for (const entry of knowledge.entries) {
   assert(entry.link || entry.project);
 }
 console.log(
-  `Passed ${checks.length + 8} guide behavior checks and ${knowledge.entries.length} source-entry validations.`,
+  `Passed ${checks.length + 9} guide behavior checks and ${knowledge.entries.length} source-entry validations.`,
 );

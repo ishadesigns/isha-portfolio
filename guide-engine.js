@@ -6,6 +6,7 @@ const normalize = (value) =>
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9\s]/g, " ")
     .replace(/\s+/g, " ")
+    .replace(/\bb m w\b/g, "bmw")
     .trim();
 const contains = (text, phrase) =>
   ` ${text} `.includes(` ${normalize(phrase)} `);
@@ -59,6 +60,22 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
             )
           ? "role"
           : "";
+  if (!kind)
+    kind = /\b(tools?|software|figma)\b/.test(q)
+      ? "tools"
+      : /\b(constraints?|limitations?|challenges|trade offs?|feasibility)\b/.test(
+            q,
+          )
+        ? "constraints"
+        : /\b(reflections?|lessons?|learned)\b/.test(q)
+          ? "reflection"
+          : /\b(process|stages|steps)\b/.test(q)
+            ? "process"
+            : /\b(design|designed|solution|concept|prototype|features|interface|device|app|built|redesign)\b/.test(
+                  q,
+                )
+              ? "design"
+              : "";
   if (/\b(nda|confidential|confidentiality|protected)\b/.test(q))
     return knowledge.entries.find((e) => e.id === "nda");
   let topic =

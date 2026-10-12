@@ -21,8 +21,8 @@ function tickClock() {
 tickClock();
 setInterval(tickClock, 60000);
 if (navigator.getBattery)
-  navigator
-    .getBattery()
+  Promise.resolve()
+    .then(() => navigator.getBattery())
     .then((battery) => {
       const update = () => {
         $("[data-battery-label]").textContent =
@@ -32,10 +32,10 @@ if (navigator.getBattery)
           String(17 * battery.level),
         );
         $("[data-battery-description]").textContent =
-          `Device battery ${Math.round(battery.level * 100)} percent${battery.charging ? ", charging" : ""}`;
+          `Browser-reported battery ${Math.round(battery.level * 100)} percent${battery.charging ? ", charging" : ""}`;
         $(".hud-battery").title = battery.charging
-          ? "Device battery, charging"
-          : "Device battery";
+          ? "Browser-reported battery, charging"
+          : "Browser-reported battery";
       };
       update();
       battery.addEventListener("levelchange", update);
@@ -384,12 +384,17 @@ let guideTopic = "",
   dictating = false,
   speakingButton = null,
   guidePaused = false,
+  guideTrigger = null,
   speechStartTimer;
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const canSpeak = !!window.speechSynthesis && !!window.SpeechSynthesisUtterance;
 const status = (text) => {
   $("[data-guide-status]").textContent = text;
+};
+const voiceNotice = (text) => {
+  status(text);
+  $("[data-guide-voice-note]").textContent = text;
 };
 if (!SpeechRecognition) {
   $("[data-guide-mic]").disabled = true;
@@ -414,11 +419,17 @@ function closeGuide(restore = true) {
   recognition?.abort();
   stopSpeaking();
   if (restore)
-    (innerWidth <= 780 ? $("[data-guide-open].guide-inline") : launcher).focus({
+    (guideTrigger?.getClientRects().length
+      ? guideTrigger
+      : innerWidth <= 780
+        ? $("[data-guide-open].guide-inline")
+        : launcher
+    ).focus({
       preventScroll: true,
     });
 }
-function openGuide() {
+function openGuide(trigger = launcher) {
+  guideTrigger = trigger;
   if (!guide.hidden) return closeGuide();
   if (roomActive) setRoomView(false);
   roomMenu(false);
@@ -427,7 +438,7 @@ function openGuide() {
   $$("[data-guide-open]").forEach((b) =>
     b.setAttribute("aria-expanded", "true"),
   );
-  question.focus({ preventScroll: true });
+  question.focus();
 }
 function setAvatar(x, y, announce = false) {
   const rect = launcher.getBoundingClientRect();
@@ -555,7 +566,7 @@ function reply(value) {
 $(".guide-form").addEventListener("submit", (event) => {
   event.preventDefault();
   reply(question.value);
-  question.focus({ preventScroll: true });
+  question.focus();
 });
 question.addEventListener("keydown", (event) => {
   if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
@@ -575,6 +586,7 @@ function dictate() {
   recognition.continuous = false;
   recognition.interimResults = true;
   recognition.onstart = () => {
+    $("[data-guide-mic]").disabled = false;
     dictating = true;
     $("[data-guide-mic]").setAttribute("aria-pressed", "true");
     $("[data-guide-mic] span").textContent = "Stop";
@@ -588,7 +600,7 @@ function dictate() {
       .slice(0, 500);
   };
   recognition.onerror = (event) => {
-    status(
+    voiceNotice(
       event.error === "not-allowed"
         ? "Microphone permission was not granted. You can still type your question."
         : event.error === "no-speech"
@@ -598,15 +610,23 @@ function dictate() {
   };
   recognition.onend = () => {
     dictating = false;
+    $("[data-guide-mic]").disabled = false;
     $("[data-guide-mic]").setAttribute("aria-pressed", "false");
     $("[data-guide-mic] span").textContent = "Dictate";
     root.classList.remove("lumi-listening");
-    if (!guide.hidden) question.focus({ preventScroll: true });
+    if (!guide.hidden) question.focus();
   };
+  dictating = true;
+  $("[data-guide-mic]").disabled = true;
+  voiceNotice(
+    "Starting voice input. Your browser may ask for microphone permission.",
+  );
   try {
     recognition.start();
   } catch {
-    status("Voice input could not start. Type a question instead.");
+    dictating = false;
+    $("[data-guide-mic]").disabled = false;
+    voiceNotice("Voice input could not start. Type a question instead.");
   }
 }
 function speakAnswer(button) {
@@ -642,7 +662,7 @@ function speakAnswer(button) {
   utterance.onerror = () => {
     if (speakingButton === button) {
       stopSpeaking();
-      status(
+      voiceNotice(
         "This browser could not read the answer aloud. The text remains available.",
       );
     }
@@ -653,7 +673,7 @@ function speakAnswer(button) {
   speechStartTimer = setTimeout(() => {
     if (speakingButton === button && !speechSynthesis.speaking) {
       stopSpeaking();
-      status(
+      voiceNotice(
         "Read aloud needs an available browser voice. You can still read the answer here.",
       );
     }
@@ -673,7 +693,7 @@ document.addEventListener("click", (event) => {
       suppressClick = false;
       return;
     }
-    openGuide();
+    openGuide(target);
   }
   if (target.hasAttribute("data-guide-close")) closeGuide();
   if (target.hasAttribute("data-guide-question"))
@@ -793,3 +813,15 @@ new MutationObserver(() => {
     );
   }
 }).observe(root, { attributes: true, attributeFilter: ["data-view"] });
+
+guide.addEventListener("click", (event) => {
+  if (event.target !== guide) return;
+  const r = guide.getBoundingClientRect();
+  if (
+    event.clientX < r.left ||
+    event.clientX > r.right ||
+    event.clientY < r.top ||
+    event.clientY > r.bottom
+  )
+    closeGuide();
+});
