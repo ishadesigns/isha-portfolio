@@ -1,3 +1,5 @@
+import { initOrbit } from "./orbit-app.js";
+import { dragRoom, edgeVelocity, advanceRoom } from "./room-motion.js";
 import { preferredVoice, createDictationController } from "./voice-support.js";
 import { guideAnswer } from "./guide-engine.js";
 
@@ -7,7 +9,7 @@ const $$ = (selector, scope = document) => [
   ...scope.querySelectorAll(selector),
 ];
 const motionQuery = matchMedia("(prefers-reduced-motion: reduce)");
-const calm = () => motionQuery.matches || root.dataset.userMotion === "off";
+const calm = () => motionQuery.matches;
 const base = new URL(document.body.dataset.base, document.baseURI);
 const knowledge = JSON.parse($("#guide-knowledge").textContent);
 root.classList.add("world-ready");
@@ -43,20 +45,10 @@ if (navigator.getBattery)
       battery.addEventListener("chargingchange", update);
     })
     .catch(() => {});
-try {
-  if (localStorage.getItem("isha-ambient-motion") === "off")
-    root.dataset.userMotion = "off";
-} catch {}
+delete root.dataset.userMotion;
+try { localStorage.removeItem("isha-ambient-motion"); } catch {}
 function updateMotion() {
   root.classList.toggle("world-quiet", calm());
-  $("[data-ambient-motion]").setAttribute(
-    "aria-pressed",
-    String(root.dataset.userMotion === "off"),
-  );
-  $("[data-ambient-motion] span").textContent =
-    root.dataset.userMotion === "off"
-      ? "Resume ambient motion"
-      : "Pause ambient motion";
   document.dispatchEvent(new Event("worldmotionchange"));
 }
 updateMotion();
@@ -87,6 +79,7 @@ function roomMenu(open, restore = false) {
 }
 function setRoomView(open, restore = true) {
   if (open === roomActive) return;
+  stopRoomDrag();
   roomActive = open;
   root.classList.toggle("room-looking", open);
   $("[data-room-clear]").setAttribute("aria-pressed", String(open));
@@ -126,32 +119,47 @@ function setRoomView(open, restore = true) {
     savedVisible = [];
   }
 }
-explorer.addEventListener("pointerdown", (event) => {
-  if (event.button !== 0 || event.target.closest("button,a")) return;
+let roomFrame = 0, roomTick = 0;
+function continueRoomDrag(time) {
+  roomFrame = 0;
+  if (!roomDrag) return;
+  const velocity = edgeVelocity(roomDrag, { width: innerWidth, height: innerHeight });
+  const next = advanceRoom(pan, velocity, Math.min((time - roomTick) / 1000, 0.05));
+  roomTick = time;
+  moveRoom(next.x, next.y);
+  roomFrame = requestAnimationFrame(continueRoomDrag);
+}
+document.addEventListener("pointerdown", (event) => {
+  if (event.button !== 0 || event.target.closest("button,a,input,summary,dialog,.space-status,.spatial-dock,.room-controls,.portfolio-guide,[data-window]")) return;
+  if (!roomActive && !event.target.matches("body,.spatial-workspace,.space-idle")) return;
   event.preventDefault();
-  roomDrag = {
-    id: event.pointerId,
-    x: event.clientX,
-    y: event.clientY,
-    origin: { ...pan },
-  };
-  explorer.setPointerCapture(event.pointerId);
+  const target = event.target.closest(".room-explorer") || document.body;
+  roomDrag = { id: event.pointerId, x: event.clientX, y: event.clientY, target };
+  target.setPointerCapture(event.pointerId);
   root.classList.add("room-dragging");
+  roomTick = performance.now();
+  roomFrame = requestAnimationFrame(continueRoomDrag);
 });
-explorer.addEventListener("pointermove", (event) => {
+document.addEventListener("pointermove", (event) => {
   if (!roomDrag || roomDrag.id !== event.pointerId) return;
-  moveRoom(
-    roomDrag.origin.x - (event.clientX - roomDrag.x) / (innerWidth * 0.35),
-    roomDrag.origin.y - (event.clientY - roomDrag.y) / (innerHeight * 0.35),
-  );
+  const next = dragRoom(pan, { x: event.clientX - roomDrag.x, y: event.clientY - roomDrag.y }, { width: innerWidth, height: innerHeight });
+  roomDrag.x = event.clientX;
+  roomDrag.y = event.clientY;
+  moveRoom(next.x, next.y);
 });
 function stopRoomDrag() {
+  const drag = roomDrag;
   roomDrag = null;
+  cancelAnimationFrame(roomFrame);
+  roomFrame = 0;
   root.classList.remove("room-dragging");
+  if (drag?.target.hasPointerCapture(drag.id)) drag.target.releasePointerCapture(drag.id);
 }
-explorer.addEventListener("pointerup", stopRoomDrag);
-explorer.addEventListener("pointercancel", stopRoomDrag);
-explorer.addEventListener("lostpointercapture", stopRoomDrag);
+document.addEventListener("pointerup", stopRoomDrag);
+document.addEventListener("pointercancel", stopRoomDrag);
+document.addEventListener("lostpointercapture", (event) => { if (roomDrag?.id === event.pointerId) stopRoomDrag(); });
+window.addEventListener("blur", stopRoomDrag);
+document.addEventListener("visibilitychange", () => { if (document.hidden) stopRoomDrag(); });
 explorer.addEventListener("keydown", (event) => {
   if (event.target !== explorer || !event.key.startsWith("Arrow")) return;
   event.preventDefault();
@@ -236,142 +244,6 @@ new MutationObserver(() => {
 }).observe($(".panel-case .spatial-scroll"), { childList: true });
 updateReading();
 
-// Untimed memory game. Mismatches stay visible until the player chooses another card.
-const board = $(".game-board");
-const shapes = [
-  ["Orbit", "◉"],
-  ["Bloom", "✿"],
-  ["Spark", "✦"],
-  ["Wave", "≋"],
-  ["Moon", "☾"],
-  ["Diamond", "◇"],
-];
-let deck = [],
-  selection = [],
-  matched = new Set(),
-  moves = 0;
-function newGame() {
-  deck = [...shapes, ...shapes].map(([name, symbol], id) => ({
-    name,
-    symbol,
-    id,
-  }));
-  for (let i = deck.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [deck[i], deck[j]] = [deck[j], deck[i]];
-  }
-  selection = [];
-  matched = new Set();
-  moves = 0;
-  board.replaceChildren();
-  deck.forEach((card, i) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "game-card";
-    button.dataset.gameCard = String(i);
-    button.setAttribute("aria-label", `Card ${i + 1}, face down`);
-    const inner = document.createElement("span");
-    inner.className = "game-card-inner";
-    inner.setAttribute("aria-hidden", "true");
-    const front = document.createElement("span");
-    front.className = "game-card-front";
-    front.innerHTML =
-      '<span class="game-card-orbit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 6.3L21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span><span class="game-card-number">' +
-      String(i + 1) +
-      "</span>";
-    const back = document.createElement("span");
-    back.className = "game-card-back";
-    back.dataset.shape = String(shapes.findIndex((s) => s[0] === card.name));
-    const glyph = document.createElement("span");
-    glyph.className = "game-card-symbol";
-    glyph.textContent = card.symbol;
-    const name = document.createElement("span");
-    name.className = "game-card-name";
-    name.textContent = card.name;
-    back.append(glyph, name);
-    inner.append(front, back);
-    button.append(inner);
-    board.append(button);
-  });
-  updateGame("Choose two cards to begin.");
-}
-function updateGame(message) {
-  $("[data-game-moves]").textContent = String(moves);
-  $("[data-game-pairs]").textContent = `${matched.size / 2} / 6`;
-  $("[data-game-feedback]").textContent = message;
-}
-function flipCard(index) {
-  if (matched.has(index) || selection.includes(index)) return;
-  if (selection.length === 2) {
-    selection.forEach((i) => {
-      const b = $(`[data-game-card="${i}"]`);
-      b.classList.remove("is-flipped");
-      b.setAttribute("aria-label", `Card ${i + 1}, face down`);
-    });
-    selection = [];
-  }
-  const button = $(`[data-game-card="${index}"]`);
-  button.classList.add("is-flipped");
-  button.setAttribute("aria-label", `Card ${index + 1}, ${deck[index].name}`);
-  selection.push(index);
-  if (selection.length === 1)
-    return updateGame(
-      `Card ${index + 1}: ${deck[index].name}. Choose a second card.`,
-    );
-  moves++;
-  const [a, b] = selection;
-  if (deck[a].name === deck[b].name) {
-    [a, b].forEach((i) => {
-      matched.add(i);
-      const card = $(`[data-game-card="${i}"]`);
-      card.classList.add("is-matched");
-      card.setAttribute(
-        "aria-label",
-        `Card ${i + 1}, ${deck[i].name}, matched`,
-      );
-      card.setAttribute("aria-disabled", "true");
-    });
-    selection = [];
-    updateGame(
-      matched.size === 12
-        ? `A perfect little constellation. All six pairs found in ${moves} moves! Choose New game to play again.`
-        : `${deck[a].name} pair found. ${matched.size / 2} of six pairs matched.`,
-    );
-    board.classList.toggle("game-won", matched.size === 12);
-  } else
-    updateGame(
-      `${deck[a].name} and ${deck[b].name}: different shapes. Choose another card to turn these back over.`,
-    );
-}
-board.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-game-card]");
-  if (button) flipCard(Number(button.dataset.gameCard));
-});
-board.addEventListener("keydown", (event) => {
-  if (
-    !event.key.startsWith("Arrow") ||
-    !event.target.matches("[data-game-card]")
-  )
-    return;
-  event.preventDefault();
-  const index = Number(event.target.dataset.gameCard),
-    columns = getComputedStyle(board).gridTemplateColumns.split(" ").length;
-  const next = clamp(
-    index +
-      (event.key === "ArrowLeft"
-        ? -1
-        : event.key === "ArrowRight"
-          ? 1
-          : event.key === "ArrowUp"
-            ? -columns
-            : columns),
-    0,
-    11,
-  );
-  $(`[data-game-card="${next}"]`).focus();
-});
-newGame();
-
 // Siri: source-backed answers, optional browser voice, and a movable character.
 const guide = $("#guide-panel"),
   launcher = $(".guide-launch"),
@@ -432,7 +304,6 @@ function closeGuide(restore = true) {
 function openGuide(trigger = launcher) {
   guideTrigger = trigger;
   if (!guide.hidden) return closeGuide();
-  if (roomActive) setRoomView(false);
   roomMenu(false);
   guide.hidden = false;
   guide.showModal();
@@ -694,13 +565,6 @@ document.addEventListener("click", (event) => {
   }
   if (target.hasAttribute("data-room-clear")) setRoomView(!roomActive);
   if (target.hasAttribute("data-room-return")) setRoomView(false);
-  if (target.hasAttribute("data-ambient-motion")) {
-    root.dataset.userMotion = root.dataset.userMotion === "off" ? "on" : "off";
-    try {
-      localStorage.setItem("isha-ambient-motion", root.dataset.userMotion);
-    } catch {}
-    updateMotion();
-  }
   if (target.hasAttribute("data-scroll-top")) {
     const panel = target.closest("[data-window]");
     if (innerHeight <= 540)
@@ -714,10 +578,6 @@ document.addEventListener("click", (event) => {
         behavior: calm() ? "instant" : "smooth",
       });
     $(".spatial-scroll", panel).focus({ preventScroll: true });
-  }
-  if (target.hasAttribute("data-game-reset")) {
-    board.classList.remove("game-won");
-    newGame();
   }
   if (target.matches(".space-recenter")) {
     moveRoom(0, 0, true);
@@ -780,3 +640,5 @@ guide.addEventListener("click", (event) => {
   )
     closeGuide();
 });
+
+initOrbit();

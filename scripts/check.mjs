@@ -48,7 +48,7 @@ for (const file of htmlFiles) {
   checks++;
   assert.match(html, /aria-modal="true"/, `${file}: native focused dialogs`);
   checks++;
-  assert.match(html, /data-game-reset/, `${file}: replayable game`);
+  assert.match(html, /data-orbit-reset/, `${file}: interactive orbit`);
   checks++;
   assert.match(
     html,

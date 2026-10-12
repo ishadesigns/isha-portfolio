@@ -10,7 +10,7 @@ const checks = [
   ["Tell me about her interests", "bmw", "about", /Friends/],
   ["What awards has she won?", "", "awards", /Silver/],
   ["Tell me about Bloom’s Indigo award", "bloom", "awards", /2025/],
-  ["How do I play the game?", "", "play", /six matching/],
+  ["How do I play the game?", "", "play", /Drag and toss/],
   ["What did Isha do at BMW?", "", "bmw-role", /product|designer/i],
   ["What research did she do?", "bmw", "bmw-research", /27 interviews/],
   ["What were the results?", "bmw", "bmw-results", /25%/],

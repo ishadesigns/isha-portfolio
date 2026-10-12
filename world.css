@@ -189,7 +189,7 @@
   margin-top: 18px;
 }
 .room-looking .guide-launch {
-  display: none;
+  display: flex;
 }
 
 /* Scroll decorations never replace native wheel, touch, or keyboard scrolling. */
@@ -1580,3 +1580,66 @@ html:not(.world-ready) .window-reading-progress {
 }
 .world-quiet .siri-visor i { animation: none; }
 @media (prefers-reduced-motion: reduce) { .siri-visor i { animation: none !important; } }
+
+/* Dock room controls and a compact, single-line conversational composer. */
+.world-hud { flex-wrap: nowrap; gap: 12px; padding-right: 14px; }
+.world-hud .guide-inline { background: #cbdcc7; color: #294b38; border: 1px solid #93af8e; padding: 9px 15px; }
+.world-hud .guide-inline:hover { background: #b6cfb0; }
+.world-hud .space-availability { flex: none; width: auto; }
+.dock-look-toggle { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-width: 62px; min-height: 70px; border-radius: 20px; padding: 5px; color: #355541; background: transparent; font-size: .75rem; }
+.dock-look-toggle > .icon { width: 28px; height: 28px; }
+.dock-look-toggle:hover,
+.dock-look-toggle[aria-expanded="true"] { background: #dfe9d7; }
+.dock-look-toggle:focus-visible { outline: 3px solid #21517a; outline-offset: 2px; }
+.room-controls { position: fixed; top: auto; right: max(14px,calc((100vw - 790px)/2)); bottom: calc(var(--space-bottom,160px) - 42px); z-index: 43; max-height: calc(100dvh - 40px); overflow: auto; }
+.room-explorer { position: fixed; inset: 0; padding: var(--space-top,130px) 24px calc(var(--space-bottom,180px) + 16px); z-index: 1; }
+.room-looking .guide-launch { display: flex; }
+.guide-form .sr-only { margin: -1px; }
+.guide-composer { display: flex; align-items: center; gap: 4px; border: 1px solid #78906f; background: #fff; border-radius: 28px; padding: 5px 6px 5px 12px; width: 100%; }
+.guide-composer:focus-within { outline: 3px solid #21517a; outline-offset: 2px; }
+.guide-composer input { flex: 1; min-width: 0; width: 100%; min-height: 44px; padding: 8px 3px; border: 0; outline: 0; color: #263a2e; background: transparent; font: inherit; font-size: 1rem; line-height: 1.5; border-radius: 0; }
+.guide-composer input::placeholder { color: #596b59; opacity: 1; }
+.guide-form-actions { position: static; display: flex; flex-wrap: nowrap; flex: none; gap: 4px; margin: 0; }
+.guide-form-actions button { width: 40px; height: 44px; min-width: 44px; padding: 0; }
+.guide-form-actions button .icon { width: 18px; height: 18px; }
+.siri-eyes { display: flex; align-items: center; justify-content: center; gap: 10px; animation: siri-gaze 7.2s ease-in-out infinite; }
+.guide-mini .siri-eyes { gap: 6px; }
+.siri-body .siri-visor i { animation: siri-blink 3.6s ease-in-out infinite; }
+@keyframes siri-gaze { 0%,100% {transform:translate(0,0)} 20%,32% {transform:translate(3px,-1px)} 55%,67% {transform:translate(-3px,1px)} 80%,87% {transform:translate(0,-2px)} }
+.siri-ring i { position: absolute; width: 5px; height: 5px; background: #eafbff; border: 1px solid #6a97b3; border-radius: 50%; box-shadow: 0 0 4px #fff; }
+.siri-ring i:nth-child(1) { top: 0; left: 48%; }
+.siri-ring i:nth-child(2) { bottom: 13%; left: 9%; }
+.siri-ring i:nth-child(3) { bottom: 21%; right: 3%; }
+.guide-launch:is(:hover,:focus-visible) .siri-ring,
+.guide-launch:is(:hover,:focus-visible) .siri-ring-front { animation: siri-ring-spin 1.8s linear infinite; }
+@keyframes siri-ring-spin { from {transform:rotate(-22deg) scaleY(.47) rotate(0deg)} to {transform:rotate(-22deg) scaleY(.47) rotate(360deg)} }
+@media (max-width:780px) {
+ .guide-launch { display: flex; width: 72px; min-height: 82px; right: 14px; bottom: calc(var(--space-bottom,180px) + 8px); }
+ .guide-launch .siri-body { width: 58px; height: 58px; }
+ .guide-launch .siri-visor { top: 19px; left: 9px; right: 9px; height: 21px; }
+ .guide-launch .siri-visor i { width: 4px; height: 8px; }
+ .guide-launch-label { font-size: .6875rem; margin-top: 6px; padding: 4px 8px; }
+ .room-controls { bottom: calc(var(--space-bottom,180px) - 10px); right: 14px; }
+ .dock-look-toggle { min-width: 44px; font-size: .6875rem; padding: 3px; }
+ .dock-look-toggle > .icon { width: 24px; height: 24px; }
+}
+@media (max-width:540px) {
+ .spatial-dock { grid-template-columns: repeat(5,minmax(0,1fr)); }
+ .spatial-dock > a { min-width: 0; }
+ .world-hud { flex-wrap: wrap; justify-content: center; gap: 7px; padding: 7px; }
+ .world-hud .space-availability { flex: none; width: auto; white-space: normal; padding: 9px 10px; max-width: 70%; font-size: .6875rem; }
+ .world-hud .guide-inline { padding: 8px 12px; }
+ .world-hud > [role="group"] { margin-left: auto; }
+ .world-hud .hud-battery { margin-right: auto; }
+ .room-explorer { padding-inline: 14px; }
+}
+@media (max-height:540px) {
+ .room-controls { inset: auto 14px 14px auto; }
+ .room-explorer { position: fixed; inset: 0; min-height: 0; }
+ .guide-launch { bottom: 12px; }
+}
+.world-quiet .siri-eyes,
+.world-quiet .siri-ring,
+.world-quiet .siri-ring-front { animation: none !important; }
+@media (prefers-reduced-motion:reduce) { .siri-eyes,.siri-ring,.siri-ring-front { animation: none !important; } }
+@media (forced-colors:active) { .guide-composer { background: Canvas; border-color: CanvasText; } .guide-composer input { color: CanvasText; } }

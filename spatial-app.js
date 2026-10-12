@@ -561,25 +561,6 @@
         `Showing ${count} ${filter === "all" ? "" : filter + " "}project${count === 1 ? "" : "s"}`;
     }),
   );
-  const lab = $(".spatial-material"),
-    pane = $(".material-pane");
-  const materials = { sage: "#91b4a2", blue: "#92b5d1", rose: "#d1a1a2" };
-  $$("[data-material]").forEach((button) =>
-    button.addEventListener("click", () => {
-      lab.style.setProperty("--material", materials[button.dataset.material]);
-      $$("[data-material]").forEach((b) =>
-        b.setAttribute("aria-pressed", String(b === button)),
-      );
-    }),
-  );
-  lab.addEventListener("pointermove", (e) => {
-    if (reduceMotion || e.pointerType !== "mouse") return;
-    const r = lab.getBoundingClientRect();
-    pane.style.transform = `rotateY(${((e.clientX - r.left) / r.width - 0.5) * 32}deg) rotateX(${((e.clientY - r.top) / r.height - 0.5) * -24}deg) rotate(-4deg)`;
-  });
-  lab.addEventListener("pointerleave", () => {
-    pane.style.transform = "";
-  });
   $("[data-copy-email]").addEventListener("click", async (e) => {
     const email = e.currentTarget.dataset.copyEmail;
     try {
