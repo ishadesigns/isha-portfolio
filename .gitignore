@@ -1,7 +1,7 @@
 dist/
-assets/
-research/
-drafts/
+/assets/
+/research/
+/drafts/
 node_modules/
 .DS_Store
 *.log
