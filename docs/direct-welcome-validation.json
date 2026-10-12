@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-12",
+  "visual": {
+    "intermediateWarpCount": 0,
+    "lensOuterBorderRadius": "50%",
+    "welcomeOpacityDuringReveal": 1,
+    "revealDurationMs": 1100,
+    "phoneViewport": {"width": 390, "height": 844},
+    "phoneHorizontalOverflow": false
+  },
+  "chromeAudio": {
+    "initialLoad": {"context": "suspended", "welcome": "pending"},
+    "firstInteraction": {"context": "running", "welcome": "played"},
+    "refreshOnWork": {"context": "suspended", "welcome": "pending"},
+    "firstInteractionAfterRefresh": {"context": "running", "welcome": "played"},
+    "limitation": "Browser autoplay policy still requires a gesture in this test; site code cannot guarantee sound before interaction when autoplay is blocked."
+  },
+  "checks": ["751 production artifact checks", "guide and speech helper regressions", "bounded room and orbit motion", "audio sample and lifecycle regressions", "per-document welcome reset and gesture fallback", "pending request race ordering"]
+}
