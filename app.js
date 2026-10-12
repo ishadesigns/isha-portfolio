@@ -5,77 +5,15 @@
   const $$ = (selector, scope = document) => [
     ...scope.querySelectorAll(selector),
   ];
-  const stored = (key) => {
-    try {
-      return localStorage.getItem(key);
-    } catch {
-      return null;
-    }
-  };
-  const save = (key, value) => {
-    try {
-      localStorage.setItem(key, value);
-    } catch {
-      /* Private browsing can disable storage. */
-    }
-  };
+  // Follow the device accessibility setting without an atmosphere menu.
   const systemMotion = matchMedia("(prefers-reduced-motion: reduce)");
-  let motionReduced =
-    stored("isha-motion") === "reduced" || systemMotion.matches;
-  function setMotion(reduced, persist = false) {
+  let motionReduced = systemMotion.matches;
+  function setMotion(reduced) {
     motionReduced = reduced;
     root.classList.toggle("reduce-motion", reduced);
-    $(".motion-setting")?.setAttribute("aria-pressed", String(reduced));
-    if (persist) save("isha-motion", reduced ? "reduced" : "full");
   }
-  function setTheme(theme) {
-    root.dataset.theme = theme;
-    $$("[data-theme]")
-      .filter((el) => el.tagName === "BUTTON")
-      .forEach((el) =>
-        el.setAttribute("aria-pressed", String(el.dataset.theme === theme)),
-      );
-    $('meta[name="theme-color"]')?.setAttribute(
-      "content",
-      theme === "night" ? "#1b2428" : "#edf0ee",
-    );
-    save("isha-theme", theme);
-  }
-  setTheme(stored("isha-theme") === "night" ? "night" : "day");
   setMotion(motionReduced);
-  systemMotion.addEventListener("change", (e) =>
-    setMotion(e.matches || stored("isha-motion") === "reduced"),
-  );
-  const menu = $("#environment-menu");
-  const menuButton = $(".environment-button");
-  const closeMenu = () => {
-    menu.hidden = true;
-    menuButton.setAttribute("aria-expanded", "false");
-  };
-  menuButton?.addEventListener("click", () => {
-    menu.hidden = !menu.hidden;
-    menuButton.setAttribute("aria-expanded", String(!menu.hidden));
-  });
-  $$("button[data-theme]").forEach((button) =>
-    button.addEventListener("click", () => setTheme(button.dataset.theme)),
-  );
-  $(".motion-setting")?.addEventListener("click", () =>
-    setMotion(!motionReduced, true),
-  );
-  document.addEventListener("click", (e) => {
-    if (
-      !menu.hidden &&
-      !menu.contains(e.target) &&
-      !menuButton.contains(e.target)
-    )
-      closeMenu();
-  });
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menu.hidden) {
-      closeMenu();
-      menuButton.focus();
-    }
-  });
+  systemMotion.addEventListener("change", (e) => setMotion(e.matches));
 
   // Reveal only after IntersectionObserver is available, so content remains readable without JavaScript.
   if ("IntersectionObserver" in window) {
@@ -195,7 +133,6 @@
       '<div class="dialog-error"><p>Opening case study…</p></div>';
     if (!dialog.open) dialog.showModal();
     document.body.classList.add("modal-open");
-    closeMenu();
     content.scrollTop = 0;
     if (updateHistory) history.pushState({ case: slug }, "", `#case-${slug}`);
     try {

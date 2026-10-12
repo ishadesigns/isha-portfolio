@@ -27,7 +27,7 @@ npm run check
 | `config.mjs` | Published site URL for canonical links and social metadata |
 | `site.mjs` | Page structure, navigation, hero, project cards, case study templates |
 | `styles.css` | Colors, typography, glass materials, animations, all responsive layouts |
-| `app.js` | Theme preferences, filtering, motion, material demo, case study dialogs |
+| `app.js` | Filtering, motion, material demo, case study dialogs |
 | `public/assets/` | Local optimized project images and personal photos |
 | `scripts/build.mjs` | Static page generation |
 | `.github/workflows/pages.yml` | Automatic GitHub Pages publication |
@@ -44,11 +44,11 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 - Three complete, directly linkable case studies, also available in native accessible dialog windows.
 - Responsive desktop, tablet, and mobile layouts.
-- Daylight and moonlight themes, stored only in the visitor's browser.
+- A consistent daylight appearance.
 - Project filters, smooth anchor navigation, a floating navigation dock, scroll reveals, and pointer-driven depth.
 - Interactive glass material study with three palettes.
 - Native FAQ disclosure controls, résumé and social links, and email contact.
-- Reduced-motion support, keyboard focus indicators, skip navigation, meaningful image alternatives, and readable content without JavaScript.
+- Device reduced-motion support, keyboard focus indicators, skip navigation, meaningful image alternatives, and readable content without JavaScript.
 - No tracking, accounts, paid APIs, remote project assets, framework runtime, or required backend.
 
 ## Static versus dynamic

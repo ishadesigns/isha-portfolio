@@ -226,28 +226,6 @@ p {
   width: 13px;
   height: 13px;
 }
-.environment-button {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  border-radius: 32px;
-  padding: 11px 15px;
-  font-size: 11px;
-  box-shadow: 0 5px 18px -8px #8b99904d;
-}
-.environment-button .icon {
-  width: 17px;
-  height: 17px;
-}
-.environment-menu {
-  position: absolute;
-  right: 48px;
-  top: 85px;
-  border-radius: 20px;
-  padding: 22px;
-  width: 300px;
-  background: var(--glass-strong);
-}
 [hidden] {
   display: none !important;
 }
@@ -263,58 +241,6 @@ p {
   width: 17px;
   height: 17px;
   margin-left: 7px;
-}
-.segmented {
-  display: flex;
-  gap: 5px;
-  border-radius: 12px;
-  padding: 5px;
-  margin-top: 16px;
-  background: rgba(100, 120, 110, 0.08);
-}
-.segmented button {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  align-items: center;
-  border-radius: 9px;
-  padding: 9px;
-  font-size: 12px;
-  background: transparent;
-}
-.segmented button[aria-pressed="true"] {
-  background: var(--glass-strong);
-  box-shadow: 0 2px 9px #0000000a;
-}
-.segmented .icon {
-  width: 16px;
-  height: 16px;
-}
-.motion-setting {
-  background: none;
-  width: 100%;
-  display: flex;
-  gap: 10px;
-  margin: 16px 0;
-  font-size: 12px;
-  align-items: center;
-}
-.motion-setting:after {
-  content: "";
-  margin-left: auto;
-  width: 29px;
-  height: 16px;
-  background: #c5cbc7;
-  border-radius: 20px;
-  box-shadow: inset -13px 0 0 2px #fff;
-}
-.motion-setting[aria-pressed="true"]:after {
-  background: var(--accent);
-  box-shadow: inset 13px 0 0 2px #fff;
-}
-.settings-note {
-  font-size: 10px;
 }
 .hero {
   position: relative;
@@ -1837,79 +1763,6 @@ p {
 .dialog-error .button {
   margin-top: 20px;
 }
-[data-theme="night"] {
-  --bg: #1b2428;
-  --ink: #edf0ea;
-  --muted: #b0bab7;
-  --soft: #849691;
-  --line: rgba(195, 218, 210, 0.16);
-  --glass: rgba(51, 65, 65, 0.55);
-  --glass-strong: rgba(66, 79, 78, 0.85);
-  --accent: #b2cbbc;
-  --shadow: 0 22px 70px -25px #0005;
-  color-scheme: dark;
-}
-[data-theme="night"] .ambient {
-  background:
-    radial-gradient(ellipse at 70% 25%, #314550 0, transparent 56%),
-    linear-gradient(150deg, #1b2428, #27342f 64%, #1b2428);
-}
-[data-theme="night"] .ambient-blue {
-  background: #304e5e;
-  opacity: 0.6;
-}
-[data-theme="night"] .ambient-peach {
-  background: #746551;
-  opacity: 0.3;
-}
-[data-theme="night"] .ambient-light {
-  background: #58716e;
-  opacity: 0.2;
-}
-[data-theme="night"] .glass {
-  border-color: #ccdace20;
-  box-shadow:
-    0 1px 2px #ffffff12 inset,
-    var(--shadow);
-}
-[data-theme="night"] .bmw-window,
-[data-theme="night"] .chemistry-window {
-  background: #364444df;
-}
-[data-theme="night"] .experience-strip > div {
-  color: #c2cec6;
-}
-[data-theme="night"] .footer {
-  background: linear-gradient(170deg, #2a3c3550, #423b3250);
-}
-[data-theme="night"] .dock {
-  background: #3c4b45a8;
-}
-[data-theme="night"] .dock > a {
-  color: #c2cec8;
-}
-[data-theme="night"] .dock > a:hover {
-  background: #ffffff12;
-}
-[data-theme="night"] .about-sticker {
-  background: #354a3be0;
-}
-[data-theme="night"] .lab-panel {
-  background: linear-gradient(120deg, #8caf9c60, #adc9b020);
-  border-color: #d4ecdb5c;
-}
-[data-theme="night"] .lab-orb {
-  opacity: 0.7;
-}
-[data-theme="night"] .project-cover {
-  background: #d1d5d0;
-}
-[data-theme="night"] .case-question {
-  background: linear-gradient(130deg, #36493b70, #49423560);
-}
-[data-theme="night"] .case-figure {
-  background: #d7dad3;
-}
 .reduce-motion *,
 .reduce-motion *:before,
 .reduce-motion *:after {
@@ -2113,16 +1966,6 @@ p {
   }
   .top-nav a:nth-child(3) {
     display: none;
-  }
-  .environment-button {
-    padding: 10px;
-  }
-  .environment-button > span {
-    display: none;
-  }
-  .environment-menu {
-    right: 24px;
-    top: 77px;
   }
   .hero {
     grid-template-columns: 1fr;
@@ -2470,16 +2313,6 @@ p {
   }
   .top-nav a:nth-child(3) {
     display: flex;
-  }
-  .environment-button {
-    margin-left: auto;
-    width: 37px;
-    height: 37px;
-    justify-content: center;
-  }
-  .environment-menu {
-    right: 20px;
-    top: 69px;
   }
   .hero {
     padding-top: 24px;
