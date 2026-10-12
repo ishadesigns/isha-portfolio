@@ -60,7 +60,13 @@ for (const file of htmlFiles) {
     checks++;
   }
   for (const image of html.matchAll(/<img\b([^>]+)>/g)) {
-    assert.match(image[1], /alt="[^"]+"/, `${file}: image alternative text`);
+    assert.match(image[1], /alt="[^"]*"/, `${file}: image alternative text`);
+    if (image[1].includes('alt=""'))
+      assert.match(
+        image[1],
+        /aria-hidden="true"/,
+        `${file}: empty alt only for decoration`,
+      );
     checks++;
   }
   for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {

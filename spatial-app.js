@@ -23,6 +23,7 @@
     home: "Welcome",
     work: "Selected work",
     about: "About Isha",
+    resume: "Résumé",
     playground: "Playground",
     contact: "Let’s connect",
     case: "Case study",
@@ -123,6 +124,9 @@
     );
     $$("a[href]", article).forEach((el) =>
       el.setAttribute("href", new URL(el.getAttribute("href"), pageURL).href),
+    );
+    $$("[data-src]", article).forEach(
+      (el) => (el.dataset.src = new URL(el.dataset.src, pageURL).href),
     );
     $(".back-link", article)?.setAttribute("data-open", "work");
     return article.outerHTML;
@@ -272,6 +276,7 @@
   );
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
+      if ($(".artifact-dialog[open]")) return;
       e.preventDefault();
       if ($('.window-arrange[aria-expanded="true"]')) {
         closePlacements(true);

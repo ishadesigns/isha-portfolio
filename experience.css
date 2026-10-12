@@ -1,0 +1,716 @@
+/* The controls carry visual weight; the surrounding room keeps its calm. */
+.spatial-dock {
+  gap: 12px;
+  padding: 13px 18px;
+  background: rgba(244, 247, 239, 0.97);
+  border-color: #fff;
+}
+.spatial-dock > a {
+  width: 62px;
+  gap: 8px;
+}
+.dock-app-icon {
+  width: 48px;
+  height: 48px;
+  box-shadow:
+    inset 0 1px 2px #ffffff80,
+    0 4px 9px #1b2e2829;
+  border: 1px solid #ffffffb3;
+}
+.dock-app-icon > .icon {
+  width: 23px;
+  height: 23px;
+}
+.app-home {
+  background: #e4eddf;
+  color: #254632;
+}
+.app-work {
+  background: linear-gradient(145deg, #326ba0, #194a79);
+  color: #fff;
+}
+.app-about {
+  background: linear-gradient(145deg, #547d54, #315b39);
+  color: #fff;
+}
+.app-resume {
+  background: linear-gradient(145deg, #80619b, #5d3d79);
+  color: #fff;
+}
+.app-playground {
+  background: linear-gradient(145deg, #a26943, #85451f);
+  color: #fff;
+}
+.app-contact {
+  background: linear-gradient(145deg, #4179af, #235385);
+  color: #fff;
+}
+.dock-app-label {
+  font-weight: 600;
+  color: #263a2e;
+  font-size: 0.8125rem;
+}
+.spatial-dock > a[aria-current="page"] > .dock-app-icon {
+  outline: 2px solid #2d543b;
+  outline-offset: 4px;
+  box-shadow:
+    inset 0 1px 2px #ffffff80,
+    0 5px 12px #23472d35;
+}
+.spatial-dock > [data-app="playground"] {
+  width: 80px;
+}
+.dock-label-short {
+  display: none;
+}
+.resume-open {
+  margin-top: 20px;
+}
+.panel-resume {
+  width: min(920px, calc(100vw - 100px));
+}
+.resume-app {
+  padding: 32px 36px 40px;
+}
+.resume-intro {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.resume-intro :is(h1, h2) {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin: 16px 0;
+  letter-spacing: -0.055em;
+}
+.resume-intro p:last-child {
+  max-width: 570px;
+}
+.resume-pdf {
+  flex: none;
+  border-radius: 20px;
+  border: 1px solid #829384;
+  padding: 10px 15px;
+  font-size: 0.875rem;
+  min-height: 44px;
+  margin-top: 10px;
+  background: #f7f9f4;
+  color: #355541;
+}
+.resume-sections {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 24px 0 32px;
+}
+.resume-sections a {
+  padding: 11px 18px;
+  border-radius: 22px;
+  background: #dfe8d9;
+  color: #2b4534;
+  font-size: 0.9375rem;
+  min-height: 44px;
+}
+.resume-sections a:hover,
+.resume-sections a:focus-visible {
+  background: #c5d8bd;
+}
+.resume-app h2 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin: 10px 0 24px;
+  letter-spacing: -0.03em;
+}
+.resume-intro :is(h1, h2) {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+}
+.resume-timeline {
+  border-left: 1px solid #8fa38e;
+  padding-left: 24px;
+  margin-left: 5px;
+}
+.resume-role {
+  position: relative;
+  padding: 0 0 28px;
+}
+.resume-role:before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #355541;
+  left: -29px;
+  top: 7px;
+  box-shadow: 0 0 0 5px #eff3e9;
+}
+.resume-role-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.resume-role h3 {
+  font-size: 1.375rem;
+  line-height: 1.3;
+  margin: 7px 0;
+  letter-spacing: -0.025em;
+}
+.spatial-scroll .resume-company {
+  font-weight: 650;
+  font-size: 0.9375rem !important;
+  color: #355541 !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.resume-current {
+  font-size: 0.75rem;
+  border: 1px solid #758e76;
+  background: #e0ebd9;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.spatial-scroll .resume-dates {
+  font-size: 0.875rem !important;
+  color: #425047;
+}
+.resume-role details {
+  margin-top: 12px;
+  border-bottom: 1px solid #aab9a5;
+  padding-bottom: 16px;
+}
+.resume-role summary {
+  cursor: pointer;
+  font-size: 0.9375rem;
+  color: #355541;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.resume-role summary::-webkit-details-marker {
+  display: none;
+}
+.resume-role summary > span:last-child {
+  font-size: 1.5rem;
+  transition: rotate 0.25s;
+}
+.resume-role details[open] summary > span:last-child {
+  rotate: 45deg;
+}
+.resume-role ul {
+  padding-left: 20px;
+  margin: 12px 0 18px;
+  color: #425047;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.resume-role li + li {
+  margin-top: 12px;
+}
+.resume-case-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 1rem;
+  color: #355541;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.resume-foundations {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 40px;
+  margin-top: 25px;
+}
+.resume-degree {
+  margin-bottom: 25px;
+}
+.resume-app .resume-degree h3,
+.resume-skills h3 {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.resume-skills {
+  border-top: 1px solid #aab9a5;
+  margin-top: 20px;
+  padding-top: 28px;
+}
+.resume-skills > div {
+  margin-bottom: 22px;
+}
+.resume-footer {
+  border-top: 1px solid #aab9a5;
+  padding-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  justify-content: space-between;
+}
+.resume-footer .space-button {
+  margin: 0;
+}
+.resume-app section {
+  scroll-margin-top: 20px;
+}
+.resume-app [tabindex="-1"]:focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: 4px;
+}
+
+.panel-case .case-intro {
+  padding-top: 24px;
+  margin-bottom: 24px;
+}
+.panel-case .case-intro h1 {
+  font-size: clamp(1.75rem, 3.1vw, 2.625rem);
+  line-height: 1.1;
+  max-width: 760px;
+  margin: 12px 0;
+}
+.panel-case .case-summary {
+  max-width: 700px;
+  margin: 0;
+}
+.artifact-studio {
+  --studio-tone: #d9e0df;
+  --studio-deep: #9aafa8;
+  margin: 0 0 32px;
+  padding: 18px;
+  border: 1px solid #ffffffb3;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #f9fbf4cc, #e5ece2cc);
+  box-shadow:
+    0 12px 32px #28423316,
+    inset 0 1px 1px #fff;
+}
+.studio-chemistry {
+  --studio-tone: #ece4d9;
+  --studio-deep: #c2ab95;
+}
+.studio-bloom {
+  --studio-tone: #e9e2f2;
+  --studio-deep: #b1a1c2;
+}
+.studio-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.studio-toolbar > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: #35463b;
+}
+.studio-indicator {
+  width: 7px;
+  height: 7px;
+  background: #426d4b;
+  border-radius: 50%;
+}
+.studio-toolbar button {
+  font-size: 0.875rem;
+  min-height: 44px;
+  padding: 8px 14px;
+  border-radius: 22px;
+  background: #f7faf3;
+  color: #355541;
+  border: 1px solid #8ba28b;
+}
+.artifact-stage {
+  position: relative;
+  isolation: isolate;
+  padding: 24px 28px 30px;
+  border-radius: 20px;
+  background:
+    radial-gradient(ellipse at 50% 20%, #ffffffb3, transparent 70%),
+    linear-gradient(150deg, var(--studio-tone), var(--studio-deep));
+  overflow: hidden;
+  perspective: 1200px;
+}
+.artifact-focus {
+  display: block;
+  position: relative;
+  width: 100%;
+  background: transparent;
+  cursor: zoom-in;
+  z-index: 2;
+  border-radius: 13px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.artifact-focus > img {
+  width: 100%;
+  height: 290px;
+  object-fit: contain;
+  border-radius: 13px;
+  filter: drop-shadow(0 15px 14px #1e2c3629);
+}
+.artifact-inspect-hint {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 14px;
+  border: 1px solid #fff;
+  border-radius: 24px;
+  background: #f4f7eff5;
+  color: #2b4534;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 15px #283d2b26;
+}
+.artifact-stage-shadow {
+  position: absolute;
+  inset: auto 15% 10px;
+  height: 20px;
+  border-radius: 50%;
+  background: #273b4426;
+  filter: blur(12px);
+}
+.artifact-caption {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 18px 4px;
+}
+.spatial-scroll .artifact-caption-title {
+  font-size: 1.125rem !important;
+  font-weight: 600;
+  color: #263a2e !important;
+  margin-bottom: 5px;
+}
+.spatial-scroll .artifact-caption p:last-child {
+  font-size: 0.9375rem;
+}
+.artifact-count {
+  flex: none;
+  font-size: 0.75rem;
+  color: #425047;
+  padding-top: 4px;
+  font-variant-numeric: tabular-nums;
+}
+.artifact-tray {
+  display: flex;
+  gap: 10px;
+  padding: 8px 4px 12px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #526e5b #e4ecde;
+}
+.artifact-thumb {
+  flex: 0 0 116px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 9px;
+  padding: 7px;
+  border-radius: 14px;
+  background: #f7faf4;
+  color: #35463b;
+  border: 1px solid #9aac95;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.3s,
+    box-shadow 0.3s;
+}
+.artifact-thumb > img {
+  width: 100%;
+  height: 59px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.artifact-thumb > span {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  padding: 0 2px 3px;
+}
+.artifact-thumb[aria-pressed="true"] {
+  transform: translateY(-4px);
+  background: #e1ecd9;
+  border: 2px solid #355541;
+  box-shadow: 0 5px 10px #35554120;
+  padding: 6px;
+}
+.artifact-dialog {
+  border: 1px solid #fff;
+  border-radius: 30px;
+  background: #f1f5ecfa;
+  color: #263a2e;
+  padding: 0;
+  width: min(1120px, calc(100vw - 40px));
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  box-shadow: 0 35px 90px #101c2359;
+  margin: auto;
+  overflow: auto;
+}
+.artifact-dialog::backdrop {
+  background: #17221ec2;
+  backdrop-filter: blur(14px);
+}
+.artifact-dialog[open] {
+  animation: inspector-arrive 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.inspector-shell {
+  padding: 22px;
+}
+.inspector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+.inspector-header h2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 8px;
+}
+.inspector-header > button {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  font-size: 1.75rem;
+  border-radius: 50%;
+  border: 1px solid #789079;
+  background: #f7faf3;
+  color: #355541;
+}
+.inspector-viewport {
+  max-height: min(55dvh, 560px);
+  min-height: 120px;
+  overflow: auto;
+  background: #dce3d7;
+  border-radius: 18px;
+  border: 1px solid #829580;
+  scrollbar-color: #526e5b #e4ecde;
+}
+.inspector-viewport img {
+  width: 100%;
+  max-width: none;
+  max-height: min(55dvh, 560px);
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.inspector-viewport img.is-zoomed {
+  max-height: none;
+}
+.inspector-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 18px 0;
+}
+.inspector-controls > div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.inspector-controls button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 13px;
+  border-radius: 20px;
+  background: #e2eadc;
+  border: 1px solid #829580;
+  font-size: 1rem;
+  color: #263a2e;
+}
+.inspector-controls button:disabled {
+  opacity: 0.6;
+}
+.inspector-controls span {
+  min-width: 52px;
+  text-align: center;
+  font-size: 0.875rem;
+  font-variant-numeric: tabular-nums;
+}
+.spatial-scroll .inspector-description {
+  font-size: 1rem;
+}
+.inspector-viewport:focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: 3px;
+}
+.artifact-dialog:focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: -5px;
+}
+@keyframes inspector-arrive {
+  from {
+    opacity: 0;
+    transform: perspective(1200px) translateY(35px) rotateX(4deg) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  .artifact-focus:hover {
+    transform: translateY(-5px) rotateX(2deg);
+  }
+  .artifact-thumb:hover {
+    transform: translateY(-3px);
+    background: #e8f0e1;
+  }
+  .studio-toolbar button:hover,
+  .inspector-controls button:hover {
+    background: #c9dcc2;
+  }
+}
+@media (max-width: 780px) {
+  .resume-app {
+    padding: 24px;
+  }
+  .resume-intro {
+    flex-direction: column;
+    gap: 6px;
+  }
+  .resume-pdf {
+    margin-top: 0;
+  }
+  .resume-role-heading {
+    flex-direction: column;
+    gap: 5px;
+  }
+  .resume-foundations {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  .artifact-focus > img {
+    height: 235px;
+  }
+}
+@media (max-width: 540px) {
+  .spatial-dock {
+    gap: 2px;
+    padding: 10px 6px;
+    max-width: calc(100vw - 12px);
+  }
+  .spatial-dock > a,
+  .spatial-dock > [data-app="playground"] {
+    width: 46px;
+    min-width: 44px;
+    flex-shrink: 1;
+    gap: 7px;
+  }
+  .dock-app-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .dock-app-label {
+    font-size: 0.6875rem;
+  }
+  [data-app="playground"] .dock-label-wide {
+    display: none;
+  }
+  .dock-label-short {
+    display: inline;
+  }
+  .resume-app {
+    padding: 24px 18px;
+  }
+  .resume-timeline {
+    padding-left: 18px;
+  }
+  .resume-role:before {
+    left: -23px;
+  }
+  .resume-intro :is(h1, h2) {
+    font-size: 2.75rem;
+  }
+  .artifact-studio {
+    padding: 10px;
+    border-radius: 20px;
+  }
+  .artifact-stage {
+    padding: 15px 8px 22px;
+  }
+  .artifact-focus > img {
+    height: 210px;
+  }
+  .artifact-inspect-hint {
+    font-size: 0.8125rem;
+    padding: 8px 12px;
+  }
+  .artifact-caption {
+    gap: 10px;
+    margin: 14px 4px;
+  }
+  .artifact-thumb {
+    flex-basis: 106px;
+  }
+  .artifact-dialog {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 20px);
+    border-radius: 23px;
+  }
+  .inspector-shell {
+    padding: 16px;
+  }
+  .inspector-controls {
+    gap: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .artifact-dialog[open] {
+    animation: none;
+  }
+  .artifact-focus,
+  .artifact-thumb,
+  .resume-role summary > span:last-child {
+    transition: none;
+  }
+  .artifact-focus:hover,
+  .artifact-thumb:hover {
+    transform: none;
+  }
+}
+@media (forced-colors: active) {
+  .dock-app-icon,
+  .artifact-studio,
+  .artifact-dialog,
+  .artifact-stage,
+  .artifact-tray,
+  .artifact-thumb,
+  .inspector-controls button,
+  .resume-sections a,
+  .resume-pdf {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+    box-shadow: none;
+  }
+  .artifact-inspect-hint {
+    background: Canvas;
+    color: CanvasText;
+    border-color: CanvasText;
+  }
+  .artifact-thumb[aria-pressed="true"] {
+    outline: 2px solid Highlight;
+  }
+  .resume-company,
+  .resume-current {
+    color: CanvasText !important;
+  }
+}

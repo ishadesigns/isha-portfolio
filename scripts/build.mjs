@@ -11,6 +11,8 @@ for (const file of [
   "spatial.css",
   "spatial-app.js",
   "accessibility.css",
+  "experience.css",
+  "experience-app.js",
 ])
   await cp(file, `dist/${file}`);
 await writeFile("dist/index.html", spatialPage());

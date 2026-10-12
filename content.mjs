@@ -6,7 +6,7 @@ export const profile = {
   instagram: "https://www.instagram.com/isha_mehta16/",
   github: "https://github.com/ishadesigns",
   resume:
-    "https://drive.google.com/file/d/1G4TvDpUMEDjZkQifp59djIf087OMFKzG/view",
+    "https://drive.google.com/file/d/1bMh25tbI3JcUFS4FD0a6Ta2a8GJ4GFv4/view",
 };
 export const projects = [
   {
