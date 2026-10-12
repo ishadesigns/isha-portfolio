@@ -28,7 +28,7 @@ export function guideKnowledge() {
       tags: ["game", "play", "orbit", "bounce", "bouncing", "toss", "remix", "pistachio", "stationery", "gossip", "sex and the city", "9060"],
       title: "A little room to play",
       answer:
-        "Isha’s Orbit is a playful space filled with her projects and favorite things: BMW × Vision Pro, Bloom, journals, Japanese stationery, iced lattes, a pistachio latte, white New Balance 9060 sneakers, Friends, Gossip Girl, and Sex and the City. Drag and toss the objects; click one to read its story or explore a project. Arrow keys move a focused object. Remix reshuffles the orbit.",
+        "Isha’s Orbit is a playful space filled with her favorite things: a Fujifilm X half, a pink Instax mini 13, a pink teddy, journals, Japanese stationery, iced lattes, a pistachio latte, white New Balance 9060 sneakers, Friends, Gossip Girl, and Sex and the City. Drag and toss the objects; click one to read its story. Arrow keys move a focused object. Remix reshuffles the orbit.",
       link: "playground",
       label: "Explore Isha’s Orbit",
     },
@@ -45,7 +45,7 @@ export function guideKnowledge() {
       ],
       title: "Look beyond the window",
       answer:
-        "Use Look around in the dock, then Clear view to explore the wider room. Drag, use arrow keys, or tap the direction buttons. The dock opens your portfolio windows again. The status bar shows your local time; battery is a device reading when the browser supports it, and clearly labeled Demo otherwise.",
+        "Use Look around in the dock, then Clear view to explore the wider room. Drag, use arrow keys, or tap the direction buttons. The dock opens your portfolio windows again. The status bar shows your local time; the 100% battery is a decorative full-charge indicator for this spatial environment, rather than a device reading.",
       link: "home",
       label: "Return to the space",
     },
@@ -474,7 +474,7 @@ export function guideKnowledge() {
 const batterySvg =
   '<svg viewBox="0 0 28 16" class="hud-battery-icon" aria-hidden="true"><rect x="1" y="2" width="22" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 6v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect data-battery-fill x="3" y="4" width="17" height="8" rx="1.5" fill="currentColor"/></svg>';
 export function worldStatus() {
-  return `<div class="world-status"><div class="world-hud"><span class="space-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</span><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Siri</span></button><span role="group" aria-label="Your local time"><time data-world-clock>Local time</time></span><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span></div></div>`;
+  return `<div class="world-status"><div class="world-hud"><span class="space-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</span><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Siri</span></button><span role="group" aria-label="Your local time"><time data-world-clock>Local time</time></span><span class="hud-battery" title="Illustrative full-charge indicator">${batterySvg}<span data-battery-label>100%</span><span class="sr-only" data-battery-description>Illustrative full-charge indicator, 100 percent; not a device reading</span></span></div></div>`;
 }
 export function roomControls() {
   return `<section class="room-controls" id="room-controls" hidden aria-label="Look around controls"><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button></div><p class="room-help">Drag the room and hold near an edge to look further. Arrow keys work too.</p></section>`;

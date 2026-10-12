@@ -23,9 +23,11 @@ for (const file of [
   "orbit-app.js",
   "orbit-motion.js",
   "orbit.css",
+  "arrival.css",
+  "arrival-app.js",
 ])
   await cp(file, `dist/${file}`);
-const runtimeModules = ["world-app", "guide-engine", "voice-support", "room-motion", "orbit-app", "orbit-motion"];
+const runtimeModules = ["arrival-app", "world-app", "guide-engine", "voice-support", "room-motion", "orbit-app", "orbit-motion"];
 for (const name of runtimeModules) {
   let code = await readFile(`${name}.js`, "utf8");
   for (const dep of runtimeModules) {

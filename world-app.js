@@ -14,7 +14,7 @@ const base = new URL(document.body.dataset.base, document.baseURI);
 const knowledge = JSON.parse($("#guide-knowledge").textContent);
 root.classList.add("world-ready");
 
-// Spatial status. A demo label is shown rather than inventing a device percentage.
+// The full-charge icon is an illustrative spatial UI detail, not a hardware reading.
 function tickClock() {
   $("[data-world-clock]").textContent = new Intl.DateTimeFormat(undefined, {
     hour: "numeric",
@@ -23,28 +23,6 @@ function tickClock() {
 }
 tickClock();
 setInterval(tickClock, 60000);
-if (navigator.getBattery)
-  Promise.resolve()
-    .then(() => navigator.getBattery())
-    .then((battery) => {
-      const update = () => {
-        $("[data-battery-label]").textContent =
-          `${Math.round(battery.level * 100)}%`;
-        $("[data-battery-fill]").setAttribute(
-          "width",
-          String(17 * battery.level),
-        );
-        $("[data-battery-description]").textContent =
-          `Browser-reported battery ${Math.round(battery.level * 100)} percent${battery.charging ? ", charging" : ""}`;
-        $(".hud-battery").title = battery.charging
-          ? "Browser-reported battery, charging"
-          : "Browser-reported battery";
-      };
-      update();
-      battery.addEventListener("levelchange", update);
-      battery.addEventListener("chargingchange", update);
-    })
-    .catch(() => {});
 delete root.dataset.userMotion;
 try { localStorage.removeItem("isha-ambient-motion"); } catch {}
 function updateMotion() {
