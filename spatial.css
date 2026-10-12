@@ -70,14 +70,14 @@
   background: #f5f6ef80;
   backdrop-filter: blur(16px);
   box-shadow: 0 6px 25px #26302515;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.3;
 }
 .space-identity > span:first-child {
   font-weight: 600;
 }
 .space-identity > span:last-child {
-  font-size: 10px;
+  font-size: 0.75rem;
   color: #5e6961;
   border-left: 1px solid #68766e30;
   padding-left: 15px;
@@ -86,7 +86,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 9px;
+  font-size: 0.75rem;
   color: #38413b;
   padding: 10px 14px;
   border: 1px solid #ffffff5c;
@@ -126,7 +126,7 @@
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: 0.75rem;
   font-weight: 500;
   padding: 7px 0;
   cursor: grab;
@@ -139,7 +139,7 @@
   opacity: 0.7;
 }
 .window-context {
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: var(--muted);
   margin-left: auto;
@@ -180,7 +180,7 @@
   display: none;
 }
 .space-eyebrow {
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 0.14em;
   line-height: 1.5;
   color: var(--muted);
@@ -194,7 +194,7 @@
   padding: 13px 22px;
   background: rgba(50, 61, 55, 0.9);
   color: #f5f6f1;
-  font-size: 11px;
+  font-size: 0.75rem;
   border: 1px solid #76827630;
   border-radius: 32px;
   box-shadow: 0 6px 18px #26332a15;
@@ -218,7 +218,7 @@
 }
 .welcome-content > h1,
 .welcome-content > h2 {
-  font-size: 59px;
+  font-size: 3.6875rem;
   line-height: 1.02;
   letter-spacing: -0.055em;
   font-weight: 500;
@@ -231,7 +231,7 @@
   letter-spacing: -0.055em;
 }
 .welcome-intro {
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 1.8;
   max-width: 390px;
   margin: 22px 0 16px;
@@ -244,7 +244,7 @@
   margin-bottom: 25px;
 }
 .welcome-disciplines > span {
-  font-size: 8px;
+  font-size: 0.75rem;
   color: #66736a;
   padding: 5px 9px;
   border-radius: 20px;
@@ -258,7 +258,7 @@
   border-top: 1px solid #66715d20;
   margin-top: 29px;
   padding-top: 18px;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 .welcome-bottom .status-dot {
@@ -296,7 +296,7 @@
 }
 .space-idle p {
   font-family: Georgia, serif;
-  font-size: 37px;
+  font-size: 2.3125rem;
   font-style: italic;
   color: #384e43;
   line-height: 1.2;
@@ -306,7 +306,7 @@
   justify-content: center;
   align-items: center;
   gap: 15px;
-  font-size: 11px;
+  font-size: 0.75rem;
   margin-top: 20px;
 }
 .space-idle .icon {
@@ -381,7 +381,7 @@
   color: #fff;
 }
 .dock-app-label {
-  font-size: 8px;
+  font-size: 0.75rem;
   color: #47574d;
   margin-top: 6px;
   line-height: 1.3;
@@ -418,7 +418,7 @@
   background: transparent;
   min-width: 42px;
   border-radius: 10px;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #4f6558;
 }
 .space-recenter > .icon {
@@ -439,7 +439,7 @@
   padding: 10px 18px;
   border-radius: 25px;
   backdrop-filter: blur(16px);
-  font-size: 11px;
+  font-size: 0.75rem;
   opacity: 0;
   pointer-events: none;
   transition:
@@ -466,12 +466,12 @@
   margin-bottom: 12px;
 }
 .app-heading h2 {
-  font-size: 33px;
+  font-size: 2.0625rem;
   line-height: 1.08;
   letter-spacing: -0.04em;
 }
 .app-heading > p {
-  font-size: 10px;
+  font-size: 0.75rem;
   line-height: 1.7;
   text-align: right;
 }
@@ -484,7 +484,7 @@
   background: transparent;
   border-radius: 20px;
   padding: 7px 13px;
-  font-size: 9px;
+  font-size: 0.75rem;
   transition: background 0.25s;
   color: #617064;
 }
@@ -496,7 +496,7 @@
 .spatial-filters > button > span {
   margin-left: 5px;
   opacity: 0.6;
-  font-size: 8px;
+  font-size: 0.75rem;
 }
 .space-projects {
   display: grid;
@@ -536,7 +536,7 @@
   position: absolute;
   top: 11px;
   left: 11px;
-  font-size: 7px;
+  font-size: 0.75rem;
   background: #232c2b5c;
   backdrop-filter: blur(14px);
   border: 1px solid #ffffff38;
@@ -565,18 +565,18 @@
   padding: 17px;
 }
 .project-number {
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 0.09em;
   color: var(--muted);
 }
-.space-project-copy h3 {
-  font-size: 18px;
+.space-project-copy :is(h2, h3) {
+  font-size: 1.125rem;
   line-height: 1.22;
   letter-spacing: -0.025em;
   margin: 8px 0 10px;
 }
 .space-project-copy p {
-  font-size: 10px;
+  font-size: 0.75rem;
   line-height: 1.8;
   min-height: 54px;
 }
@@ -589,14 +589,14 @@
   border-top: 1px solid #87907c2a;
 }
 .space-project-result strong {
-  font-size: 25px;
+  font-size: 1.5625rem;
   font-weight: 450;
   color: #536f60;
   line-height: 1;
   letter-spacing: -0.06em;
 }
 .space-project-result span {
-  font-size: 8px;
+  font-size: 0.75rem;
   line-height: 1.5;
   color: var(--muted);
   max-width: 110px;
@@ -611,18 +611,18 @@
   margin-top: 26px;
 }
 .work-app-footer > span {
-  font-size: 7px;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
   color: var(--muted);
 }
 .work-app-footer > div {
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: -0.015em;
   font-weight: 500;
 }
 .work-app-footer i {
   font-style: normal;
-  font-size: 9px;
+  font-size: 0.75rem;
   margin: 0 13px;
   color: #8a9684;
 }
@@ -636,11 +636,11 @@
   margin-top: 11px;
 }
 .spatial-coming span {
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .spatial-coming small {
   display: block;
-  font-size: 8px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 3px;
 }
@@ -659,11 +659,11 @@
   padding: 27px;
   align-self: center;
 }
-.space-projects.filtered h3 {
-  font-size: 25px;
+.space-projects.filtered :is(h2, h3) {
+  font-size: 1.5625rem;
 }
 .space-projects.filtered p {
-  font-size: 12px;
+  font-size: 0.75rem;
   min-height: 0;
 }
 .about-app-intro {
@@ -696,30 +696,30 @@
   color: #5c6856;
 }
 .about-app-intro h2 {
-  font-size: 34px;
+  font-size: 2.125rem;
   line-height: 1.1;
   margin: 15px 0 19px;
 }
 .about-app-intro p:not(.space-eyebrow) {
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.9;
   margin-top: 14px;
 }
 .about-app-intro .about-app-lead {
-  font-size: 16px !important;
+  font-size: 1rem !important;
   color: var(--ink);
   line-height: 1.6 !important;
 }
 .about-app-lead em {
   font-family: Georgia, serif;
-  font-size: 20px;
+  font-size: 1.25rem;
   color: var(--accent);
 }
 .about-app-intro a {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .about-app-intro a .icon {
   width: 13px;
@@ -729,7 +729,7 @@
   margin: 17px 0;
 }
 .about-app .about-tags > span {
-  font-size: 8px;
+  font-size: 0.75rem;
   padding: 5px 9px;
 }
 .about-app-story {
@@ -741,12 +741,12 @@
   margin-top: 38px;
   padding-top: 30px;
 }
-.about-app-story h3 {
-  font-size: 26px;
+.about-app-story :is(h2, h3) {
+  font-size: 1.625rem;
   margin: 13px 0 16px;
 }
 .about-app-story p:not(.space-eyebrow) {
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.9;
 }
 .about-app-story > img {
@@ -770,14 +770,14 @@
   display: flex;
   gap: 20px;
   justify-content: space-between;
-  font-size: 11px;
+  font-size: 0.75rem;
   padding: 16px 0;
 }
 .spatial-faq summary::-webkit-details-marker {
   display: none;
 }
 .spatial-faq summary > span {
-  font-size: 18px;
+  font-size: 1.125rem;
   color: var(--muted);
   line-height: 1;
 }
@@ -785,7 +785,7 @@
   transform: rotate(45deg);
 }
 .spatial-faq details > p {
-  font-size: 11px;
+  font-size: 0.75rem;
   line-height: 1.9;
   padding-bottom: 18px;
 }
@@ -803,14 +803,14 @@
   overflow: hidden;
   position: relative;
 }
-.spatial-field-notes h3 {
-  font-size: 28px;
+.spatial-field-notes :is(h2, h3) {
+  font-size: 1.75rem;
   line-height: 1.12;
   margin: 22px 0 15px;
   letter-spacing: -0.035em;
 }
 .spatial-field-notes > p:not(.space-eyebrow) {
-  font-size: 10px;
+  font-size: 0.75rem;
   line-height: 1.8;
 }
 .spatial-field-notes > div {
@@ -874,26 +874,26 @@
   justify-content: space-between;
 }
 .material-pane > span {
-  font-size: 27px;
+  font-size: 1.6875rem;
   line-height: 1;
   color: #668875;
 }
 .material-pane p {
-  font-size: 17px;
+  font-size: 1.0625rem;
   line-height: 1.25;
   color: #3c5447;
   letter-spacing: -0.025em;
 }
 .material-pane em {
   font-family: Georgia, serif;
-  font-size: 23px;
+  font-size: 1.4375rem;
 }
 .material-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  font-size: 9px;
+  font-size: 0.75rem;
 }
 .material-footer > div {
   display: flex;
@@ -910,7 +910,7 @@
   outline-color: #81917d;
 }
 .material-hint {
-  font-size: 8px;
+  font-size: 0.75rem;
   margin-top: 18px;
   text-align: center;
 }
@@ -935,12 +935,12 @@
   width: 15px;
   height: 15px;
 }
-.spatial-experiments h3 {
-  font-size: 19px;
+.spatial-experiments :is(h2, h3) {
+  font-size: 1.1875rem;
   line-height: 1.4;
 }
 .spatial-experiments p {
-  font-size: 10px;
+  font-size: 0.75rem;
   margin-top: 4px;
 }
 .spatial-experiments:hover {
@@ -955,16 +955,16 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-size: 7px;
+  font-size: 0.75rem;
 }
 .contact-app h2 {
-  font-size: 46px;
+  font-size: 2.875rem;
   line-height: 1.08;
   letter-spacing: -0.04em;
   margin-top: 24px;
 }
 .contact-app > p:not(.space-eyebrow) {
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.8;
   margin-top: 23px;
 }
@@ -978,7 +978,7 @@
   gap: 10px;
   background: none;
   margin: 18px auto 0;
-  font-size: 10px;
+  font-size: 0.75rem;
   color: var(--muted);
   padding: 5px;
   border-radius: 5px;
@@ -999,7 +999,7 @@
   display: flex;
   align-items: center;
   gap: 7px;
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .contact-socials .icon {
   width: 12px;
@@ -1007,12 +1007,12 @@
 }
 .contact-signoff {
   display: block;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--muted);
   margin-top: 24px;
 }
 .case-back {
-  font-size: 9px;
+  font-size: 0.75rem;
   letter-spacing: 0;
   padding: 4px 7px;
   border-radius: 7px;
@@ -1031,10 +1031,10 @@
   display: none;
 }
 .panel-case .case-intro h1 {
-  font-size: 46px;
+  font-size: 2.875rem;
 }
 .panel-case .case-summary {
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 .panel-case .case-hero-image {
   border-radius: 17px;
@@ -1043,30 +1043,30 @@
   margin: 48px 0;
 }
 .panel-case .case-section-copy h2 {
-  font-size: 33px;
+  font-size: 2.0625rem;
 }
 .panel-case .case-section-copy > p:last-child {
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 .panel-case .case-overview {
   padding: 45px 0;
   gap: 45px;
 }
 .panel-case .case-overview h2 {
-  font-size: 26px;
+  font-size: 1.625rem;
 }
 .panel-case .case-overview p:not(.section-marker) {
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 .panel-case .case-metrics strong {
-  font-size: 44px;
+  font-size: 2.75rem;
 }
 .panel-case .case-question {
   margin: 40px 0;
   background: #d4ddc93b;
 }
 .panel-case .case-question p {
-  font-size: 27px;
+  font-size: 1.6875rem;
 }
 .panel-case .case-reflection {
   margin: 50px 0 30px;
@@ -1081,14 +1081,14 @@
   padding: 90px 35px;
 }
 .case-loading > p {
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 .case-error > h2 {
-  font-size: 30px;
+  font-size: 1.875rem;
 }
 .case-error > p {
   margin: 18px 0;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 .case-error > .space-button {
   margin-top: 10px;
@@ -1096,7 +1096,7 @@
 .no-script-note {
   padding: 0 25px 140px;
   text-align: center;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 /* Progressive enhancement: without JavaScript, content remains in document flow. */
 .spatial-ready,
@@ -1273,7 +1273,7 @@
   align-items: center;
   gap: 7px;
   padding: 12px 13px;
-  font-size: 7px;
+  font-size: 0.75rem;
   color: #5a685c;
 }
 .satellite-label > .icon {
@@ -1295,10 +1295,10 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 10px;
+  font-size: 0.75rem;
 }
 .satellite-caption > small {
-  font-size: 7px;
+  font-size: 0.75rem;
   color: var(--muted);
 }
 .spatial-ready .space-hint {
@@ -1307,7 +1307,7 @@
   bottom: 133px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 8px;
+  font-size: 0.75rem;
   letter-spacing: 0.035em;
   color: #eaf0e4;
   text-shadow: 0 1px 10px #23342680;
@@ -1351,17 +1351,17 @@
   }
   .welcome-content > h1,
   .welcome-content > h2 {
-    font-size: 67px;
+    font-size: 4.1875rem;
   }
   .welcome-intro {
-    font-size: 14px;
+    font-size: 0.875rem;
     max-width: 420px;
   }
   .welcome-disciplines > span {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .welcome-bottom {
-    font-size: 9px;
+    font-size: 0.75rem;
     margin-top: 32px;
     padding-top: 20px;
   }
@@ -1395,7 +1395,7 @@
   }
   .welcome-content > h1,
   .welcome-content > h2 {
-    font-size: 55px;
+    font-size: 3.4375rem;
   }
   .welcome-intro {
     max-width: 360px;
@@ -1406,14 +1406,14 @@
   .space-project-copy {
     padding: 14px;
   }
-  .space-project-copy h3 {
-    font-size: 17px;
+  .space-project-copy :is(h2, h3) {
+    font-size: 1.0625rem;
   }
   .space-project-copy p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .space-project-result strong {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
 }
 @media (max-width: 1000px) {
@@ -1434,8 +1434,8 @@
   .play-app {
     padding: 26px;
   }
-  .space-project-copy h3 {
-    font-size: 16px;
+  .space-project-copy :is(h2, h3) {
+    font-size: 1rem;
   }
   .space-project-copy p {
     min-height: 62px;
@@ -1444,16 +1444,16 @@
     gap: 8px;
   }
   .space-project-result span {
-    font-size: 7px;
+    font-size: 0.75rem;
   }
   .app-heading h2 {
-    font-size: 31px;
+    font-size: 1.9375rem;
   }
   .about-app-intro {
     gap: 27px;
   }
   .about-app-intro h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
 }
 @media (max-height: 760px) and (min-width: 781px) {
@@ -1471,7 +1471,7 @@
   }
   .welcome-content > h1,
   .welcome-content > h2 {
-    font-size: 50px;
+    font-size: 3.125rem;
   }
   .welcome-intro {
     margin-top: 16px;
@@ -1499,16 +1499,16 @@
     padding: 20px;
   }
   .space-identity {
-    font-size: 11px;
+    font-size: 0.75rem;
     padding: 10px 14px;
     gap: 10px;
   }
   .space-identity > span:last-child {
-    font-size: 9px;
+    font-size: 0.75rem;
     padding-left: 10px;
   }
   .space-availability {
-    font-size: 8px;
+    font-size: 0.75rem;
     padding: 10px 11px;
     gap: 7px;
   }
@@ -1538,7 +1538,7 @@
     pointer-events: none;
   }
   .window-context {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .spatial-titlebar {
     padding-inline: 17px;
@@ -1551,10 +1551,10 @@
   }
   .welcome-content > h1,
   .welcome-content > h2 {
-    font-size: 58px;
+    font-size: 3.625rem;
   }
   .welcome-intro {
-    font-size: 14px;
+    font-size: 0.875rem;
     margin-top: 25px;
     max-width: 420px;
   }
@@ -1562,7 +1562,7 @@
     margin-bottom: 30px;
   }
   .welcome-bottom {
-    font-size: 9px;
+    font-size: 0.75rem;
     margin-top: 34px;
   }
   .spatial-ready .space-hint {
@@ -1589,24 +1589,24 @@
     padding: 17px;
     align-self: center;
   }
-  .space-project-copy h3 {
-    font-size: 22px;
+  .space-project-copy :is(h2, h3) {
+    font-size: 1.375rem;
   }
   .space-project-copy p {
-    font-size: 11px;
+    font-size: 0.75rem;
     min-height: 0;
   }
   .space-project-result strong {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
   .space-project-result span {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .space-project-result {
     margin-top: 14px;
   }
   .work-app-footer > div {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .work-app-footer i {
     margin: 0 7px;
@@ -1616,16 +1616,16 @@
     gap: 25px;
   }
   .about-app-intro h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .about-app-intro .about-app-lead {
-    font-size: 15px !important;
+    font-size: 0.9375rem !important;
   }
   .about-app-story {
     gap: 25px;
   }
   .about-app-story p:not(.space-eyebrow) {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .spatial-play-grid {
     gap: 17px;
@@ -1634,11 +1634,11 @@
   .spatial-material {
     padding: 20px;
   }
-  .spatial-field-notes h3 {
-    font-size: 26px;
+  .spatial-field-notes :is(h2, h3) {
+    font-size: 1.625rem;
   }
   .spatial-field-notes > p:not(.space-eyebrow) {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .material-pane {
     width: 160px;
@@ -1650,7 +1650,7 @@
     height: 120px;
   }
   .material-footer {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .material-footer > div {
     gap: 8px;
@@ -1663,13 +1663,13 @@
     padding-top: 48px;
   }
   .contact-app h2 {
-    font-size: 46px;
+    font-size: 2.875rem;
   }
   .panel-case .spatial-scroll {
     padding: 0 28px;
   }
   .panel-case .case-intro h1 {
-    font-size: 42px;
+    font-size: 2.625rem;
   }
   .panel-case .case-details {
     grid-template-columns: 1fr 1fr;
@@ -1681,7 +1681,7 @@
     padding: 30px;
   }
   .panel-case .case-question p {
-    font-size: 25px;
+    font-size: 1.5625rem;
   }
 }
 @media (max-width: 540px) {
@@ -1695,7 +1695,7 @@
     flex-direction: column;
     gap: 2px;
     align-items: flex-start;
-    font-size: 11px;
+    font-size: 0.75rem;
     line-height: 1.3;
     border-radius: 17px;
     padding: 9px 13px;
@@ -1703,10 +1703,10 @@
   .space-identity > span:last-child {
     border: 0;
     padding: 0;
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .space-availability {
-    font-size: 7px;
+    font-size: 0.75rem;
     padding: 9px 10px;
     margin-top: 5px;
     white-space: nowrap;
@@ -1737,7 +1737,7 @@
     gap: 9px;
   }
   .window-grip {
-    font-size: 10px;
+    font-size: 0.75rem;
     gap: 7px;
   }
   .window-grip > .icon {
@@ -1745,7 +1745,7 @@
     height: 13px;
   }
   .window-context {
-    font-size: 5px;
+    font-size: 0.75rem;
     letter-spacing: 0.07em;
   }
   .spatial-ready .spatial-controls {
@@ -1780,12 +1780,12 @@
     height: 20px;
   }
   .dock-app-label {
-    font-size: 7px;
+    font-size: 0.75rem;
     margin-top: 6px;
   }
   .space-recenter {
     min-width: 29px;
-    font-size: 6px;
+    font-size: 0.75rem;
     gap: 7px;
     padding-inline: 0;
   }
@@ -1801,7 +1801,7 @@
     padding: 37px 28px 26px;
   }
   .welcome-content > .space-eyebrow {
-    font-size: 7px;
+    font-size: 0.75rem;
     margin-bottom: 19px;
   }
   .welcome-content > h1,
@@ -1810,7 +1810,7 @@
     line-height: 1.05;
   }
   .welcome-intro {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin: 23px 0 19px;
     line-height: 1.85;
   }
@@ -1819,16 +1819,16 @@
     margin-bottom: 29px;
   }
   .welcome-disciplines > span {
-    font-size: 7px;
+    font-size: 0.75rem;
     padding: 5px 7px;
   }
   .space-button {
-    font-size: 10px;
+    font-size: 0.75rem;
     padding: 13px 18px;
     gap: 24px;
   }
   .welcome-bottom {
-    font-size: 7px;
+    font-size: 0.75rem;
     gap: 6px;
     margin-top: 31px;
     padding-top: 19px;
@@ -1852,14 +1852,14 @@
     margin-bottom: 22px;
   }
   .app-heading .space-eyebrow {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .app-heading h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .app-heading > p {
     text-align: left;
-    font-size: 10px;
+    font-size: 0.75rem;
     margin-top: 13px;
   }
   .app-heading > p br {
@@ -1871,7 +1871,7 @@
     margin-bottom: 20px;
   }
   .spatial-filters > button {
-    font-size: 8px;
+    font-size: 0.75rem;
     padding: 7px 10px;
   }
   .space-projects {
@@ -1893,26 +1893,26 @@
   .space-projects.filtered .space-project-copy {
     padding: 16px;
   }
-  .space-project-copy h3,
-  .space-projects.filtered h3 {
-    font-size: 23px;
+  .space-project-copy :is(h2, h3),
+  .space-projects.filtered :is(h2, h3) {
+    font-size: 1.4375rem;
   }
   .space-project-copy p,
   .space-projects.filtered p {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .space-project-result strong {
-    font-size: 27px;
+    font-size: 1.6875rem;
   }
   .space-project-result span {
     max-width: none;
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .space-project-category {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .project-number {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .work-app-footer {
     display: block;
@@ -1921,7 +1921,7 @@
   }
   .work-app-footer > div {
     margin-top: 10px;
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .work-app-footer i {
     margin: 0 8px;
@@ -1931,10 +1931,10 @@
     flex-direction: column;
   }
   .spatial-coming span {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .spatial-coming small {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .about-app-intro {
     display: flex;
@@ -1948,16 +1948,16 @@
     margin-top: 9px;
   }
   .about-app-intro h2 {
-    font-size: 30px;
+    font-size: 1.875rem;
   }
   .about-app-intro p:not(.space-eyebrow) {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .about-app-intro .about-app-lead {
-    font-size: 17px !important;
+    font-size: 1.0625rem !important;
   }
   .about-app .about-tags > span {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .about-app-story {
     display: flex;
@@ -1966,11 +1966,11 @@
     margin-top: 28px;
     padding-top: 23px;
   }
-  .about-app-story h3 {
-    font-size: 25px;
+  .about-app-story :is(h2, h3) {
+    font-size: 1.5625rem;
   }
   .about-app-story p:not(.space-eyebrow) {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   .about-app-story > img {
     aspect-ratio: 1.15;
@@ -1979,11 +1979,11 @@
     margin-top: 26px;
   }
   .spatial-faq summary {
-    font-size: 11px;
+    font-size: 0.75rem;
     padding: 18px 0;
   }
   .spatial-faq details > p {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .spatial-play-grid {
     grid-template-columns: 1fr;
@@ -1993,11 +1993,11 @@
   .spatial-material {
     padding: 23px;
   }
-  .spatial-field-notes h3 {
-    font-size: 28px;
+  .spatial-field-notes :is(h2, h3) {
+    font-size: 1.75rem;
   }
   .spatial-field-notes > p:not(.space-eyebrow) {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .spatial-field-notes > div {
     height: 150px;
@@ -2015,7 +2015,7 @@
     right: 9px;
   }
   .material-footer {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .material-swatch {
     width: 16px;
@@ -2026,12 +2026,12 @@
     gap: 12px;
     align-items: flex-start;
   }
-  .spatial-experiments h3 {
-    font-size: 19px;
+  .spatial-experiments :is(h2, h3) {
+    font-size: 1.1875rem;
     line-height: 1.3;
   }
   .spatial-experiments p {
-    font-size: 9px;
+    font-size: 0.75rem;
     line-height: 1.8;
     margin-top: 7px;
   }
@@ -2044,7 +2044,7 @@
     padding: 37px 25px 25px;
   }
   .contact-app > .space-eyebrow {
-    font-size: 6px;
+    font-size: 0.75rem;
     gap: 8px;
   }
   .contact-app h2 {
@@ -2053,7 +2053,7 @@
     margin-top: 28px;
   }
   .contact-app > p:not(.space-eyebrow) {
-    font-size: 11px;
+    font-size: 0.75rem;
     line-height: 1.9;
     margin-top: 26px;
   }
@@ -2061,7 +2061,7 @@
     margin-top: 25px;
   }
   .copy-email {
-    font-size: 9px;
+    font-size: 0.75rem;
     margin-top: 21px;
   }
   .contact-socials {
@@ -2069,7 +2069,7 @@
     margin-top: 27px;
   }
   .contact-socials > a {
-    font-size: 9px;
+    font-size: 0.75rem;
     gap: 5px;
   }
   .contact-signoff {
@@ -2083,69 +2083,69 @@
     padding-bottom: 27px;
   }
   .panel-case .case-intro h1 {
-    font-size: 35px;
+    font-size: 2.1875rem;
   }
   .panel-case .case-summary {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-top: 19px;
   }
   .panel-case .case-intro .section-marker {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .panel-case .case-project-name {
-    font-size: 10px;
+    font-size: 0.75rem;
   }
   .panel-case .case-details {
     gap: 22px 15px;
   }
   .panel-case .case-details p {
-    font-size: 9px;
+    font-size: 0.75rem;
   }
   .panel-case .case-overview {
     padding: 32px 0;
   }
   .panel-case .case-overview h2 {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
   .panel-case .case-overview p:not(.section-marker) {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .panel-case .case-metrics strong {
-    font-size: 31px;
+    font-size: 1.9375rem;
   }
   .panel-case .case-metrics span {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .panel-case .case-question {
     padding: 23px;
     margin: 30px 0;
   }
   .panel-case .case-question p {
-    font-size: 22px;
+    font-size: 1.375rem;
   }
   .panel-case .case-section {
     margin: 34px 0;
   }
   .panel-case .case-section-copy h2 {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
   .panel-case .case-section-copy > p:last-child {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .panel-case .case-reflection {
     padding: 24px;
   }
   .panel-case .case-reflection h2 {
-    font-size: 26px;
+    font-size: 1.625rem;
   }
   .panel-case .case-reflection > p:last-child {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .case-back {
-    font-size: 8px;
+    font-size: 0.75rem;
   }
   .space-toast {
-    font-size: 10px;
+    font-size: 0.75rem;
     bottom: 111px;
     max-width: calc(100vw - 30px);
     white-space: nowrap;
@@ -2170,7 +2170,7 @@
     height: 34px;
   }
   .dock-app-label {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .space-recenter {
     min-width: 26px;
@@ -2180,27 +2180,27 @@
   }
   .welcome-content > h1,
   .welcome-content > h2 {
-    font-size: 37px;
+    font-size: 2.3125rem;
   }
   .welcome-intro {
-    font-size: 11px;
+    font-size: 0.75rem;
   }
   .welcome-disciplines > span {
-    font-size: 6px;
+    font-size: 0.75rem;
     padding: 5px 7px;
   }
   .welcome-bottom {
-    font-size: 6px;
+    font-size: 0.75rem;
   }
   .space-availability {
-    font-size: 6px;
+    font-size: 0.75rem;
     padding: 8px;
   }
   .space-status {
     gap: 5px;
   }
   .space-identity {
-    font-size: 10px;
+    font-size: 0.75rem;
     padding: 8px 11px;
   }
 }

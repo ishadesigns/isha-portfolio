@@ -308,8 +308,8 @@
     y: parseFloat(panel.style.getPropertyValue("--drag-y")) || 0,
   });
   function constrainMove(panel, x, y, origin, rect) {
-    const safeTop = 78,
-      safeBottom = innerHeight - 115;
+    const safeTop = parseFloat(root.style.getPropertyValue("--space-top")) || 78,
+      safeBottom = innerHeight - (parseFloat(root.style.getPropertyValue("--space-bottom")) || 115);
     const minX = origin.x + 16 - rect.left,
       maxX = origin.x + innerWidth - 16 - rect.right;
     const minY = origin.y + safeTop - rect.top,
@@ -398,11 +398,29 @@
     });
   }
   updateMoveControls();
+  // Text preferences and wrapping can change navigation height without a viewport resize.
+  // Keep the reading window outside those occupied areas.
+  function updateAvailableSpace() {
+    const header = $(".space-status").getBoundingClientRect();
+    const dock = $(".spatial-dock").getBoundingClientRect();
+    root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);
+    root.style.setProperty(
+      "--space-bottom",
+      `${Math.ceil(innerHeight - dock.top) + (innerWidth <= 780 ? 16 : 56)}px`,
+    );
+  }
+  if ("ResizeObserver" in window) {
+    const chromeSize = new ResizeObserver(updateAvailableSpace);
+    chromeSize.observe($(".space-status"));
+    chromeSize.observe($(".spatial-dock"));
+  }
+  updateAvailableSpace();
   let resizeFrame;
   window.addEventListener("resize", () => {
     cancelAnimationFrame(resizeFrame);
     resizeFrame = requestAnimationFrame(() => {
       updateMoveControls();
+      updateAvailableSpace();
       windows.forEach((panel) => {
         panel.style.setProperty("--drag-x", "0px");
         panel.style.setProperty("--drag-y", "0px");
