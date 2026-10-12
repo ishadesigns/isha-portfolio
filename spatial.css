@@ -2302,3 +2302,8 @@
     background-position: 40% center;
   }
 }
+
+/* Keep the static fallback useful when scripts are disabled or unavailable. */
+html:not(.spatial-ready) .spatial-site[data-initial-case=""] .panel-case {
+  display: none;
+}
