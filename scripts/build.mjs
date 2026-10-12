@@ -5,7 +5,8 @@ import { siteUrl } from "../config.mjs";
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist", { recursive: true });
 await cp("public", "dist", { recursive: true });
-for (const file of ["styles.css", "app.js", "spatial.css", "spatial-app.js"]) await cp(file, `dist/${file}`);
+for (const file of ["styles.css", "app.js", "spatial.css", "spatial-app.js"])
+  await cp(file, `dist/${file}`);
 await writeFile("dist/index.html", spatialPage());
 for (const p of projects) {
   await mkdir(`dist/projects/${p.slug}`, { recursive: true });

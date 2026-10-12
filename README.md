@@ -25,9 +25,11 @@ npm run check
 | --- | --- |
 | `content.mjs` | Project copy, metrics, contact links, résumé, FAQ |
 | `config.mjs` | Published site URL for canonical links and social metadata |
-| `site.mjs` | Page structure, navigation, hero, project cards, case study templates |
-| `styles.css` | Colors, typography, glass materials, animations, all responsive layouts |
-| `app.js` | Filtering, motion, material demo, case study dialogs |
+| `spatial.mjs` | Immersive room, windows, dock, project cards, and page metadata |
+| `site.mjs` | Shared icons and full case study content templates |
+| `spatial.css` | Room, glass windows, dock, transitions, and responsive spatial layouts |
+| `styles.css` | Shared typography and case-study article styling |
+| `spatial-app.js` | Window navigation, movement, expansion, recentering, filters, and case studies |
 | `public/assets/` | Local optimized project images and personal photos |
 | `scripts/build.mjs` | Static page generation |
 | `.github/workflows/pages.yml` | Automatic GitHub Pages publication |
@@ -42,10 +44,13 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 ## What works
 
-- Three complete, directly linkable case studies, also available in native accessible dialog windows.
+- A persistent room with floating glass windows for Welcome, Work, About, Playground, Contact, and case studies.
+- Three complete, directly linkable case studies. Direct URLs open the same immersive workspace.
+- Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, expansion, closing, and recentering.
+- Navigation through the dock; content scrolls inside the active window. Browser Back/Forward and hash deep links work.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance.
-- Project filters, smooth anchor navigation, a floating navigation dock, scroll reveals, and pointer-driven depth.
+- Project filters, animated window transitions, and pointer-driven environmental depth.
 - Interactive glass material study with three palettes.
 - Native FAQ disclosure controls, résumé and social links, and email contact.
 - Device reduced-motion support, keyboard focus indicators, skip navigation, meaningful image alternatives, and readable content without JavaScript.
@@ -64,3 +69,9 @@ GitHub Pages is suitable for this version. Vercel currently offers a free Hobby 
 Content and assets were migrated from Isha's public portfolio. See `docs/content-sources.md` for provenance, editorial decisions, and reference links. Inspiration informed the visual direction; no ryOS source code or Behance imagery is included.
 
 Work is committed in checkpoints so it can be recovered after a browser or machine crash.
+
+## Governing design direction
+
+Opening and navigating the portfolio should feel like being inside an Apple Vision Pro. See `docs/design-direction.md` before future layout or navigation changes. The removed ik logo and atmosphere control must stay removed.
+
+The room is a generated visual environment, not a photograph of Isha’s actual home or studio. Its generation prompt and provenance are in `docs/spatial-environment.md`.
