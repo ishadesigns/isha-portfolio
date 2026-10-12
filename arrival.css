@@ -1,26 +1,14 @@
-/* A short live POV sequence; no film download or continuous video decoding. */
-.arrival-layer { position: fixed; inset: 0; z-index: 80; pointer-events: none; perspective: 1100px; overflow: hidden; }
-.arrival-layer[hidden] { display: none; }
-.spatial-ready.arrival-complete .panel-home { animation: none; }
-html[data-arrival] :is(.space-status,.spatial-dock,.portfolio-guide,.project-satellite,.space-hint) { opacity: 0; pointer-events: none; }
-html[data-arrival] .spatial-panel { opacity: 0; pointer-events: none; animation: none; }
-.arrival-lens { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 47%,transparent 13%,#10150fd9 49%,#070b07 76%); }
-.arrival-portal { position: absolute; top: calc(50% - 20px); left: 50%; width: min(610px,calc(100vw - 48px)); height: min(499px,calc(100dvh - 220px)); min-height: 210px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px; border: 1px solid #fff; border-radius: 44% / 12%; color: #344333; background: radial-gradient(ellipse at 50% 0%,#fff9,transparent 62%),linear-gradient(110deg,#f8f9eea6,#eef3e3cc 50%,#e1e6d19e); box-shadow: 0 30px 70px #29342240,inset 0 0 0 1px #fff6,inset 26px 0 38px #ffffffa6,inset -26px 0 38px #ffffffa6; transform: translate(-50%,-50%) translateZ(-1000px) rotateX(12deg) scale(.16); opacity: 0; }
-.arrival-replay { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; border-radius: 22px; padding: 7px 13px; margin-top: 6px; color: #355541; background: #e2e9d9; font-size: .75rem; }
-.arrival-replay .icon { height: 15px; width: 15px; }
-html[data-arrival="running"] .environment-room { animation: arrival-room 3.9s cubic-bezier(.16,1,.3,1) both; }
-html[data-arrival="running"] .arrival-lens { animation: arrival-lens 2.7s ease-in-out both; }
-html[data-arrival="running"] .arrival-portal { animation: arrival-portal 3.9s cubic-bezier(.16,1,.3,1) both; }
-html[data-arrival="running"] .panel-home { animation: arrival-home 3.9s cubic-bezier(.16,1,.3,1) both; }
-html[data-arrival="running"] :is(.space-status,.spatial-dock,.portfolio-guide) { animation: arrival-chrome 3.9s ease both; }
-html[data-arrival="running"] :is(.project-satellite,.space-hint) { animation: arrival-satellites 3.9s ease both; }
-@keyframes arrival-room { 0% {scale:1.13;filter:saturate(.6) blur(5px)} 42% {filter:saturate(.8) blur(0)} 100% {scale:1;filter:saturate(.8)} }
-@keyframes arrival-lens { 0% {opacity:1;scale:.65} 65% {opacity:.75} 100% {opacity:0;scale:2} }
-@keyframes arrival-portal { 0%,28% {opacity:0;transform:translate(-50%,-50%) translateZ(-1000px) rotateX(12deg) scale(.16)} 48% {opacity:1} 72% {opacity:1;transform:translate(-50%,-50%) translateZ(0) rotateX(0deg) scale(1);border-radius:38% / 8%} 84% {opacity:0;transform:translate(-50%,-50%) scale(1.02);border-radius:30px} 100% {opacity:0;transform:translate(-50%,-50%) scale(1.02)} }
-@keyframes arrival-home { 0%,67% {opacity:0;scale:.94} 88%,100% {opacity:1;scale:1} }
-@keyframes arrival-chrome { 0%,76% {opacity:0;translate:0 7px} 100% {opacity:1;translate:0 0} }
-@keyframes arrival-satellites { 0%,82% {opacity:0;scale:.95} 100% {opacity:1;scale:1} }
-@media (prefers-reduced-motion:reduce) { html[data-arrival] :is(.space-status,.spatial-dock,.portfolio-guide,.project-satellite,.space-hint,.spatial-panel) {opacity:1;pointer-events:auto;animation:none!important} .arrival-layer {display:none} }
+/* Welcome is available immediately beneath a brief, rounded headset reveal. */
+.arrival-layer {position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden;}
+.arrival-layer[hidden] {display:none;}
+.spatial-ready.arrival-complete .panel-home {animation:none;}
+html[data-arrival] .panel-home {opacity:1;pointer-events:auto;animation:none;}
+.arrival-lens {position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 50% 47%,transparent 16%,#10150fd9 50%,#070b07 76%);transform-origin:center;}
+.arrival-replay {display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:22px;padding:7px 13px;margin-top:6px;color:#355541;background:#e2e9d9;font-size:.75rem;}
+.arrival-replay .icon {height:15px;width:15px;}
+html[data-arrival="running"] .arrival-lens {animation:arrival-lens 1.05s cubic-bezier(.16,1,.3,1) both;}
+@keyframes arrival-lens {0% {opacity:1;scale:.72} 40% {opacity:.65} 100% {opacity:0;scale:1.9}}
+@media (prefers-reduced-motion:reduce) {.arrival-layer {display:none;}}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
 .spatial-ready.space-reflow,.spatial-ready.space-reflow .spatial-site {height:auto;min-height:100%;overflow:auto;}
 .space-reflow .spatial-site {display:flex;flex-direction:column;}
@@ -44,5 +32,4 @@ html[data-arrival="running"] :is(.project-satellite,.space-hint) { animation: ar
 
 .space-reflow .orbit-toolbar {flex-direction:column;align-items:flex-start;}
 .arrival-replay:focus-visible {outline:3px solid #21517a;outline-offset:3px;}
-@media (max-width:540px) {.arrival-portal {height:min(390px,calc(100dvh - 220px));width:calc(100vw - 28px);}}
 @media (forced-colors:active) {.arrival-replay {background:Canvas;color:CanvasText;border-color:CanvasText;}}

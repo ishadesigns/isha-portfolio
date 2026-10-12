@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createSpatialAudio} from '../spatial-audio.js';
+import {createSpatialAudio,createWelcomeCue} from '../spatial-audio.js';
 
 let clock=0,isActive=true;
 class FakeAudio {
@@ -22,7 +22,7 @@ const audio=createSpatialAudio(options());
 assert.equal(await audio.arrival(),true);
 const ctx=FakeAudio.instances[0];
 assert.equal(ctx.sources.length,4);
-assert(ctx.sources.every(s=>s.stops[0]-ctx.currentTime<3),'automatic cue ends before three seconds');
+assert(ctx.sources.every(s=>s.stops[0]-ctx.currentTime<=1.1),'welcome cue ends in about one second');
 audio.stopArrival();
 assert(ctx.sources.every(s=>s.stops.length===2),'cancellation stops the scheduled arrival voices');
 assert.equal(await audio.click(),true);
@@ -52,3 +52,22 @@ audio.dispose();assert.equal(ctx.state,'closed');clock+=200;assert.equal(await a
 const unsupported=createSpatialAudio({AudioContext:undefined});
 assert.equal(await unsupported.click(),false);assert.equal(await unsupported.arrival(),false);
 console.log('Passed spatial audio checks: bounded cues, context/buffer reuse, cancellation, hidden tabs, autoplay delays, stale clicks, and unavailable audio.');
+
+let calls=0,allowed=false,status;
+const welcomeSound={arrival:async()=>{calls++;return allowed;},stopArrival(){}};
+const cue=createWelcomeCue({sound:welcomeSound,onState:s=>{status=s;}});
+assert.equal(await cue.load(),false);assert.equal(status,'pending');
+allowed=true;assert.equal(await cue.interact(),true);assert.equal(status,'played');
+assert.equal(await cue.interact(),false);assert.equal(calls,2,'one welcome per visit, not per click');
+assert.equal(await cue.replay(),true);assert.equal(calls,3);
+const refreshed=createWelcomeCue({sound:welcomeSound});
+assert.equal(await refreshed.load(),true);assert.equal(calls,4,'a fresh page attempts its own welcome');
+const resolvers=[];
+const racing=createWelcomeCue({sound:{arrival:()=>new Promise(r=>resolvers.push(r)),stopArrival(){}},onState:s=>{status=s;}});
+const oldLoad=racing.load(),newGesture=racing.interact();
+resolvers[1](true);assert.equal(await newGesture,true);
+resolvers[0](false);assert.equal(await oldLoad,false);assert.equal(status,'played','late startup cannot overwrite a successful gesture');
+let visible=false;
+const background=createWelcomeCue({sound:welcomeSound,active:()=>visible});
+assert.equal(await background.load(),false);visible=true;assert.equal(await background.interact(),true);
+console.log('Passed welcome checks: each-page reset, blocked-autoplay fallback, single playback, replay, race ordering, and background visits.');

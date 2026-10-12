@@ -61,9 +61,9 @@ export function createSpatialAudio({AudioContext,now=()=>performance.now(),activ
       oscillator.type='sine';oscillator.frequency.value=frequency;
       envelope.gain.setValueAtTime(0,time);
       envelope.gain.linearRampToValueAtTime(.038,time+.25+i*.08);
-      envelope.gain.exponentialRampToValueAtTime(.0001,time+2.35);
+      envelope.gain.exponentialRampToValueAtTime(.0001,time+1);
       oscillator.connect(envelope);envelope.connect(ctx.destination);
-      track(oscillator,'arrival',[envelope]);oscillator.start(time+i*.06);oscillator.stop(time+2.4);
+      track(oscillator,'arrival',[envelope]);oscillator.start(time+i*.06);oscillator.stop(time+1.05);
     });
     return true;
   }
@@ -71,4 +71,20 @@ export function createSpatialAudio({AudioContext,now=()=>performance.now(),activ
   function suspend(){++arrivalId;stopKind();if(context?.state==='running')context.suspend().catch(()=>{});}
   function dispose(){disposed=true;++arrivalId;stopKind();if(context&&context.state!=='closed')context.close().catch(()=>{});}
   return {click,arrival,stopArrival,suspend,dispose};
+}
+
+// Each document gets a fresh cue. Browser permission is not a saved site preference.
+export function createWelcomeCue({sound,active=()=>true,onState=()=>{}}) {
+  let played=false,generation=0;
+  onState('pending');
+  async function attempt() {
+    if(played||!active())return false;
+    const id=++generation;
+    const audible=await sound.arrival();
+    if(id!==generation)return false;
+    played=audible;onState(played?'played':'pending');return audible;
+  }
+  function replay(){played=false;onState('pending');return attempt();}
+  function pause(){++generation;sound.stopArrival();}
+  return {load:attempt,interact:attempt,replay,pause};
 }

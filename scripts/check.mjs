@@ -50,7 +50,7 @@ for (const file of htmlFiles) {
   checks++;
   assert.match(html, /data-orbit-reset/, `${file}: interactive orbit`);
   assert.match(html, /data-battery-label>100%<\//, `${file}: full-charge illustration`);
-  assert(!/data-arrival-skip|data-arrival-sound|arrival-caption|arrival-portal-line|arrival-scan/.test(html), `${file}: clean visual arrival`);
+  assert(!/data-arrival-skip|data-arrival-sound|arrival-caption|arrival-portal|arrival-scan/.test(html), `${file}: clean visual arrival`);
   assert.match(html, /data-arrival-replay/, `${file}: replayable arrival`);
   const orbitData = JSON.parse(html.match(/id="orbit-data">([^<]+)<\/script>/)[1]);
   assert.equal(orbitData.find(i=>i.id==='instax').label, 'Instax');
