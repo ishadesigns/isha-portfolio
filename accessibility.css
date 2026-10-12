@@ -1,0 +1,769 @@
+/* Accessibility is part of the spatial design, including legibility on glass. */
+.spatial-site {
+  --ink: #202c24;
+  --muted: #425047;
+  --accent: #355541;
+  --line: rgba(41, 61, 46, 0.3);
+}
+.spatial-ready .spatial-panel,
+.spatial-ready .panel-case,
+.spatial-panel {
+  background: rgba(244, 247, 239, 0.96);
+}
+.space-identity,
+.space-availability,
+.spatial-dock {
+  background: rgba(244, 247, 239, 0.96);
+}
+.spatial-ready .project-satellite {
+  background: rgba(244, 247, 239, 0.96);
+}
+.space-identity,
+.space-availability,
+.dock-app-label,
+.space-recenter,
+.satellite-label,
+.satellite-caption small,
+.welcome-disciplines > span,
+.spatial-filters > button,
+.project-number,
+.contact-signoff,
+.copy-email {
+  color: #35463b;
+}
+.space-identity > span:first-child {
+  font-size: 1rem;
+}
+.space-identity > span:last-child {
+  font-size: 0.8125rem;
+  color: #425047;
+}
+.space-availability {
+  font-size: 0.8125rem;
+}
+.space-eyebrow,
+.window-context,
+.project-number,
+.work-app-footer > span {
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.spatial-scroll p:not(.space-eyebrow):not(.section-marker),
+.spatial-scroll .case-section-copy > p:last-child,
+.spatial-scroll .case-overview p:not(.section-marker),
+.spatial-scroll .case-reflection > p:last-child,
+.spatial-scroll .case-insights p,
+.spatial-scroll .case-details p,
+.spatial-scroll .spatial-faq details > p,
+.spatial-scroll .space-project-copy p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #425047;
+}
+.spatial-scroll .welcome-intro {
+  max-width: 440px;
+}
+.spatial-scroll .welcome-guide {
+  font-size: 0.875rem !important;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+.welcome-content {
+  padding-top: 28px;
+}
+.welcome-disciplines > span,
+.about-tags > span,
+.satellite-caption {
+  font-size: 0.8125rem;
+}
+.welcome-bottom {
+  font-size: 0.8125rem;
+  flex-wrap: wrap;
+  row-gap: 12px;
+  line-height: 1.6;
+}
+.welcome-bottom > a {
+  min-height: 32px;
+  font-size: 0.8125rem;
+}
+.space-button {
+  font-size: 1rem;
+  min-height: 44px;
+  line-height: 1.4;
+}
+.spatial-filters {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.spatial-filters > button {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 0.9375rem;
+  padding: 9px 15px;
+  color: #35463b;
+}
+.spatial-filters > button > span {
+  font-size: 0.8125rem;
+  opacity: 1;
+}
+.spatial-filters > button[aria-pressed="true"] {
+  background: #355541;
+  color: #fff;
+}
+.spatial-filters > button[aria-pressed="true"] > span {
+  color: #fff;
+}
+.spatial-scroll .space-project-copy h3 {
+  font-size: 1.375rem;
+  line-height: 1.25;
+}
+.space-project-copy p {
+  min-height: 0;
+}
+.space-project-result {
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.space-project-result > span {
+  font-size: 0.875rem;
+  max-width: none;
+  color: #35463b;
+}
+.space-project-category {
+  font-size: 0.75rem;
+  background: #233c2bef;
+  color: #fff;
+  backdrop-filter: none;
+}
+.space-project-launch {
+  width: 44px;
+  height: 44px;
+  background: #f4f7ef;
+  color: #254632;
+}
+.space-project-launch > .icon {
+  width: 18px;
+  height: 18px;
+}
+.work-app-footer {
+  flex-wrap: wrap;
+}
+.work-app-footer > div {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+.work-app-footer i {
+  font-size: 0.875rem;
+}
+.spatial-coming > div {
+  flex-wrap: wrap;
+  gap: 20px 40px;
+}
+.spatial-coming span {
+  font-size: 1rem;
+}
+.spatial-coming small {
+  font-size: 0.875rem;
+}
+.spatial-scroll .app-heading :is(h1, h2),
+.spatial-scroll .about-app-intro :is(h1, h2) {
+  font-size: clamp(1.875rem, 3vw, 2.5rem);
+  line-height: 1.15;
+  margin: 14px 0 20px;
+}
+.spatial-scroll .contact-app :is(h1, h2) {
+  font-size: clamp(1.875rem, 7vw, 3rem);
+  line-height: 1.15;
+  margin-top: 24px;
+}
+.about-app-intro a,
+.contact-socials > a {
+  font-size: 1rem;
+  min-height: 44px;
+}
+.contact-socials {
+  flex-wrap: wrap;
+  gap: 8px 25px;
+}
+.copy-email {
+  min-height: 44px;
+  font-size: 0.9375rem;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+.spatial-faq summary {
+  font-size: 1rem;
+  min-height: 44px;
+  line-height: 1.6;
+}
+.spatial-faq summary > span {
+  flex: none;
+}
+.spatial-faq details > p {
+  line-height: 1.75;
+}
+.spatial-experiments h3 {
+  font-size: 1.375rem;
+}
+.spatial-scroll .case-metrics span,
+.spatial-scroll .metrics-source,
+.spatial-scroll .case-awards,
+.spatial-scroll .case-next {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.spatial-scroll .case-details span {
+  font-size: 0.75rem;
+  color: #425047;
+}
+.case-next {
+  flex-wrap: wrap;
+}
+.spatial-scroll .case-next a {
+  min-height: 44px;
+  line-height: 1.5;
+}
+.spatial-scroll .case-next > span {
+  font-size: 0.875rem;
+}
+.spatial-scroll .section-marker {
+  font-size: 0.75rem;
+  color: #425047;
+}
+.spatial-scroll .case-project-name {
+  font-size: 1rem;
+}
+.spatial-scroll .nda-note {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.contact-signoff {
+  font-size: 0.75rem;
+}
+.spatial-field-notes .space-eyebrow,
+.spatial-material .space-eyebrow {
+  font-size: 0.75rem;
+}
+.material-footer {
+  font-size: 0.9375rem;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.material-footer > div {
+  gap: 6px;
+}
+.material-swatch {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: transparent;
+  outline: none;
+}
+.material-swatch:before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  inset: 12px;
+  border-radius: 50%;
+  background: var(--swatch);
+  border: 1px solid #3d5848;
+}
+.material-swatch.sage {
+  --swatch: #8fae9a;
+  background: transparent;
+}
+.material-swatch.blue {
+  --swatch: #8cabc6;
+  background: transparent;
+}
+.material-swatch.rose {
+  --swatch: #cfa2a2;
+  background: transparent;
+}
+.material-swatch[aria-pressed="true"]:before {
+  outline: 2px solid #355541;
+  outline-offset: 4px;
+}
+.material-swatch[aria-pressed="true"] {
+  outline: none;
+}
+.material-pane > p {
+  color: #253e2e !important;
+}
+.material-pane > p > em {
+  color: inherit;
+}
+.spatial-scroll a {
+  overflow-wrap: anywhere;
+}
+.dock-app-label {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+.dock-app-icon {
+  width: 44px;
+  height: 44px;
+  color: #213c2b;
+}
+.app-work,
+.app-about,
+.app-playground,
+.app-contact {
+  color: #213c2b;
+}
+.spatial-dock > a {
+  min-width: 44px;
+  min-height: 62px;
+}
+.spatial-dock > a[aria-current="page"] > .dock-app-icon {
+  outline: 2px solid #355541;
+  outline-offset: 2px;
+}
+.spatial-dock > a > i {
+  width: 4px;
+  height: 4px;
+  bottom: -1px;
+  background: #355541;
+}
+.space-recenter {
+  min-width: 44px;
+  min-height: 62px;
+  font-size: 0.75rem;
+}
+.spatial-titlebar {
+  min-height: 60px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  gap: 10px;
+}
+.window-grip {
+  min-height: 44px;
+  font-size: 0.9375rem;
+  min-width: 0;
+}
+.window-grip > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.window-context {
+  margin-left: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+.window-expand,
+.window-arrange {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex: none;
+  display: grid;
+  place-items: center;
+  background: #f1f5eacc;
+  color: #254632;
+}
+.window-expand > .icon,
+.window-arrange > .icon {
+  width: 18px;
+  height: 18px;
+}
+.window-arrange:hover,
+.window-expand:hover {
+  background: #d9e6d4;
+}
+.window-placement {
+  position: absolute;
+  top: 64px;
+  right: 18px;
+  z-index: 20;
+  max-width: calc(100% - 30px);
+  padding: 16px;
+  border-radius: 18px;
+  background: #f4f7ef;
+  border: 1px solid #526e5b;
+  box-shadow: 0 12px 24px #20352626;
+}
+.window-placement p {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  color: #35463b;
+}
+.window-placement > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.window-placement button {
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: 10px;
+  background: #e1eadc;
+  color: #213c2b;
+  padding: 8px;
+  font-size: 0.875rem;
+}
+.window-placement button:hover {
+  background: #c9dcc2;
+}
+.window-placement button span {
+  display: block;
+}
+.move-left {
+  rotate: 180deg;
+}
+.move-up {
+  rotate: -90deg;
+}
+.move-down {
+  rotate: 90deg;
+}
+.window-dismiss {
+  width: 44px;
+  height: 44px;
+  background: #f4f7ef;
+  color: #254632;
+  border: 1px solid #526e5b;
+}
+.window-dismiss > .icon {
+  width: 18px;
+  height: 18px;
+}
+.window-handle {
+  min-height: 44px;
+  min-width: 77px;
+}
+.window-handle > span {
+  background: #f4f7ef;
+  border: 1px solid #526e5b;
+  height: 7px;
+}
+.case-back {
+  font-size: 0.875rem;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.space-idle :is(h1, h2) {
+  font:
+    italic 2rem/1.3 Georgia,
+    serif;
+  color: #253e2e;
+}
+.space-idle {
+  background: rgba(244, 247, 239, 0.96);
+}
+.space-idle > a {
+  font-size: 1rem;
+  min-height: 44px;
+}
+.space-hint {
+  display: none !important;
+}
+.space-toast {
+  background: #f4f7ef;
+  color: #253e2e;
+  font-size: 0.9375rem;
+  border: 1px solid #526e5b;
+}
+.spatial-scroll:focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: -4px;
+}
+.spatial-site :is(a, button, summary):focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: 3px;
+}
+.spatial-site :is(h1, h2)[tabindex]:focus-visible {
+  outline: 3px solid #21517a;
+  outline-offset: 4px;
+}
+@media (max-width: 780px) {
+  .window-arrange {
+    display: none;
+  }
+  .spatial-titlebar {
+    min-height: 62px;
+    padding-right: 58px;
+  }
+  .spatial-ready .spatial-controls {
+    top: 8px;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+  }
+  .spatial-controls .window-dismiss {
+    width: 44px;
+    height: 44px;
+  }
+  .window-context {
+    margin-right: 0;
+  }
+  .window-grip {
+    max-width: 100%;
+  }
+}
+@media (max-width: 540px) {
+  .space-identity > span:first-child {
+    font-size: 1rem;
+  }
+  .space-identity > span:last-child {
+    font-size: 0.75rem;
+  }
+  .space-availability {
+    font-size: 0.75rem;
+    padding: 9px;
+    white-space: normal;
+    max-width: 165px;
+    line-height: 1.5;
+  }
+  .spatial-ready .panel-home {
+    height: calc(100dvh - 190px);
+  }
+  .spatial-ready .panel-contact {
+    height: calc(100dvh - 190px);
+  }
+  .welcome-content {
+    padding: 25px 22px;
+  }
+  .welcome-content > :is(h1, h2) {
+    font-size: clamp(2.25rem, 11.5vw, 3.6875rem);
+  }
+  .welcome-disciplines {
+    gap: 6px;
+  }
+  .welcome-disciplines > span {
+    font-size: 0.75rem;
+  }
+  .welcome-bottom {
+    font-size: 0.75rem;
+    margin-top: 22px;
+  }
+  .welcome-bottom > a {
+    margin-left: 0;
+    width: 100%;
+    font-size: 0.875rem;
+  }
+  .spatial-dock {
+    gap: 4px;
+    padding: 10px 9px;
+    max-width: calc(100vw - 12px);
+  }
+  .spatial-dock > a {
+    width: 49px;
+  }
+  .dock-app-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .dock-app-label {
+    font-size: 0.6875rem;
+  }
+  .work-app,
+  .about-app,
+  .play-app {
+    padding: 23px 18px;
+  }
+  .contact-app {
+    padding: 27px 18px;
+  }
+  .spatial-filters {
+    gap: 5px;
+    justify-content: flex-start;
+  }
+  .spatial-filters > button {
+    font-size: 0.875rem;
+    padding: 8px 10px;
+  }
+  .spatial-scroll .space-project-copy {
+    padding: 17px;
+  }
+  .spatial-coming span {
+    font-size: 1rem;
+  }
+  .panel-case .spatial-scroll {
+    padding: 0 18px;
+  }
+  .spatial-scroll .case-metrics {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .spatial-scroll .case-metrics > div {
+    text-align: left;
+    gap: 5px;
+  }
+  .spatial-scroll .case-metrics strong {
+    font-size: 2.5rem;
+  }
+  .spatial-scroll .case-details {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .spatial-scroll .case-question p {
+    font-size: 1.375rem;
+    line-height: 1.5;
+  }
+  .spatial-scroll .case-awards {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spatial-scroll .spatial-coming > div {
+    flex-wrap: wrap;
+  }
+  .material-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+/* Short viewports include phone landscape and the CSS viewport at high zoom.
+   Preserve the room and dock while allowing the active window to reflow vertically. */
+@media (max-height: 540px) {
+  .spatial-ready,
+  .spatial-ready .spatial-site {
+    height: auto;
+    min-height: 100%;
+    overflow: auto;
+  }
+  .spatial-ready .spatial-workspace {
+    position: relative;
+    padding: 88px 0 130px;
+    perspective: none;
+  }
+  .spatial-ready .space-status {
+    position: absolute;
+  }
+  .spatial-ready .spatial-panel,
+  .spatial-ready .spatial-panel.is-expanded,
+  .spatial-ready .panel-home,
+  .spatial-ready .panel-contact,
+  .spatial-ready .panel-case {
+    position: relative;
+    inset: auto;
+    left: auto;
+    top: auto;
+    width: calc(100% - 28px);
+    max-width: 960px;
+    height: auto;
+    max-height: none;
+    margin: 0 auto;
+    transform: none;
+    translate: none !important;
+  }
+  .spatial-scroll {
+    overflow: visible;
+  }
+  .spatial-ready .project-satellite,
+  .window-arrange,
+  .window-expand,
+  .space-recenter,
+  .spatial-dock-divider {
+    display: none;
+  }
+  .spatial-titlebar {
+    padding-right: 58px;
+    min-height: 62px;
+  }
+  .window-context {
+    display: none;
+  }
+  .spatial-ready .spatial-controls {
+    top: 8px;
+    bottom: auto;
+    left: auto;
+    right: 10px;
+    width: 44px;
+    height: 44px;
+  }
+  .spatial-controls .window-dismiss {
+    position: static;
+    width: 44px;
+    height: 44px;
+  }
+  .spatial-controls .window-handle {
+    display: none;
+  }
+  .space-idle {
+    position: relative;
+    inset: auto;
+    transform: none;
+    width: fit-content;
+    margin: 20px auto;
+  }
+  .spatial-dock {
+    bottom: 8px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .spatial-panel,
+  .spatial-ready .spatial-panel,
+  .spatial-ready .panel-case,
+  .space-status > *,
+  .spatial-dock,
+  .spatial-ready .project-satellite {
+    background: #f4f7ef;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+@media (forced-colors: active) {
+  .spatial-site {
+    --ink: CanvasText;
+    --muted: CanvasText;
+    --accent: LinkText;
+    --line: CanvasText;
+    background: Canvas;
+    color: CanvasText;
+  }
+  .environment-room,
+  .environment-vignette,
+  .project-satellite,
+  .material-orb {
+    display: none !important;
+  }
+  .spatial-environment,
+  .spatial-panel,
+  .spatial-ready .spatial-panel,
+  .spatial-ready .panel-case,
+  .spatial-dock,
+  .space-status > * {
+    background: Canvas;
+    border-color: CanvasText;
+    box-shadow: none;
+    backdrop-filter: none;
+  }
+  .spatial-scroll p,
+  .spatial-scroll span,
+  .spatial-scroll strong,
+  .spatial-scroll em,
+  .spatial-scroll :is(h1, h2, h3),
+  .space-identity,
+  .space-identity > span,
+  .space-availability,
+  .dock-app-label {
+    color: CanvasText !important;
+  }
+  .spatial-site a {
+    color: LinkText;
+  }
+  .spatial-site button,
+  .window-placement {
+    background: Canvas;
+    color: ButtonText;
+    border: 1px solid ButtonText;
+  }
+  .spatial-dock > a[aria-current="page"] > .dock-app-icon,
+  .material-swatch[aria-pressed="true"]:before {
+    outline: 3px solid Highlight;
+  }
+  .material-swatch:before {
+    background: Canvas;
+    border-color: ButtonText;
+  }
+  .spatial-site :focus-visible {
+    outline: 3px solid Highlight !important;
+  }
+}

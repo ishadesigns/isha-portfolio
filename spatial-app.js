@@ -44,11 +44,40 @@
     element.classList.add("visible");
     toastTimer = setTimeout(() => element.classList.remove("visible"), 2600);
   }
+  function announce(message) {
+    $("#navigation-status").textContent = message;
+  }
+  function primaryHeading(container, level) {
+    const oldHeading = container.querySelector("h1,h2");
+    if (!oldHeading || oldHeading.tagName === `H${level}`) return oldHeading;
+    const heading = document.createElement(`h${level}`);
+    [...oldHeading.attributes].forEach((attribute) =>
+      heading.setAttribute(attribute.name, attribute.value),
+    );
+    heading.append(...oldHeading.childNodes);
+    oldHeading.replaceWith(heading);
+    return heading;
+  }
+  function closePlacements(restoreFocus = false) {
+    const trigger = document.querySelector(
+      '.window-arrange[aria-expanded="true"]',
+    );
+    $$(".window-placement").forEach((menu) => {
+      menu.hidden = true;
+    });
+    $$(".window-arrange").forEach((button) =>
+      button.setAttribute("aria-expanded", "false"),
+    );
+    if (restoreFocus) trigger?.focus({ preventScroll: true });
+  }
   function showWindow(view, { focus = true } = {}) {
+    closePlacements();
     activeView = view;
     windows.forEach((panel, id) => {
       panel.hidden = id !== view;
+      primaryHeading($(".spatial-scroll", panel), id === view ? 1 : 2);
     });
+    primaryHeading($(".space-idle"), view === "idle" ? 1 : 2);
     $$("[data-home-orbit]").forEach((el) => {
       el.hidden = view !== "home";
     });
@@ -59,8 +88,19 @@
       if (selected) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
-    if (focus && windows.has(view))
-      windows.get(view).focus({ preventScroll: true });
+    document.title = `${view === "case" ? windowNames.case : view === "idle" ? "Your space" : windowNames[view]} — Isha`;
+    if (focus && windows.has(view)) {
+      const content = $(".spatial-scroll", windows.get(view));
+      content.scrollTop = 0;
+      if (innerHeight <= 540) window.scrollTo(0, 0);
+      content.focus({ preventScroll: true });
+      announce(
+        `${view === "case" ? windowNames.case : windowNames[view]} window opened.`,
+      );
+    } else if (focus && view === "idle") {
+      $(".space-idle a").focus({ preventScroll: true });
+      announce("Welcome window closed. The navigation dock is available.");
+    }
   }
   function updateHash(hash) {
     if (location.hash !== hash) history.pushState({ spatial: hash }, "", hash);
@@ -96,6 +136,21 @@
     activeCase = slug;
     const casePanel = windows.get("case");
     const content = $(".spatial-scroll", casePanel);
+    windowNames.case = caseNames[slug];
+    $(".window-grip", casePanel).setAttribute(
+      "aria-label",
+      `Move ${caseNames[slug]} window`,
+    );
+    $(".window-arrange", casePanel).setAttribute(
+      "aria-label",
+      `Arrange ${caseNames[slug]} window`,
+    );
+    $(".window-dismiss", casePanel).setAttribute(
+      "aria-label",
+      `Close ${caseNames[slug]} window`,
+    );
+    content.setAttribute("aria-label", `${caseNames[slug]} content`);
+    content.setAttribute("aria-busy", "true");
     const pageURL = new URL(`projects/${slug}/`, base);
     $(".window-grip>span", casePanel).textContent = caseNames[slug];
     casePanel.setAttribute("aria-label", `${caseNames[slug]} window`);
@@ -119,9 +174,20 @@
       if (id !== requestId || activeView !== "case") return;
       content.innerHTML = caseCache.get(slug);
       content.scrollTop = 0;
-      if (focus) casePanel.focus({ preventScroll: true });
+      content.setAttribute("aria-busy", "false");
+      const heading = primaryHeading(content, 1);
+      if (focus && heading) {
+        heading.tabIndex = -1;
+        if (innerHeight <= 540) window.scrollTo(0, 0);
+        heading.focus({ preventScroll: true });
+        announce(`${caseNames[slug]} case study loaded.`);
+      }
     } catch {
       if (id !== requestId || activeView !== "case") return;
+      content.setAttribute("aria-busy", "false");
+      announce(
+        `${caseNames[slug]} could not load. A direct page link is available.`,
+      );
       content.innerHTML = `<div class="case-error"><h2>Let’s take another look.</h2><p>The story couldn’t load. Try opening its direct page.</p><a class="space-button" href="${pageURL.href}">Open full case study ↗</a></div>`;
     }
   }
@@ -164,7 +230,10 @@
   window.addEventListener("hashchange", () => route());
   $(".skip-link").addEventListener("click", (e) => {
     e.preventDefault();
-    windows.get(activeView)?.focus({ preventScroll: true });
+    const target = windows.has(activeView)
+      ? $(".spatial-scroll", windows.get(activeView))
+      : $(".space-idle a");
+    target?.focus({ preventScroll: true });
   });
 
   function dismissWindow() {
@@ -178,9 +247,31 @@
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       e.preventDefault();
+      if ($('.window-arrange[aria-expanded="true"]')) {
+        closePlacements(true);
+        return;
+      }
       if (activeView === "idle") openWindow("home");
       else dismissWindow();
     }
+  });
+  $$(".window-arrange").forEach((button) =>
+    button.addEventListener("click", () => {
+      const opening = button.getAttribute("aria-expanded") !== "true";
+      closePlacements();
+      if (opening) {
+        button.setAttribute("aria-expanded", "true");
+        const menu = document.getElementById(
+          button.getAttribute("aria-controls"),
+        );
+        menu.hidden = false;
+        $("button", menu).focus({ preventScroll: true });
+      }
+    }),
+  );
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".window-arrange,.window-placement"))
+      closePlacements();
   });
   $$(".window-expand").forEach((button) =>
     button.addEventListener("click", () => {
@@ -228,11 +319,32 @@
     panel.style.setProperty("--drag-x", `${clamp(x, minX, maxX)}px`);
     panel.style.setProperty("--drag-y", `${clamp(y, minY, maxY)}px`);
   }
+  $$("[data-move]").forEach((button) =>
+    button.addEventListener("click", () => {
+      const panel = button.closest("[data-window]");
+      const direction = button.dataset.move;
+      if (direction === "center") {
+        panel.style.setProperty("--drag-x", "0px");
+        panel.style.setProperty("--drag-y", "0px");
+      } else {
+        const origin = panelPositions(panel);
+        const x =
+          origin.x +
+          (direction === "left" ? -40 : direction === "right" ? 40 : 0);
+        const y =
+          origin.y + (direction === "up" ? -40 : direction === "down" ? 40 : 0);
+        constrainMove(panel, x, y, origin, panel.getBoundingClientRect());
+      }
+      announce(
+        `${windowNames[panel.dataset.window]} window ${direction === "center" ? "centered" : "moved " + direction}.`,
+      );
+    }),
+  );
   $$("[data-drag]").forEach((handle) => {
     const panel = handle.closest("[data-window]");
     let drag = null;
     handle.addEventListener("pointerdown", (e) => {
-      if (e.button !== 0 || innerWidth <= 780) return;
+      if (e.button !== 0 || innerWidth <= 780 || innerHeight <= 540) return;
       e.preventDefault();
       drag = {
         pointer: e.pointerId,
@@ -264,6 +376,7 @@
     handle.addEventListener("keydown", (e) => {
       if (
         innerWidth <= 780 ||
+        innerHeight <= 540 ||
         !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)
       )
         return;
@@ -281,7 +394,7 @@
   });
   function updateMoveControls() {
     $$("[data-drag]").forEach((handle) => {
-      handle.disabled = innerWidth <= 780;
+      handle.disabled = innerWidth <= 780 || innerHeight <= 540;
     });
   }
   updateMoveControls();
