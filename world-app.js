@@ -1,3 +1,4 @@
+import { preferredVoice, createDictationController } from "./voice-support.js";
 import { guideAnswer } from "./guide-engine.js";
 
 const root = document.documentElement;
@@ -371,7 +372,7 @@ board.addEventListener("keydown", (event) => {
 });
 newGame();
 
-// Lumi: source-backed answers, optional browser voice, and a movable character.
+// Siri: source-backed answers, optional browser voice, and a movable character.
 const guide = $("#guide-panel"),
   launcher = $(".guide-launch"),
   log = $(".guide-conversation"),
@@ -380,12 +381,10 @@ let guideTopic = "",
   avatarDrag = null,
   suppressClick = false,
   avatarPosition = null,
-  recognition = null,
-  dictating = false,
   speakingButton = null,
-  guidePaused = false,
   guideTrigger = null,
-  speechStartTimer;
+  speechStartTimer,
+  currentUtterance = null;
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const canSpeak = !!window.speechSynthesis && !!window.SpeechSynthesisUtterance;
@@ -407,7 +406,8 @@ function stopSpeaking() {
   if (speakingButton) speakingButton.textContent = "Read aloud";
   speakingButton = null;
   clearTimeout(speechStartTimer);
-  root.classList.remove("lumi-speaking");
+  currentUtterance = null;
+  root.classList.remove("siri-speaking");
 }
 function closeGuide(restore = true) {
   if (guide.hidden) return;
@@ -416,7 +416,7 @@ function closeGuide(restore = true) {
   $$("[data-guide-open]").forEach((b) =>
     b.setAttribute("aria-expanded", "false"),
   );
-  recognition?.abort();
+  dictation.abort();
   stopSpeaking();
   if (restore)
     (guideTrigger?.getClientRects().length
@@ -450,7 +450,7 @@ function setAvatar(x, y, announce = false) {
   launcher.style.top = `${avatarPosition.y}px`;
   launcher.style.right = "auto";
   launcher.style.bottom = "auto";
-  if (announce) status("Lumi moved.");
+  if (announce) status("Siri moved.");
 }
 function placeAvatar(corner) {
   const rect = launcher.getBoundingClientRect(),
@@ -480,20 +480,20 @@ launcher.addEventListener("pointermove", (event) => {
   if (Math.hypot(dx, dy) > 6) avatarDrag.moved = true;
   if (avatarDrag.moved) {
     event.preventDefault();
-    root.classList.add("lumi-dragging");
+    root.classList.add("siri-dragging");
     setAvatar(avatarDrag.origin.x + dx, avatarDrag.origin.y + dy);
   }
 });
 function stopAvatarDrag() {
   suppressClick = !!avatarDrag?.moved;
   avatarDrag = null;
-  root.classList.remove("lumi-dragging");
+  root.classList.remove("siri-dragging");
 }
 launcher.addEventListener("pointerup", stopAvatarDrag);
 launcher.addEventListener("pointercancel", stopAvatarDrag);
 launcher.addEventListener("lostpointercapture", () => {
   avatarDrag = null;
-  root.classList.remove("lumi-dragging");
+  root.classList.remove("siri-dragging");
 });
 launcher.addEventListener("keydown", (event) => {
   if (!event.key.startsWith("Arrow")) return;
@@ -528,7 +528,7 @@ function reply(value) {
   message.className = "guide-message guide-answer";
   const author = document.createElement("span");
   author.className = "guide-speaker";
-  author.textContent = "LUMI";
+  author.textContent = "SIRI";
   const title = document.createElement("p");
   title.className = "guide-answer-title";
   title.textContent = answer.title;
@@ -574,60 +574,25 @@ question.addEventListener("keydown", (event) => {
     if (question.value.trim()) reply(question.value);
   }
 });
+const mic = $("[data-guide-mic]");
+const dictation = createDictationController({
+  Recognition: SpeechRecognition,
+  secure: window.isSecureContext,
+  onState(state) {
+    mic.disabled = state === "starting";
+    mic.setAttribute("aria-pressed", String(state === "listening"));
+    const label = state === "listening" ? "Stop voice input" : "Start voice input";
+    mic.setAttribute("aria-label", label);
+    mic.title = label;
+    root.classList.toggle("siri-listening", state === "listening");
+    guide.dataset.dictation = state;
+  },
+  onTranscript(text) { question.value = text; },
+  onNotice: voiceNotice,
+});
 function dictate() {
-  if (!SpeechRecognition) return;
-  if (dictating) {
-    recognition?.stop();
-    return;
-  }
   stopSpeaking();
-  recognition = new SpeechRecognition();
-  recognition.lang = "en-US";
-  recognition.continuous = false;
-  recognition.interimResults = true;
-  recognition.onstart = () => {
-    $("[data-guide-mic]").disabled = false;
-    dictating = true;
-    $("[data-guide-mic]").setAttribute("aria-pressed", "true");
-    $("[data-guide-mic] span").textContent = "Stop";
-    root.classList.add("lumi-listening");
-    status("Listening. Your words will appear in the question field.");
-  };
-  recognition.onresult = (event) => {
-    question.value = Array.from(event.results)
-      .map((result) => result[0].transcript)
-      .join(" ")
-      .slice(0, 500);
-  };
-  recognition.onerror = (event) => {
-    voiceNotice(
-      event.error === "not-allowed"
-        ? "Microphone permission was not granted. You can still type your question."
-        : event.error === "no-speech"
-          ? "No speech was detected. Try again or type your question."
-          : "Voice input is unavailable right now. You can still type your question.",
-    );
-  };
-  recognition.onend = () => {
-    dictating = false;
-    $("[data-guide-mic]").disabled = false;
-    $("[data-guide-mic]").setAttribute("aria-pressed", "false");
-    $("[data-guide-mic] span").textContent = "Dictate";
-    root.classList.remove("lumi-listening");
-    if (!guide.hidden) question.focus();
-  };
-  dictating = true;
-  $("[data-guide-mic]").disabled = true;
-  voiceNotice(
-    "Starting voice input. Your browser may ask for microphone permission.",
-  );
-  try {
-    recognition.start();
-  } catch {
-    dictating = false;
-    $("[data-guide-mic]").disabled = false;
-    voiceNotice("Voice input could not start. Type a question instead.");
-  }
+  dictation.toggle(question.value);
 }
 function speakAnswer(button) {
   if (!canSpeak) return;
@@ -636,7 +601,7 @@ function speakAnswer(button) {
     return;
   }
   stopSpeaking();
-  recognition?.abort();
+  dictation.abort();
   speakingButton = button;
   const message = button.closest(".guide-answer");
   const utterance = new SpeechSynthesisUtterance(
@@ -644,15 +609,15 @@ function speakAnswer(button) {
       ". " +
       $(".guide-answer-copy", message).textContent,
   );
-  const voices = speechSynthesis.getVoices();
-  utterance.voice =
-    voices.find((v) => v.localService && /^en/.test(v.lang)) ||
-    voices.find((v) => /^en/.test(v.lang)) ||
-    null;
-  utterance.rate = 0.98;
+  utterance.voice = preferredVoice(speechSynthesis.getVoices());
+  utterance.lang = utterance.voice?.lang || "en-US";
+  utterance.rate = 1;
+  utterance.pitch = 1;
+  currentUtterance = utterance; // Keep a reference while WebKit reads the answer.
   utterance.onstart = () => {
+    if (currentUtterance !== utterance) return;
     clearTimeout(speechStartTimer);
-    root.classList.add("lumi-speaking");
+    root.classList.add("siri-speaking");
     button.textContent = "Stop reading";
     button.setAttribute("aria-pressed", "true");
   };
@@ -669,6 +634,7 @@ function speakAnswer(button) {
   };
   button.textContent = "Stop reading";
   button.setAttribute("aria-pressed", "true");
+  speechSynthesis.resume();
   speechSynthesis.speak(utterance);
   speechStartTimer = setTimeout(() => {
     if (speakingButton === button && !speechSynthesis.speaking) {
@@ -681,7 +647,7 @@ function speakAnswer(button) {
 }
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
-    recognition?.abort();
+    dictation.abort();
     stopSpeaking();
   }
 });
@@ -701,25 +667,12 @@ document.addEventListener("click", (event) => {
   if (target.hasAttribute("data-guide-mic")) dictate();
   if (target.hasAttribute("data-guide-speak")) speakAnswer(target);
   if (target.hasAttribute("data-guide-clear")) {
-    recognition?.abort();
+    dictation.abort();
     stopSpeaking();
     log.replaceChildren();
     guideTopic = "";
     status("Conversation cleared. Ask a new question to begin.");
     question.focus();
-  }
-  if (target.hasAttribute("data-guide-place-toggle")) {
-    const placement = $("#guide-placement");
-    placement.hidden = !placement.hidden;
-    target.setAttribute("aria-expanded", String(!placement.hidden));
-  }
-  if (target.hasAttribute("data-guide-place"))
-    placeAvatar(target.dataset.guidePlace);
-  if (target.hasAttribute("data-guide-motion")) {
-    guidePaused = !guidePaused;
-    root.classList.toggle("lumi-quiet", guidePaused);
-    target.setAttribute("aria-pressed", String(guidePaused));
-    target.textContent = guidePaused ? "Resume floating" : "Pause floating";
   }
   if (target.hasAttribute("data-look-toggle")) {
     closeGuide(false);

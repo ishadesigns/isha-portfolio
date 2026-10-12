@@ -16,7 +16,7 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
     topic: "",
     title: "A little beyond what I know",
     answer:
-      "I don’t have published information about that. I can help with Isha’s projects, research, résumé, or contact details. For anything personal or unpublished, please ask Isha directly.",
+      "I don’t have published information about that. I can help with Isha’s projects, research, resume, or contact details. For anything personal or unpublished, please ask Isha directly.",
     link: "contact",
     label: "Contact Isha",
   };
@@ -30,11 +30,11 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
       label: "Explore her work",
     };
   if (
-    /\b(lumi|bot|chatbot|who are you|what can you do|are you ai|dictate|read aloud|voice input)\b/.test(
+    /\b(siri|bot|chatbot|who are you|what can you do|are you ai|dictate|read aloud|voice input)\b/.test(
       q,
     )
   )
-    return knowledge.entries.find((e) => e.id === "lumi");
+    return knowledge.entries.find((e) => e.id === "siri");
   if (knowledge.privateTopics.some((word) => contains(q, word))) return unknown;
   const explicit = knowledge.topics.filter((topic) => {
     const entry = knowledge.entries.find((e) => e.id === topic);

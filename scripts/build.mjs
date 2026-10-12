@@ -17,18 +17,20 @@ for (const file of [
   "world.css",
   "world-app.js",
   "guide-engine.js",
+  "voice-support.js",
 ])
   await cp(file, `dist/${file}`);
 const guideVersion = createHash("sha256")
   .update(await readFile("guide-engine.js"))
   .digest("hex")
   .slice(0, 12);
+const voiceVersion = createHash("sha256").update(await readFile("voice-support.js")).digest("hex").slice(0, 12);
 await writeFile(
   "dist/world-app.js",
   (await readFile("world-app.js", "utf8")).replace(
     '"./guide-engine.js"',
     `"./guide-engine.js?v=${guideVersion}"`,
-  ),
+  ).replace('"./voice-support.js"', `"./voice-support.js?v=${voiceVersion}"`),
 );
 await writeFile("dist/index.html", spatialPage());
 for (const p of projects) {

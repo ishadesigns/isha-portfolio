@@ -13,12 +13,12 @@ const thirdPerson = (text) =>
 export function guideKnowledge() {
   const entries = [
     {
-      id: "lumi",
-      topic: "lumi",
-      tags: ["lumi", "bot", "guide", "dictate", "read aloud", "voice input"],
+      id: "siri",
+      topic: "siri",
+      tags: ["siri", "bot", "guide", "dictate", "read aloud", "voice input"],
       title: "Your little portfolio companion",
       answer:
-        "I’m Lumi, a browser-only guide with built-in answers from Isha’s portfolio and résumé. Ask about her projects, research, experience, skills, or getting in touch. I can link you to the relevant window. Dictate fills the question field for you to review, and Read aloud uses an available browser voice. I’m not a generative AI service.",
+        "I’m Siri, a browser-only guide with built-in answers from Isha’s portfolio and resume. Ask about her projects, research, experience, skills, or getting in touch. I can link you to the relevant window. Dictate fills the question field for you to review, and Read aloud uses an available browser voice. I’m not a generative AI service.",
       link: "work",
       label: "Explore the portfolio",
     },
@@ -80,9 +80,9 @@ export function guideKnowledge() {
         "ai",
       ],
       title: "Current work",
-      answer: `Isha’s résumé lists Product Designer at Geny Labs from Oct 2025 to Present, on the founding team for an AI voice assistant. ${resume.experience[0].points.join(" ")}`,
+      answer: `Isha’s resume lists Product Designer at Geny Labs from Oct 2025 to Present, on the founding team for an AI voice assistant. ${resume.experience[0].points.join(" ")}`,
       link: "resume",
-      label: "Read her résumé",
+      label: "Read her resume",
     },
     {
       id: "career",
@@ -107,11 +107,11 @@ export function guideKnowledge() {
     {
       id: "resume",
       topic: "career",
-      tags: ["resume", "résumé", "cv", "credentials"],
-      title: "Résumé",
-      answer: `${thirdPerson(resume.summary)}\n\nHer experience spans Geny Labs, Tindoori Labs, BMW Group, Walmart–Myntra, and Reliance. You can read roles, impact, education, and skills inside the résumé window.`,
+      tags: ["resume", "resume", "cv", "credentials"],
+      title: "Resume",
+      answer: `${thirdPerson(resume.summary)}\n\nHer experience spans Geny Labs, Tindoori Labs, BMW Group, Walmart–Myntra, and Reliance. You can read roles, impact, education, and skills inside the resume window.`,
       link: "resume",
-      label: "Open résumé",
+      label: "Open resume",
     },
     {
       id: "education",
@@ -168,7 +168,7 @@ export function guideKnowledge() {
       tags: ["awards", "award", "indigo", "ida", "honorable", "recognition"],
       title: "Recognition",
       answer:
-        "The résumé lists 3 Silver and 2 Bronze Indigo Design Awards and an International Design Awards honorable mention. The Bloom case study also lists Indigo Design Award Winner 2025 and IDA Honorable Mention 2024.",
+        "The resume lists 3 Silver and 2 Bronze Indigo Design Awards and an International Design Awards honorable mention. The Bloom case study also lists Indigo Design Award Winner 2025 and IDA Honorable Mention 2024.",
       project: "bloom",
       label: "Explore Bloom",
     },
@@ -428,7 +428,7 @@ export function guideKnowledge() {
     ],
     title: "Public work & confidentiality",
     answer:
-      "The Chemistry project shares selected public work. The full process is protected by an NDA. This guide only uses the public portfolio and the linked résumé, and cannot share confidential material.",
+      "The Chemistry project shares selected public work. The full process is protected by an NDA. This guide only uses the public portfolio and the linked resume, and cannot share confidential material.",
     project: "chemistry",
     label: "Read the public case study",
   });
@@ -469,7 +469,7 @@ export function guideKnowledge() {
 const batterySvg =
   '<svg viewBox="0 0 28 16" class="hud-battery-icon" aria-hidden="true"><rect x="1" y="2" width="22" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 6v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect data-battery-fill x="3" y="4" width="17" height="8" rx="1.5" fill="currentColor"/></svg>';
 export function worldStatus() {
-  return `<div class="world-status"><div class="space-availability"><span class="status-dot"></span> Open to opportunities</div><div class="world-hud"><span class="hud-spatial">${icon("layers")}<span>Spatial space</span></span><time data-world-clock aria-label="Your local time">Local time</time><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span><button type="button" data-look-toggle aria-expanded="false" aria-controls="room-controls">${icon("compass")}<span>Look around</span></button><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Lumi</span></button></div><div class="room-controls" id="room-controls" hidden><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button><button type="button" data-ambient-motion aria-pressed="false">${icon("pause")}<span>Pause ambient motion</span></button></div><p class="room-help">Clear view, then drag the room or use arrow keys. Direction buttons work with touch too.</p></div></div>`;
+  return `<div class="world-status"><div class="world-hud"><span class="space-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</span><span class="hud-spatial">${icon("layers")}<span>Spatial space</span></span><time data-world-clock aria-label="Your local time">Local time</time><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span><button type="button" data-look-toggle aria-expanded="false" aria-controls="room-controls">${icon("compass")}<span>Look around</span></button><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Siri</span></button></div><div class="room-controls" id="room-controls" hidden><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button><button type="button" data-ambient-motion aria-pressed="false">${icon("pause")}<span>Pause ambient motion</span></button></div><p class="room-help">Clear view, then drag the room or use arrow keys. Direction buttons work with touch too.</p></div></div>`;
 }
 export function roomExplorer() {
   return `<section class="room-explorer" hidden role="region" aria-label="Explore the room" tabindex="0" aria-describedby="room-explorer-help"><div class="room-explorer-note"><p class="space-eyebrow">A LITTLE MORE ROOM</p><h2>Look beyond the window.</h2><p id="room-explorer-help">Drag to look around, or use the arrow keys and direction buttons. Your portfolio windows are one click away.</p><button type="button" data-room-return>Return to portfolio ${icon("arrow")}</button></div></section><p class="sr-only" role="status" aria-live="polite" data-room-status></p>`;
@@ -480,17 +480,5 @@ export function spatialGame() {
 
 export function guideWidget(base) {
   const knowledge = JSON.stringify(guideKnowledge()).replaceAll("<", "\\u003c");
-  return `<aside class="portfolio-guide" aria-label="Lumi portfolio guide"><button type="button" class="guide-launch" data-guide-open aria-controls="guide-panel" aria-expanded="false" aria-describedby="guide-move-help"><span class="lumi-body" aria-hidden="true"><span class="lumi-ring"></span><span class="lumi-visor"><i></i><i></i></span><span class="lumi-glint"></span></span><span class="guide-launch-label">Ask Lumi</span></button><p class="sr-only" id="guide-move-help">Open with Enter. Drag Lumi to move, or use arrow keys while this button is focused. Place guide offers one-click positions.</p><dialog class="guide-panel" id="guide-panel" hidden role="dialog" aria-modal="true" aria-labelledby="guide-title"><div class="guide-header"><div class="guide-mini" aria-hidden="true"><span class="lumi-visor"><i></i><i></i></span></div><div><h2 id="guide-title">Lumi</h2><p>YOUR PORTFOLIO COMPANION</p></div><button type="button" data-guide-close aria-label="Close Lumi guide">${icon("close")}</button></div><div class="guide-tools"><button type="button" data-guide-place-toggle aria-expanded="false" aria-controls="guide-placement">Place guide</button><button type="button" data-guide-motion aria-pressed="false">Pause floating</button><button type="button" data-guide-clear>Clear chat</button></div><div class="guide-placement" id="guide-placement" hidden role="group" aria-label="Place Lumi">${[
-    ["top-left", "Top left"],
-    ["top-right", "Top right"],
-    ["bottom-left", "Bottom left"],
-    ["bottom-right", "Bottom right"],
-  ]
-    .map(
-      ([id, label]) =>
-        `<button type="button" data-guide-place="${id}">${label}</button>`,
-    )
-    .join(
-      "",
-    )}</div><div class="guide-conversation" role="log" aria-label="Conversation with Lumi" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="guide-message guide-answer"><span class="guide-speaker">LUMI</span><p>Hi, I’m Lumi. Ask me about Isha’s work, research, experience, or the human behind it.</p><p class="guide-boundary">I use built-in answers from this portfolio and résumé.</p></div></div><div class="guide-suggestions" role="group" aria-label="Suggested questions"><button type="button" data-guide-question="What did Isha do at BMW?">BMW & Vision Pro</button><button type="button" data-guide-question="What is Isha working on now?">Current role</button><button type="button" data-guide-question="Tell me about Isha">Meet Isha</button></div><form class="guide-form"><label for="guide-question">Your question</label><textarea id="guide-question" name="question" rows="2" maxlength="500" placeholder="What’s her research approach?" required></textarea><div class="guide-form-actions"><button type="button" data-guide-mic aria-pressed="false">${icon("mic")}<span>Dictate</span></button><button type="submit">Send ${icon("arrow")}</button></div></form><p class="guide-voice-note" data-guide-voice-note>Voice input uses your browser’s speech service and microphone permission. Review the text before sending.</p><p class="sr-only" data-guide-status role="status" aria-live="polite" aria-atomic="true"></p></dialog><script type="application/json" id="guide-knowledge">${knowledge}</script></aside>`;
+  return `<aside class="portfolio-guide" aria-label="Siri portfolio guide"><button type="button" class="guide-launch" data-guide-open aria-controls="guide-panel" aria-expanded="false" aria-describedby="guide-move-help"><span class="siri-body" aria-hidden="true"><span class="siri-ring"></span><span class="siri-ring-front"></span><span class="siri-shell-line"></span><span class="siri-visor"><i></i><i></i></span><span class="siri-glint"></span></span><span class="guide-launch-label">Ask Siri</span></button><p class="sr-only" id="guide-move-help">Open with Enter. Drag Siri to move, or use arrow keys while this button is focused.</p><dialog class="guide-panel" id="guide-panel" hidden role="dialog" aria-modal="true" aria-labelledby="guide-title"><div class="guide-header"><div class="guide-mini" aria-hidden="true"><span class="siri-visor"><i></i><i></i></span></div><div><h2 id="guide-title">Siri</h2><p>YOUR PORTFOLIO COMPANION</p></div><button type="button" data-guide-close aria-label="Close Siri guide">${icon("close")}</button></div><div class="guide-tools"><button type="button" data-guide-clear>Clear chat</button></div><div class="guide-conversation" role="log" aria-label="Conversation with Siri" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="guide-message guide-answer"><span class="guide-speaker">SIRI</span><p>Hi, I’m Siri. Ask me about Isha’s work, research, experience, or the human behind it.</p><p class="guide-boundary">I use built-in answers from this portfolio and resume.</p></div></div><div class="guide-suggestions" role="group" aria-label="Suggested questions"><button type="button" data-guide-question="What did Isha do at BMW?">Would you like to explore BMW &amp; Vision Pro? ${icon("arrow")}</button><button type="button" data-guide-question="What is Isha working on now?">Would you like to know about her current role? ${icon("arrow")}</button><button type="button" data-guide-question="Tell me about Isha">Would you like to meet Isha? ${icon("arrow")}</button></div><form class="guide-form"><label for="guide-question">Your question</label><textarea id="guide-question" name="question" rows="2" maxlength="500" placeholder="What’s her research approach?" required></textarea><div class="guide-form-actions"><button type="button" data-guide-mic aria-pressed="false" aria-label="Start voice input" title="Start voice input">${icon("mic")}</button><button type="submit" aria-label="Send question" title="Send question">${icon("send")}</button></div></form><p class="guide-voice-note" data-guide-voice-note>Voice input uses your browser’s speech service and microphone permission. Review the text before sending.</p><p class="sr-only" data-guide-status role="status" aria-live="polite" aria-atomic="true"></p></dialog><script type="application/json" id="guide-knowledge">${knowledge}</script></aside>`;
 }

@@ -5,7 +5,7 @@ const knowledge = guideKnowledge();
 const answer = (question, previous = "") =>
   guideAnswer(question, knowledge, previous);
 const checks = [
-  ["What can you do?", "", "lumi", /built-in answers/],
+  ["What can you do?", "", "siri", /built-in answers/],
   ["How do I play the game?", "", "play", /six matching/],
   ["What did Isha do at BMW?", "", "bmw-role", /product|designer/i],
   ["What research did she do?", "bmw", "bmw-research", /27 interviews/],

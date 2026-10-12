@@ -22,8 +22,8 @@
   height: 23px;
 }
 .app-home {
-  background: #e4eddf;
-  color: #254632;
+  background: linear-gradient(145deg, #428782, #235f62);
+  color: #fff;
 }
 .app-work {
   background: linear-gradient(145deg, #326ba0, #194a79);

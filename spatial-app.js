@@ -23,7 +23,7 @@
     home: "Welcome",
     work: "Selected work",
     about: "About Isha",
-    resume: "Résumé",
+    resume: "Resume",
     playground: "Playground",
     contact: "Let’s connect",
     case: "Case study",
@@ -496,7 +496,7 @@
     root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);
     root.style.setProperty(
       "--space-bottom",
-      `${Math.ceil(innerHeight - dock.top) + (innerWidth <= 780 ? 16 : 56)}px`,
+      `${Math.ceil(innerHeight - dock.top) + (innerWidth <= 780 ? 28 : 68)}px`,
     );
   }
   if ("ResizeObserver" in window) {

@@ -469,7 +469,7 @@
   margin-top: 18px;
 }
 
-/* Lumi's avatar is drawn in CSS so it stays sharp, lightweight, and editable. */
+/* Siri's avatar is drawn in CSS so it stays sharp, lightweight, and editable. */
 .guide-launch {
   position: fixed;
   right: 20px;
@@ -484,7 +484,7 @@
   touch-action: none;
   border-radius: 25px;
 }
-.lumi-body {
+.siri-body {
   display: block;
   position: relative;
   width: 68px;
@@ -501,9 +501,9 @@
     inset 2px 3px 8px #fff,
     inset -3px -6px 10px #809aa569,
     0 9px 20px #334c4e35;
-  animation: lumi-float 4.5s ease-in-out infinite;
+  animation: siri-float 4.5s ease-in-out infinite;
 }
-.lumi-visor {
+.siri-visor {
   position: absolute;
   left: 12px;
   right: 12px;
@@ -519,7 +519,7 @@
     inset 1px 2px 4px #11293899,
     0 1px 1px #fff;
 }
-.lumi-visor i {
+.siri-visor i {
   display: block;
   width: 5px;
   height: 9px;
@@ -527,7 +527,7 @@
   background: #dffbfa;
   box-shadow: 0 0 5px #b3e5db80;
 }
-.lumi-ring {
+.siri-ring {
   position: absolute;
   inset: -7px;
   border: 1px solid #ffffffa8;
@@ -535,7 +535,7 @@
   transform: rotate(-18deg) scaleY(0.76);
   box-shadow: 0 1px 0 #adc0c478;
 }
-.lumi-glint {
+.siri-glint {
   position: absolute;
   width: 12px;
   height: 6px;
@@ -557,13 +557,13 @@
   color: #2b4534;
   box-shadow: 0 2px 10px #26382c1a;
 }
-.guide-launch:hover .lumi-body {
+.guide-launch:hover .siri-body {
   box-shadow:
     inset 2px 3px 8px #fff,
     inset -3px -6px 10px #809aa569,
     0 12px 27px #334c4e4d;
 }
-.lumi-dragging .lumi-body {
+.siri-dragging .siri-body {
   animation: none;
   transform: rotate(-6deg);
 }
@@ -586,7 +586,7 @@
   flex-direction: column;
   padding: 18px;
   overflow: auto;
-  animation: lumi-panel-arrive 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: siri-panel-arrive 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   color: #263a2e;
 }
 .guide-panel::backdrop {
@@ -623,12 +623,12 @@
   background: linear-gradient(145deg, #fff, #cbdcda);
   box-shadow: inset 1px 1px 2px #fff;
 }
-.guide-mini .lumi-visor {
+.guide-mini .siri-visor {
   inset: 14px 7px auto;
   height: 16px;
   gap: 6px;
 }
-.guide-mini .lumi-visor i {
+.guide-mini .siri-visor i {
   width: 3px;
   height: 6px;
 }
@@ -831,16 +831,16 @@
   color: #425047;
   margin-top: 11px;
 }
-.lumi-speaking .lumi-visor i {
+.siri-speaking .siri-visor i {
   height: 12px;
 }
-.lumi-listening .guide-mini,
-.lumi-listening .lumi-body {
+.siri-listening .guide-mini,
+.siri-listening .siri-body {
   outline: 2px solid #356687;
   outline-offset: 3px;
 }
-.lumi-quiet .lumi-body,
-.world-quiet .lumi-body {
+.siri-quiet .siri-body,
+.world-quiet .siri-body {
   animation: none;
 }
 .world-quiet .environment-room {
@@ -853,7 +853,7 @@
 .world-quiet .guide-panel {
   animation: none;
 }
-@keyframes lumi-float {
+@keyframes siri-float {
   0%,
   100% {
     transform: translateY(0) rotate(-2deg);
@@ -862,7 +862,7 @@
     transform: translateY(-4px) rotate(2deg);
   }
 }
-@keyframes lumi-panel-arrive {
+@keyframes siri-panel-arrive {
   from {
     opacity: 0;
     transform: translateY(20px) scale(0.96);
@@ -887,8 +887,8 @@
   .world-status {
     gap: 6px;
   }
-  .world-status .space-availability {
-    display: none;
+.world-status .space-availability {
+    display: flex;
   }
   .world-hud {
     flex-wrap: wrap;
@@ -1046,7 +1046,7 @@
   .world-ready .environment-room {
     transition: none;
   }
-  .lumi-body,
+  .siri-body,
   .guide-panel {
     animation: none;
   }
@@ -1082,16 +1082,16 @@
     color: ButtonText;
     border: 1px solid ButtonText;
   }
-  .lumi-body,
+  .siri-body,
   .game-orbit-mark {
     background: Canvas;
     border: 1px solid CanvasText;
   }
-  .lumi-visor {
+  .siri-visor {
     background: Canvas;
     border: 1px solid CanvasText;
   }
-  .lumi-visor i {
+  .siri-visor i {
     background: CanvasText;
   }
   .window-reading-progress > span {
@@ -1185,7 +1185,7 @@ html:not(.world-ready) .window-reading-progress {
     left 0.35s cubic-bezier(0.16, 1, 0.3, 1),
     top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.lumi-dragging .guide-launch,
+.siri-dragging .guide-launch,
 .world-quiet .guide-launch {
   transition: none;
 }
@@ -1211,4 +1211,234 @@ html:not(.world-ready) .window-reading-progress {
   .game-card {
     min-height: calc(26px + 4rem);
   }
+}
+
+/* Refinements: one status capsule, a precise orbital companion, and quiet chat UI. */
+.world-status {
+  min-width: 0;
+  max-width: calc(100% - 210px);
+}
+.world-hud {
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 7px;
+  gap: 10px;
+}
+.world-hud .space-availability {
+  display: inline-flex;
+  flex: none;
+  padding: 9px 13px;
+  border: 1px solid #305346;
+  background: #315a47;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: inset 0 1px 0 #ffffff26;
+  backdrop-filter: none;
+  cursor: default;
+  gap: 7px;
+}
+.world-hud .space-availability .status-dot {
+  background: #b6ecc1;
+  box-shadow: 0 0 0 3px #b6ecc118;
+  animation: none;
+}
+@media (min-width: 781px) and (min-height: 541px) {
+  .spatial-ready .spatial-controls {
+    bottom: -49px;
+  }
+}
+.about-app-intro {
+  align-items: start;
+}
+.about-app-photo {
+  transform: none;
+  padding: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #dce5d8;
+  border: 1px solid #a5b39e;
+  box-shadow: 0 8px 20px #39493414;
+}
+.about-app-photo > img {
+  display: block;
+  aspect-ratio: 4 / 5;
+}
+.about-app-photo > span {
+  position: static;
+  display: block;
+  padding: 12px 15px;
+  font: 500 0.8125rem/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #355541;
+}
+.siri-body {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  border: 1px solid #ffffffed;
+  background: radial-gradient(circle at 31% 21%, #fff 0%, #f3fbfb 23%, #d0e6e6 48%, #9cbac7 76%, #7593aa 100%);
+  box-shadow: inset 1px 2px 2px #fff, inset -2px -4px 5px #456b7a66, 0 10px 22px #23485245;
+  isolation: isolate;
+}
+.siri-shell-line {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid #fff9;
+  border-bottom-color: #618496b3;
+  border-radius: 50%;
+}
+.siri-visor {
+  z-index: 3;
+  left: 12px;
+  right: 12px;
+  top: 25px;
+  height: 24px;
+  border: 1px solid #a4d0dc;
+  background: linear-gradient(165deg, #344b62, #152d42 65%, #264d60);
+  box-shadow: inset 0 1px 0 #93c2d066, inset 0 -2px 3px #081926a6, 0 1px 0 #fff;
+}
+.siri-visor::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 7px;
+  right: 7px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c5f4ff85, transparent);
+}
+.siri-visor i {
+  width: 6px;
+  height: 10px;
+  border: 1px solid #fff;
+  background: linear-gradient(#fff, #b9f1f3);
+  box-shadow: 0 0 3px #dbffff, 0 0 7px #a2e7f366;
+}
+.siri-ring,
+.siri-ring-front {
+  position: absolute;
+  inset: -8px -12px;
+  border-radius: 50%;
+  transform: rotate(-22deg) scaleY(0.47);
+  border: 2px solid #d8f5ff;
+  box-shadow: 0 1px 0 #477f9f, inset 0 1px 0 #fff, 0 0 0 3px #f6ffff29;
+  pointer-events: none;
+}
+.siri-ring {
+  z-index: -1;
+  background: linear-gradient(110deg, #e1f7ff33, transparent 25%, #c7bdff26 70%, #edffff3b);
+}
+.siri-ring-front {
+  z-index: 4;
+  clip-path: inset(50% 0 0 0);
+  background: none;
+  border-color: #e8faff;
+}
+.siri-ring-front::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  bottom: 7px;
+  right: 12px;
+  box-shadow: 0 0 5px #c3efff;
+}
+.siri-glint {
+  width: 18px;
+  height: 7px;
+  left: 15px;
+  top: 12px;
+  background: #fff9;
+  box-shadow: 0 -2px 3px #fff6;
+}
+.guide-launch:hover .siri-body {
+  box-shadow: inset 1px 2px 2px #fff, inset -2px -4px 5px #456b7a66, 0 12px 27px #334c4e4d;
+}
+.guide-suggestions {
+  display: grid;
+  gap: 0;
+  margin: 12px 0;
+  border-block: 1px solid #b8c6b0;
+}
+.guide-suggestions button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  min-height: 48px;
+  padding: 11px 3px;
+  border: 0;
+  border-bottom: 1px solid #d4ddcf;
+  border-radius: 0;
+  text-align: left;
+  background: transparent;
+  color: #2d4c3b;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+}
+.guide-suggestions button:last-child { border-bottom: 0; }
+.guide-suggestions button .icon {
+  width: 18px;
+  height: 18px;
+  flex: none;
+  transition: transform 0.2s;
+}
+.guide-suggestions button:hover { background: #e5ecdf; }
+.guide-suggestions button:hover .icon { transform: translateX(3px); }
+.guide-form { position: relative; }
+.guide-form textarea {
+  min-height: 118px;
+  padding: 12px 14px 61px;
+  border-radius: 22px;
+}
+.guide-form-actions {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  display: flex;
+  gap: 7px;
+  margin: 0;
+}
+.guide-form-actions button {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+}
+.guide-form-actions button .icon {
+  width: 20px;
+  height: 20px;
+}
+.guide-form-actions [aria-pressed="true"] {
+  background: #244e6c;
+  color: #fff;
+  box-shadow: 0 0 0 3px #244e6c20;
+}
+@media (max-width: 1100px) {
+  .world-status { max-width: calc(100% - 210px); }
+}
+@media (max-width: 780px) {
+  .world-status { max-width: 260px; }
+  .world-hud .space-availability {
+    justify-content: center;
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.6875rem;
+  }
+}
+@media (max-width: 540px) {
+  .world-status { max-width: calc(100% - 66px); }
+  .world-hud { gap: 6px; }
+  .guide-suggestions button { padding: 10px 3px; font-size: 0.8125rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .guide-suggestions button .icon { transition: none; }
+}
+@media (forced-colors: active) {
+  .world-hud .space-availability { border: 1px solid CanvasText; background: Canvas; color: CanvasText; }
+  .siri-ring, .siri-ring-front { border-color: CanvasText; }
+  .siri-shell-line { border-color: CanvasText; }
 }

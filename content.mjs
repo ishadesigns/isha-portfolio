@@ -232,7 +232,7 @@ export const projects = [
         title: "Make the room part of the experience.",
         text: "The device brings together an aroma diffuser, speaker, motion sensors, and 360-degree ambient light. Voice control and personalized soundscapes support an experience that extends beyond the screen.",
         image: "bloom-device",
-        alt: "Bloom bedside device render with ambient illumination",
+        alt: "Bloom bedside device render with ambient ilsirination",
       },
       {
         label: "04 / Interface",
