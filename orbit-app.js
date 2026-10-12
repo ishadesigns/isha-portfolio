@@ -26,6 +26,7 @@ export function initOrbit() {
  function schedule(){cancelAnimationFrame(frame);frame=0;last=0;scene.dataset.running=String(active());if(active())frame=requestAnimationFrame(tick);}
  function choose(b){
   const item=items.find(i=>i.id===b.id);
+  const detail=document.querySelector('.orbit-detail');detail.hidden=false;
   bodies.forEach(body=>body.el.setAttribute('aria-pressed',String(body===b)));
   document.querySelector('[data-orbit-title]').textContent=item.title;
   document.querySelector('[data-orbit-copy]').textContent=item.copy;
@@ -34,6 +35,7 @@ export function initOrbit() {
   link.href=new URL(item.project?`projects/${item.project}/`:'#about',base).href;
   delete link.dataset.case;delete link.dataset.open;
   if(item.project)link.dataset.case=item.project;else link.dataset.open='about';
+  detail.scrollIntoView({block:'nearest',behavior:motion.matches?'instant':'smooth'});
  }
  for(const b of bodies){
   b.el.addEventListener('pointerdown',e=>{if(e.button!==0)return;const r=scene.getBoundingClientRect();drag={b,id:e.pointerId,startX:e.clientX,startY:e.clientY,offsetX:e.clientX-r.left-b.x,offsetY:e.clientY-r.top-b.y,lastX:e.clientX,lastY:e.clientY,time:e.timeStamp,moved:false};b.held=true;b.el.setPointerCapture(e.pointerId);b.el.classList.add('orbit-held');});
@@ -47,7 +49,7 @@ export function initOrbit() {
   b.el.addEventListener('pointerleave',()=>{if(!drag&&document.activeElement!==b.el)b.held=false;});
   b.el.addEventListener('keydown',e=>{if(!e.key.startsWith('Arrow'))return;e.preventDefault();b.x=clamp(b.x+(e.key==='ArrowLeft'?-18:e.key==='ArrowRight'?18:0),10,bounds.width-b.w-10);b.y=clamp(b.y+(e.key==='ArrowUp'?-18:e.key==='ArrowDown'?18:0),10,bounds.height-b.h-10);render();});
  }
- document.querySelector('[data-orbit-reset]').addEventListener('click',()=>{drag=null;suppress=null;for(const b of bodies){b.held=false;b.el.classList.remove('orbit-held');b.el.setAttribute('aria-pressed','false');}document.querySelector('[data-orbit-title]').textContent='Follow your curiosity.';document.querySelector('[data-orbit-copy]').textContent='Every object has a little story. Where will you land?';document.querySelector('[data-orbit-link]').hidden=true;layout(true);});
+ document.querySelector('[data-orbit-reset]').addEventListener('click',()=>{drag=null;suppress=null;for(const b of bodies){b.held=false;b.el.classList.remove('orbit-held');b.el.setAttribute('aria-pressed','false');}document.querySelector('[data-orbit-title]').textContent='Follow your curiosity.';document.querySelector('[data-orbit-copy]').textContent='Every object has a little story. Where will you land?';document.querySelector('[data-orbit-link]').hidden=true;document.querySelector('.orbit-detail').hidden=true;layout(true);});
  new ResizeObserver(()=>layout()).observe(scene);
  new MutationObserver(schedule).observe(root,{attributes:true,subtree:true,attributeFilter:['data-view','hidden','open']});
  motion.addEventListener('change',schedule);document.addEventListener('visibilitychange',()=>{if(document.hidden&&drag){drag.b.held=false;drag.b.el.classList.remove('orbit-held');drag=null;}schedule();});

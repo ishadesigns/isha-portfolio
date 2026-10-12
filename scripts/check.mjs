@@ -49,6 +49,10 @@ for (const file of htmlFiles) {
   assert.match(html, /aria-modal="true"/, `${file}: native focused dialogs`);
   checks++;
   assert.match(html, /data-orbit-reset/, `${file}: interactive orbit`);
+  assert.match(html, /type="text" id="guide-question"/, `${file}: single-line composer`);
+  assert.match(html, /class="dock-look-toggle" data-look-toggle/, `${file}: room controls in dock`);
+  assert(!/data-ambient-motion|data-game-reset|SPATIAL PAIRS/.test(html), `${file}: retired controls and game removed`);
+  checks += 3;
   checks++;
   assert.match(
     html,

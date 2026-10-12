@@ -1,3 +1,4 @@
+import { orbitItems, orbitArtFile } from "../orbit.mjs";
 import { mkdir, cp, writeFile, rm, readFile } from "node:fs/promises";
 import { spatialPage, version } from "../spatial.mjs";
 import { projects } from "../content.mjs";
@@ -5,6 +6,7 @@ import { siteUrl } from "../config.mjs";
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist", { recursive: true });
 await cp("public", "dist", { recursive: true });
+for (const item of orbitItems.filter(i => i.art)) await writeFile(`dist/assets/${orbitArtFile(item)}`, item.art.replace('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" '));
 for (const file of [
   "styles.css",
   "app.js",
