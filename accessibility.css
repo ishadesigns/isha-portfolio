@@ -819,4 +819,52 @@
   }
 }
 
-.spatial-dock > [data-app="playground"] { width: 76px; flex-shrink: 0; }
+.spatial-dock > [data-app="playground"] {
+  width: 76px;
+  flex-shrink: 0;
+}
+
+.space-status {
+  gap: 12px;
+}
+.space-identity,
+.space-availability {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.space-availability .status-dot {
+  flex: none;
+}
+/* At extreme zoom and landscape, put navigation in the reading flow so it
+   cannot cover most of a short viewport. The spatial room remains behind it. */
+@media (max-height: 540px) {
+  .spatial-ready .spatial-site {
+    display: flex;
+    flex-direction: column;
+  }
+  .spatial-ready .space-status {
+    position: relative;
+    inset: auto;
+    order: 0;
+  }
+  .spatial-ready .spatial-dock {
+    position: relative;
+    inset: auto;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    order: 1;
+    margin: 0 auto 20px;
+    max-width: calc(100% - 12px);
+  }
+  .spatial-ready .spatial-workspace {
+    order: 2;
+    inset: auto;
+    width: 100%;
+    padding: 0 0 40px;
+    margin: 0;
+  }
+  .spatial-ready .spatial-panel {
+    width: calc(100% - 28px);
+  }
+}

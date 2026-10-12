@@ -28,6 +28,7 @@ npm run check
 | `spatial.mjs` | Immersive room, windows, dock, project cards, and page metadata |
 | `site.mjs` | Shared icons and full case study content templates |
 | `spatial.css` | Room, glass windows, dock, transitions, and responsive spatial layouts |
+| `accessibility.css` | Contrast, touch targets, focus, text resizing, short-viewport reflow, and forced colors |
 | `styles.css` | Shared typography and case-study article styling |
 | `spatial-app.js` | Window navigation, movement, expansion, recentering, filters, and case studies |
 | `public/assets/` | Local optimized project images and personal photos |
@@ -46,7 +47,7 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 - A persistent room with floating glass windows for Welcome, Work, About, Playground, Contact, and case studies.
 - Three complete, directly linkable case studies. Direct URLs open the same immersive workspace.
-- Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, expansion, closing, and recentering.
+- Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, single-click Arrange controls, expansion, closing, and recentering.
 - Navigation through the dock; content scrolls inside the active window. Browser Back/Forward and hash deep links work.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance.
@@ -75,3 +76,16 @@ Work is committed in checkpoints so it can be recovered after a browser or machi
 Opening and navigating the portfolio should feel like being inside an Apple Vision Pro. See `docs/design-direction.md` before future layout or navigation changes. The removed ik logo and atmosphere control must stay removed.
 
 The room is a generated visual environment, not a photograph of Isha’s actual home or studio. Its generation prompt and provenance are in `docs/spatial-environment.md`.
+
+## Accessibility release checks
+
+WCAG 2.2 AA and usability on desktop, tablet, and mobile are governing requirements. See `docs/accessibility.md` for implemented behavior, verification results, and remaining manual assistive-technology checks. Automated checks do not certify conformance.
+
+For a local axe audit, install `axe-core` into a temporary directory outside this repository, build, then run:
+
+```sh
+node scripts/prepare-audit.mjs /absolute/path/to/axe-core/axe.min.js
+npm run preview
+```
+
+Visit `http://127.0.0.1:4173/?audit=1`. Reports appear as JSON in `#audit-results`. Optional local stress modes: `contrast=dark`, `contrast=light`, `text=200`, and `spacing=1`. Navigate through all windows and projects. Rebuild with `npm run build` afterward; `npm run check` intentionally rejects an instrumented build. The deployed site includes neither axe nor the audit runner.

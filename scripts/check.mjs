@@ -23,6 +23,42 @@ for (const file of htmlFiles) {
   checks++;
   assert.match(html, /<meta name="description"/);
   checks++;
+  assert(
+    !html.includes("audit-assets"),
+    `${file}: local audit scripts must not deploy`,
+  );
+  checks++;
+  assert.match(html, /class="skip-link"/, `${file}: skip navigation`);
+  checks++;
+  assert.match(
+    html,
+    /aria-label="Spatial navigation"/,
+    `${file}: named navigation landmark`,
+  );
+  checks++;
+  assert.match(
+    html,
+    /id="navigation-status"[^>]*aria-live="polite"/,
+    `${file}: navigation announcements`,
+  );
+  checks++;
+  assert.match(html, /accessibility.css/, `${file}: accessibility layer`);
+  checks++;
+  assert(
+    !html.includes("user-scalable=no") && !html.includes("maximum-scale="),
+    `${file}: zoom unrestricted`,
+  );
+  checks++;
+  const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);
+  assert.equal(ids.length, new Set(ids).size, `${file}: unique IDs`);
+  checks++;
+  for (const reference of html.matchAll(
+    /aria-(?:controls|describedby)="([^"]+)"/g,
+  )) {
+    for (const id of reference[1].split(/\s+/))
+      assert(ids.includes(id), `${file}: missing ARIA reference ${id}`);
+    checks++;
+  }
   for (const image of html.matchAll(/<img\b([^>]+)>/g)) {
     assert.match(image[1], /alt="[^"]+"/, `${file}: image alternative text`);
     checks++;
@@ -51,6 +87,11 @@ for (const p of projects) {
 assert(
   !home.includes("framerusercontent.com"),
   "Project assets must be hosted locally",
+);
+checks++;
+assert(
+  !(await readdir(root)).includes("audit-assets"),
+  "Local audit tooling must not deploy",
 );
 checks++;
 assert(

@@ -94,6 +94,10 @@
       content.scrollTop = 0;
       if (innerHeight <= 540) window.scrollTo(0, 0);
       content.focus({ preventScroll: true });
+      if (innerHeight <= 540)
+        windows
+          .get(view)
+          .scrollIntoView({ block: "start", behavior: "instant" });
       announce(
         `${view === "case" ? windowNames.case : windowNames[view]} window opened.`,
       );
@@ -149,6 +153,26 @@
       "aria-label",
       `Close ${caseNames[slug]} window`,
     );
+    $(".window-expand", casePanel).setAttribute(
+      "aria-label",
+      `${casePanel.classList.contains("is-expanded") ? "Restore" : "Expand"} ${caseNames[slug]} window`,
+    );
+    $(".window-handle", casePanel).setAttribute(
+      "aria-label",
+      `Move ${caseNames[slug]} window using handle`,
+    );
+    $(".window-placement", casePanel).setAttribute(
+      "aria-label",
+      `Position ${caseNames[slug]} window`,
+    );
+    $$("[data-move]", casePanel).forEach((button) =>
+      button.setAttribute(
+        "aria-label",
+        button.dataset.move === "center"
+          ? `Center ${caseNames[slug]} window`
+          : `Move ${caseNames[slug]} window ${button.dataset.move}`,
+      ),
+    );
     content.setAttribute("aria-label", `${caseNames[slug]} content`);
     content.setAttribute("aria-busy", "true");
     const pageURL = new URL(`projects/${slug}/`, base);
@@ -179,7 +203,7 @@
       if (focus && heading) {
         heading.tabIndex = -1;
         if (innerHeight <= 540) window.scrollTo(0, 0);
-        heading.focus({ preventScroll: true });
+        heading.focus({ preventScroll: innerHeight > 540 });
         announce(`${caseNames[slug]} case study loaded.`);
       }
     } catch {
@@ -233,7 +257,9 @@
     const target = windows.has(activeView)
       ? $(".spatial-scroll", windows.get(activeView))
       : $(".space-idle a");
-    target?.focus({ preventScroll: true });
+    target?.focus({ preventScroll: innerHeight > 540 });
+    if (innerHeight <= 540)
+      target?.scrollIntoView({ block: "start", behavior: "instant" });
   });
 
   function dismissWindow() {
@@ -308,8 +334,11 @@
     y: parseFloat(panel.style.getPropertyValue("--drag-y")) || 0,
   });
   function constrainMove(panel, x, y, origin, rect) {
-    const safeTop = parseFloat(root.style.getPropertyValue("--space-top")) || 78,
-      safeBottom = innerHeight - (parseFloat(root.style.getPropertyValue("--space-bottom")) || 115);
+    const safeTop =
+        parseFloat(root.style.getPropertyValue("--space-top")) || 78,
+      safeBottom =
+        innerHeight -
+        (parseFloat(root.style.getPropertyValue("--space-bottom")) || 115);
     const minX = origin.x + 16 - rect.left,
       maxX = origin.x + innerWidth - 16 - rect.right;
     const minY = origin.y + safeTop - rect.top,
