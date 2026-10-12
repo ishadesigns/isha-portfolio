@@ -8,7 +8,7 @@ html[data-arrival] .panel-home {opacity:.2;pointer-events:auto;animation:none;}
 .arrival-replay .icon {height:15px;width:15px;}
 html[data-arrival="running"] .arrival-lens {animation:arrival-lens 2.7s cubic-bezier(.4,0,.2,1) both;}
 @keyframes arrival-lens {0%,16% {opacity:1;scale:.72} 46% {opacity:.8;scale:1} 72% {opacity:.35;scale:1.5} 100% {opacity:0;scale:1.9}}
-html[data-arrival="running"] .panel-home {animation:arrival-focus 2.7s ease-in-out both;}
+html.spatial-ready[data-arrival="running"] .panel-home {animation:arrival-focus 2.7s ease-in-out both;}
 @keyframes arrival-focus {0%,16% {opacity:.2} 50% {opacity:.65} 82%,100% {opacity:1}}
 @media (prefers-reduced-motion:reduce) {.arrival-layer {display:none;}}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
