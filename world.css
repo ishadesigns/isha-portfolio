@@ -1439,3 +1439,4 @@ html:not(.world-ready) .window-reading-progress {
 @media (forced-colors:active) { .guide-composer { background: Canvas; border-color: CanvasText; } .guide-composer input { color: CanvasText; } }
 .guide-launch { z-index: 44; }
 @media (max-width:780px) { .room-controls .room-help { padding-right: 76px; } }
+@media (min-width:781px) and (max-width:1000px) { .guide-launch { right: 14px; bottom: calc(var(--space-bottom,180px) + 8px); } }

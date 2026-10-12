@@ -23,9 +23,14 @@ npm run check
 
 | File | Controls |
 | --- | --- |
-| `world.mjs` | Room status, game markup, Siri UI, and public guide knowledge |
-| `world-app.js` | Room camera controls, scrolling effects, game, guide movement, and browser voice |
-| `world.css` | Spatial status, game cards, Siri, and room styling |
+| `world.mjs` | Room status, Siri UI, and public guide knowledge |
+| `world-app.js` | Room camera controls, scrolling effects, guide movement, and browser voice |
+| `world.css` | Spatial status, Siri, and room styling |
+| `orbit.mjs` | Orbit content, vector artwork, and Play markup |
+| `orbit-app.js` | Object dragging, tossing, selection, and animation lifecycle |
+| `orbit-motion.js` | Bounded motion and collision behavior |
+| `orbit.css` | Play scene and object styling |
+| `room-motion.js` | Drag and edge-hold camera movement |
 | `voice-support.js` | Browser speech lifecycle, failure messages, and voice selection |
 | `guide-engine.js` | Deterministic answers and follow-up routing; no API calls |
 | `resume.mjs` | Source-backed resume content and resume window |
@@ -63,11 +68,11 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
 - A spatial status bar with local time and browser-reported battery, or a clearly labeled Demo indicator.
-- Siri, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and room-wide motion controls.
-- Spatial Pairs, an untimed memory game with keyboard/touch play, score, matching feedback, and restart.
+- Siri, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and device reduced-motion support.
+- Isha’s Orbit: ten bouncing projects and favorite things, drag/toss interaction, keyboard movement, click-to-explore stories, and Remix.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.
 - Project filters, animated window transitions, and pointer-driven environmental depth.
-- Interactive glass material study with three palettes.
+- Field notes and the GitHub experiments link inside About Me; the material color demo has been retired.
 - Native FAQ disclosure controls, resume and social links, and email contact.
 - Device reduced-motion support, keyboard focus indicators, skip navigation, meaningful image alternatives, and readable content without JavaScript.
 - No tracking, accounts, paid APIs, remote project assets, framework runtime, or required backend.
@@ -109,6 +114,6 @@ Visit `http://127.0.0.1:4173/?audit=1`. Reports appear as JSON in `#audit-result
 
 No AI API key or backend is used. Answers are retrieved from the portfolio and resume data in `world.mjs`; `npm test` checks routing, follow-ups, unknown/private questions, and source-entry validity. GitHub Actions runs these checks before deployment.
 
-Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring enhanced, premium, natural, or neural English voices when available, with a standard device voice as fallback. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; only the ambient-motion preference is stored locally.
+Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring enhanced, premium, natural, or neural English voices when available, with a standard device voice as fallback. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; no site preferences or conversations are stored locally.
 
 See `docs/world-features.md` for verification and remaining hardware/assistive-technology checks.

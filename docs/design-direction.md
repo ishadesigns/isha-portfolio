@@ -128,3 +128,8 @@ The user requested a larger field of view with room panning, more expressive nat
 ## October 12 refinement
 
 Use one status capsule with a distinct, non-clickable availability callout. Rename the browser-only portfolio companion Siri; sharpen its shell, eyes, and orbital ring. Keep idle movement, dragging, and keyboard movement, while removing its placement and pause controls. Preserve room-level motion pause and reduced-motion accessibility. Replace chat chips with leading questions and right arrows; use accessible icon-only mic/send controls. Prefer available enhanced/natural device voices. Separate Bloom awards into their own dock app using LinkedIn Featured copy, thumbnails, and official links. Use Resume without accents, a saturated teal Home icon, an aligned portrait, and personal-interest folders in About. Add the supplied X profile in Contact.
+
+
+## October 12 Orbit / navigation refinement
+
+Move Look around into the dock and rename its About destination About Me. Remove site motion pause/resume controls, keep Siri visible in Clear view, add more frequent blinking/gaze and hover/focus ring spin, and make held edge dragging reach the full room view. Keep device reduced-motion support. Use a single-line Siri composer with compact, named mic/send icons. Order the top capsule availability, lighter Siri, time, battery. Replace Spatial Pairs with Isha’s Orbit, a tactile collection of the user’s requested projects and favorites. Move field notes and the experiments link into About Me and retire the material color demo.

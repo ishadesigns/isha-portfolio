@@ -61,3 +61,8 @@ The two Featured links on [Isha’s LinkedIn profile](https://www.linkedin.com/i
 The Awards app links directly to those entries and also offers a separate route into the Bloom case study. It does not describe two different projects.
 
 [The original About page](https://www.isha-kumari.com/about-me) was inspected again. Its New Balance sneaker, notebook, coffee, and Friends cast cutouts are represented in the About interest folders; Friends was also explicitly identified by the user. Short folder captions are editorial copy based on those interests, while “I explore AI tools, but I think best with pen and paper” is quoted from the original page. `friends.webp` is an older travel photograph and is not the TV show asset; the new `friends-sticker.webp` uses the actual Friends cutout. The user supplied [X / Twitter](https://x.com/mehtaisha16), now included in Contact.
+
+
+## Isha’s Orbit — October 12, 2026
+
+The user explicitly supplied Japanese stationery, pistachio iced lattes, white New Balance 9060 sneakers, Gossip Girl, and Sex and the City as orbit objects, alongside journals, iced lattes, Friends, and BMW × Vision Pro. Existing notebook, coffee, sneaker, Friends, and Bloom thumbnails remain local. The headset, stationery, pistachio cup, and TV stickers are original code-native SVG illustrations in `orbit.mjs`, emitted as hashed local image assets by the build; they are illustrative stickers rather than photos or new project artifacts. Bloom and BMW open the existing source-backed case studies. Brief interest captions are editorial copy, not additions to the resume or project outcomes.

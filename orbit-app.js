@@ -11,8 +11,8 @@ export function initOrbit() {
  function layout(remix=false){
   if(!scene.clientWidth||!scene.clientHeight)return;
   const next={width:scene.clientWidth,height:scene.clientHeight};
-  const cols=next.width<450?3:next.width<750?4:5,rows=Math.ceil(bodies.length/cols);
-  const w=Math.min(136,(next.width-36)/cols-8),h=w<95?100:118;
+  const cols=next.width<450?3:next.width<560?4:5,rows=Math.ceil(bodies.length/cols);
+  const w=Math.min(136,(next.width-36)/cols-8),h=Math.min(w<95?100:118,(next.height-32)/rows-8);
   const order=remix?[...bodies].sort(()=>Math.random()-0.5):bodies;
   order.forEach((b,i)=>{
    b.w=w;b.h=h;b.el.style.width=`${w}px`;b.el.style.height=`${h}px`;
