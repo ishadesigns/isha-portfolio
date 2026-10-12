@@ -388,6 +388,7 @@ let guideTopic = "",
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const canSpeak = !!window.speechSynthesis && !!window.SpeechSynthesisUtterance;
+if (canSpeak) window.speechSynthesis.getVoices(); // Request the device voice list early.
 const status = (text) => {
   $("[data-guide-status]").textContent = text;
 };
@@ -610,6 +611,7 @@ function speakAnswer(button) {
       $(".guide-answer-copy", message).textContent,
   );
   utterance.voice = preferredVoice(speechSynthesis.getVoices());
+  button.dataset.voice = utterance.voice?.name || "Default browser voice";
   utterance.lang = utterance.voice?.lang || "en-US";
   utterance.rate = 1;
   utterance.pitch = 1;
@@ -622,10 +624,10 @@ function speakAnswer(button) {
     button.setAttribute("aria-pressed", "true");
   };
   utterance.onend = () => {
-    if (speakingButton === button) stopSpeaking();
+    if (currentUtterance === utterance) stopSpeaking();
   };
   utterance.onerror = () => {
-    if (speakingButton === button) {
+    if (currentUtterance === utterance) {
       stopSpeaking();
       voiceNotice(
         "This browser could not read the answer aloud. The text remains available.",

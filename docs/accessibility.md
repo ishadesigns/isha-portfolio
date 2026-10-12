@@ -53,3 +53,9 @@ Manually exercised résumé section jumps, project links, artifact selection, ne
 ## Spatial space, game, and guide follow-up
 
 See `world-features.md` and `world-audit-results.json` for the October 12 room/scroll/status/guide/game release. The final automated report records 13 tested states with no violations, including all main views, all three cases, guide answers, mobile Play, and enlarged-text guide reflow. Room exploration, game completion/reset, dragging, and keyboard/motion controls were also exercised manually. Production checks now total 523, with 25 guide behavior checks and 50 source-entry validations. Full assistive-technology and audio-hardware checks remain as described above.
+
+## Siri / Awards refinement — October 12, 2026
+
+The status availability callout is non-interactive; its text and colored dot both convey availability. Clock labeling uses a named group around the native time element. The new Awards window preserves one active primary heading and direct, labeled external links. Seven dock destinations reflow to two rows on phones. Siri’s leading-question controls and icon-only composer retain accessible names and 44-pixel mic/send targets. Removed companion placement and pause controls follow the user’s explicit design request; avatar arrow-key movement, room-level motion pause, reduced-motion preferences, Escape, and focus restoration remain.
+
+The About portrait is aligned. Personal interests use native details/summary disclosures for keyboard and touch; hover is a visual enhancement. `refinement-audit-results.json` records scans without automated violations in the tested desktop, mobile, tablet, and text-spacing states. Manual assistive-technology and physical-device verification remains necessary; browser speech did not successfully start in the test environment.

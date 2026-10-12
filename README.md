@@ -23,15 +23,16 @@ npm run check
 
 | File | Controls |
 | --- | --- |
-| `world.mjs` | Room status, game markup, Lumi UI, and public guide knowledge |
+| `world.mjs` | Room status, game markup, Siri UI, and public guide knowledge |
 | `world-app.js` | Room camera controls, scrolling effects, game, guide movement, and browser voice |
-| `world.css` | Spatial status, game cards, Lumi, and room styling |
+| `world.css` | Spatial status, game cards, Siri, and room styling |
+| `voice-support.js` | Browser speech lifecycle, failure messages, and voice selection |
 | `guide-engine.js` | Deterministic answers and follow-up routing; no API calls |
-| `resume.mjs` | Source-backed résumé content and résumé window |
+| `resume.mjs` | Source-backed resume content and resume window |
 | `artifact-studio.mjs` | Project galleries and focused image viewer markup |
-| `experience-app.js` | Artifact selection, focused viewing, zoom, and résumé section navigation |
-| `experience.css` | Résumé, project studio, inspector, and dock appearance |
-| `content.mjs` | Project copy, metrics, contact links, résumé, FAQ |
+| `experience-app.js` | Artifact selection, focused viewing, zoom, and resume section navigation |
+| `experience.css` | Resume, project studio, inspector, and dock appearance |
+| `content.mjs` | Project copy, metrics, contact links, resume, FAQ |
 | `config.mjs` | Published site URL for canonical links and social metadata |
 | `spatial.mjs` | Immersive room, windows, dock, project cards, and page metadata |
 | `site.mjs` | Shared icons and full case study content templates |
@@ -53,21 +54,21 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 ## What works
 
-- A persistent room with floating glass windows for Welcome, Work, About, Playground, Contact, Résumé, and case studies.
+- A persistent room with floating glass windows for Welcome, Work, About, Awards, Playground, Contact, Resume, and case studies.
 - Three complete, directly linkable case studies. Direct URLs open the same immersive workspace.
 - Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, single-click Arrange controls, expansion, closing, and recentering.
 - Navigation through the dock; content scrolls inside the active window. Browser Back/Forward and hash deep links work.
-- In-site résumé reader with career disclosures, section navigation, skills, education, awards, and an optional PDF source link.
+- In-site resume reader with career disclosures, section navigation, skills, education, awards, and an optional PDF source link.
 - Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
 - A spatial status bar with local time and browser-reported battery, or a clearly labeled Demo indicator.
-- Lumi, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and motion controls.
+- Siri, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and room-wide motion controls.
 - Spatial Pairs, an untimed memory game with keyboard/touch play, score, matching feedback, and restart.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.
 - Project filters, animated window transitions, and pointer-driven environmental depth.
 - Interactive glass material study with three palettes.
-- Native FAQ disclosure controls, résumé and social links, and email contact.
+- Native FAQ disclosure controls, resume and social links, and email contact.
 - Device reduced-motion support, keyboard focus indicators, skip navigation, meaningful image alternatives, and readable content without JavaScript.
 - No tracking, accounts, paid APIs, remote project assets, framework runtime, or required backend.
 
@@ -104,10 +105,10 @@ npm run preview
 
 Visit `http://127.0.0.1:4173/?audit=1`. Reports appear as JSON in `#audit-results`. Optional local stress modes: `contrast=dark`, `contrast=light`, `text=200`, and `spacing=1`. Navigate through all windows and projects. Rebuild with `npm run build` afterward; `npm run check` intentionally rejects an instrumented build. The deployed site includes neither axe nor the audit runner.
 
-## Browser voice and Lumi
+## Browser voice and Siri
 
-No AI API key or backend is used. Answers are retrieved from the portfolio and résumé data in `world.mjs`; `npm test` checks routing, follow-ups, unknown/private questions, and source-entry validity. GitHub Actions runs these checks before deployment.
+No AI API key or backend is used. Answers are retrieved from the portfolio and resume data in `world.mjs`; `npm test` checks routing, follow-ups, unknown/private questions, and source-entry validity. GitHub Actions runs these checks before deployment.
 
-Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring an English local device voice. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; only the ambient-motion preference is stored locally.
+Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring enhanced, premium, natural, or neural English voices when available, with a standard device voice as fallback. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; only the ambient-motion preference is stored locally.
 
 See `docs/world-features.md` for verification and remaining hardware/assistive-technology checks.

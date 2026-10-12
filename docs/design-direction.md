@@ -123,3 +123,8 @@ The site pans a bounded oversized image plane. It is an illustrative room with p
 ## Spatial space, guide, and Play
 
 The user requested a larger field of view with room panning, more expressive native scrolling, spatial status details, a cute movable guide with optional voice, and an actual game in Play. The user explicitly chose a browser-only guide with built-in answers rather than an API-backed AI assistant. Preserve that choice: no API keys, hidden paid calls, or backend dependency. Keep explicit controls and keyboard alternatives for panning and character placement, a way to pause ambient motion, and fallback text interaction when browser voice is unavailable. Play is now an untimed attention/memory game, with the original field notes and material sketch retained under a disclosure.
+
+
+## October 12 refinement
+
+Use one status capsule with a distinct, non-clickable availability callout. Rename the browser-only portfolio companion Siri; sharpen its shell, eyes, and orbital ring. Keep idle movement, dragging, and keyboard movement, while removing its placement and pause controls. Preserve room-level motion pause and reduced-motion accessibility. Replace chat chips with leading questions and right arrows; use accessible icon-only mic/send controls. Prefer available enhanced/natural device voices. Separate Bloom awards into their own dock app using LinkedIn Featured copy, thumbnails, and official links. Use Resume without accents, a saturated teal Home icon, an aligned portrait, and personal-interest folders in About. Add the supplied X profile in Contact.

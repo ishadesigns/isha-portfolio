@@ -6,6 +6,10 @@ const answer = (question, previous = "") =>
   guideAnswer(question, knowledge, previous);
 const checks = [
   ["What can you do?", "", "siri", /built-in answers/],
+  ["Who is Siri?", "", "siri", /browser-only/],
+  ["Tell me about her interests", "bmw", "about", /Friends/],
+  ["What awards has she won?", "", "awards", /Silver/],
+  ["Tell me about Bloom’s Indigo award", "bloom", "awards", /2025/],
   ["How do I play the game?", "", "play", /six matching/],
   ["What did Isha do at BMW?", "", "bmw-role", /product|designer/i],
   ["What research did she do?", "bmw", "bmw-research", /27 interviews/],
@@ -47,6 +51,7 @@ assert.match(compare.answer, /sleep/);
 assert.equal(compare.link, "work");
 const claimed = answer("What are the Chemistry outcomes?");
 assert.match(claimed.answer, /reported|methodology/i);
+assert.equal(answer("What awards has she won?").link, "awards");
 for (const entry of knowledge.entries) {
   assert(entry.answer.length > 0);
   assert(!/\bkumari\b/i.test(entry.answer));

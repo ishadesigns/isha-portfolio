@@ -1,4 +1,4 @@
-import { projects, profile, faq, awards, interests } from "./content.mjs";
+import { projects, profile, faq } from "./content.mjs";
 import { resume } from "./resume.mjs";
 import { icon } from "./site.mjs";
 
@@ -254,9 +254,11 @@ export function guideKnowledge() {
         "collaboration",
         "connect",
         "recruiter",
+        "twitter",
+        "social",
       ],
       title: "Get in touch",
-      answer: `The portfolio says Isha is open to product design and UX opportunities. Email her at ${profile.email}, or use the LinkedIn link in Contact. For details that aren’t published here, Isha is the right person to ask.`,
+      answer: `The portfolio says Isha is open to product design and UX opportunities. Email her at ${profile.email}, or find LinkedIn, Instagram, GitHub, and X / Twitter in Contact. For details that aren’t published here, Isha is the right person to ask.`,
       link: "contact",
       label: "Open contact",
     },
@@ -472,7 +474,7 @@ export function guideKnowledge() {
 const batterySvg =
   '<svg viewBox="0 0 28 16" class="hud-battery-icon" aria-hidden="true"><rect x="1" y="2" width="22" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 6v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect data-battery-fill x="3" y="4" width="17" height="8" rx="1.5" fill="currentColor"/></svg>';
 export function worldStatus() {
-  return `<div class="world-status"><div class="world-hud"><span class="space-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</span><span class="hud-spatial">${icon("layers")}<span>Spatial space</span></span><time data-world-clock aria-label="Your local time">Local time</time><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span><button type="button" data-look-toggle aria-expanded="false" aria-controls="room-controls">${icon("compass")}<span>Look around</span></button><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Siri</span></button></div><div class="room-controls" id="room-controls" hidden><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button><button type="button" data-ambient-motion aria-pressed="false">${icon("pause")}<span>Pause ambient motion</span></button></div><p class="room-help">Clear view, then drag the room or use arrow keys. Direction buttons work with touch too.</p></div></div>`;
+  return `<div class="world-status"><div class="world-hud"><span class="space-availability"><span class="status-dot" aria-hidden="true"></span> Open to opportunities</span><span class="hud-spatial">${icon("layers")}<span>Spatial space</span></span><span role="group" aria-label="Your local time"><time data-world-clock>Local time</time></span><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span><button type="button" data-look-toggle aria-expanded="false" aria-controls="room-controls">${icon("compass")}<span>Look around</span></button><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Siri</span></button></div><div class="room-controls" id="room-controls" hidden><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button><button type="button" data-ambient-motion aria-pressed="false">${icon("pause")}<span>Pause ambient motion</span></button></div><p class="room-help">Clear view, then drag the room or use arrow keys. Direction buttons work with touch too.</p></div></div>`;
 }
 export function roomExplorer() {
   return `<section class="room-explorer" hidden role="region" aria-label="Explore the room" tabindex="0" aria-describedby="room-explorer-help"><div class="room-explorer-note"><p class="space-eyebrow">A LITTLE MORE ROOM</p><h2>Look beyond the window.</h2><p id="room-explorer-help">Drag to look around, or use the arrow keys and direction buttons. Your portfolio windows are one click away.</p><button type="button" data-room-return>Return to portfolio ${icon("arrow")}</button></div></section><p class="sr-only" role="status" aria-live="polite" data-room-status></p>`;

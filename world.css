@@ -648,16 +648,14 @@
   width: 18px;
   height: 18px;
 }
-.guide-tools,
-.guide-placement {
+.guide-tools {
   display: flex;
   flex-wrap: wrap;
   gap: 5px;
   margin-bottom: 12px;
   flex: none;
 }
-.guide-tools button,
-.guide-placement button {
+.guide-tools button {
   min-height: 34px;
   min-width: 44px;
   padding: 7px 10px;
@@ -665,12 +663,6 @@
   background: #e2ebda;
   color: #355541;
   font-size: 0.75rem;
-}
-.guide-placement button {
-  min-height: 44px;
-}
-.guide-placement[hidden] {
-  display: none;
 }
 .guide-conversation {
   min-height: 130px;
@@ -909,9 +901,6 @@
   .guide-panel {
     right: 14px;
     width: calc(100vw - 28px);
-  }
-  .guide-tools [data-guide-place-toggle] {
-    display: none;
   }
   .room-controls {
     right: 14px;
@@ -1568,3 +1557,26 @@ html:not(.world-ready) .window-reading-progress {
 @media (forced-colors: active) {
   .award-card, .interest-folder, .interest-folder::before { background: Canvas; border-color: CanvasText; color: CanvasText; }
 }
+
+@media (max-width: 540px) {
+  .space-status { flex-wrap: wrap; align-items: center; gap: 10px; }
+  .space-identity { flex: none; gap: 10px; padding: 9px 12px; }
+  .space-identity > span:last-child { display: inline; padding-left: 10px; font-size: 0.75rem; }
+  .world-status { flex: 0 0 100%; width: 100%; max-width: 100%; }
+  .world-hud { width: 100%; max-width: none; justify-content: space-between; gap: 6px 4px; }
+  .world-hud > [role="group"], .hud-battery { flex: none; white-space: nowrap; }
+  .world-hud .space-availability { flex: 0 0 100%; width: 100%; white-space: nowrap; }
+  .world-hud button { flex: none; width: auto; padding: 7px 9px; white-space: nowrap; }
+  .spatial-dock .space-recenter { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+}
+@media (max-width: 540px) {
+  .space-identity { flex-direction: row; }
+  .world-hud .space-availability { max-width: none; }
+}
+.siri-body .siri-visor i { animation: siri-blink 6.8s ease-in-out infinite; transform-origin: center; }
+@keyframes siri-blink {
+  0%, 44%, 48%, 100% { transform: scaleY(1); }
+  46% { transform: scaleY(0.16); }
+}
+.world-quiet .siri-visor i { animation: none; }
+@media (prefers-reduced-motion: reduce) { .siri-visor i { animation: none !important; } }

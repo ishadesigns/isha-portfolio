@@ -49,3 +49,15 @@ The original homepage links to two Drive PDFs. The rebuilt résumé uses the hom
 The About-page PDF (`1G4TvDpUMEDjZkQifp59djIf087OMFKzG`) is a different version: it describes Tindoori as the current role and contains different metrics and a 200 CLUB entry. We do not merge the two versions. `resume.mjs` retains the homepage version’s dates, education, awards, skill groups, and reported impact. Its introduction is a concise editorial summary, not a verbatim quotation. The displayed name is Isha and contact uses the already-public email/social links. The source PDF remains optional; the original remote file is not changed. Résumé metrics are attributed to that source, not independently verified.
 
 Project studios inspect the user’s existing visual artifacts. Switching images, opening focused view, browsing, and zoom are real interactions; screenshots are presented as design artifacts and are not represented as running BMW/Myntra/Bloom apps. No new project outcomes or 3D product models were invented.
+
+
+## Featured awards and personal interests — October 12, 2026
+
+The two Featured links on [Isha’s LinkedIn profile](https://www.linkedin.com/in/ishakumari7/) were inspected in the browser. Both use the identical Bloom description preserved verbatim in `bloomAwardDescription` in `content.mjs`. The two matching product thumbnails were saved as `bloom-featured-ida.webp` and `bloom-featured-indigo.webp` so the deployed page does not rely on expiring LinkedIn media URLs.
+
+- [IDA Design Award 2024](https://www.idesignawards.com/social/zoom.php?eid=9-59317-24): the official entry confirms Bloom’s Honorable Mention.
+- [Indigo Design Award 2025](https://www.indigoaward.com/winners/9906): this is the exact Featured destination, confirming three Silver and two Bronze awards for Bloom. It lists Isha and Helena Chien as lead designers.
+
+The Awards app links directly to those entries and also offers a separate route into the Bloom case study. It does not describe two different projects.
+
+[The original About page](https://www.isha-kumari.com/about-me) was inspected again. Its New Balance sneaker, notebook, coffee, and Friends cast cutouts are represented in the About interest folders; Friends was also explicitly identified by the user. Short folder captions are editorial copy based on those interests, while “I explore AI tools, but I think best with pen and paper” is quoted from the original page. `friends.webp` is an older travel photograph and is not the TV show asset; the new `friends-sticker.webp` uses the actual Friends cutout. The user supplied [X / Twitter](https://x.com/mehtaisha16), now included in Contact.

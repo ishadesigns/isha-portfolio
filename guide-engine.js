@@ -36,6 +36,8 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
   )
     return knowledge.entries.find((e) => e.id === "siri");
   if (knowledge.privateTopics.some((word) => contains(q, word))) return unknown;
+  if (/\b(awards?|indigo|ida|recognition)\b/.test(q))
+    return knowledge.entries.find((e) => e.id === "awards");
   const explicit = knowledge.topics.filter((topic) => {
     const entry = knowledge.entries.find((e) => e.id === topic);
     return entry.tags.some((tag) => contains(q, tag));

@@ -1,6 +1,6 @@
 // Browser-native speech helpers. No credentials, audio recording, or AI service.
 export function preferredVoice(voices) {
-  const english = voices.filter((voice) => /^en(?:-|_)/i.test(voice.lang));
+  const english = voices.filter((voice) => /^en(?:-|_|$)/i.test(voice.lang));
   const score = (voice) => {
     const name = voice.name.toLowerCase();
     return (
@@ -40,11 +40,13 @@ export function createDictationController({ Recognition, onState, onTranscript, 
     const session = active;
     if (!session) return;
     reset(session);
-    session.recognition.abort();
+    try { session.recognition.abort(); } catch { /* Already ended. */ }
   }
   function toggle(seed = "") {
     if (active) {
-      if (active.started) active.recognition.stop();
+      if (active.started) {
+        try { active.recognition.stop(); } catch { abort(); }
+      }
       else abort();
       return;
     }
@@ -52,7 +54,12 @@ export function createDictationController({ Recognition, onState, onTranscript, 
       onNotice("Voice typing needs a supported browser and a secure connection. You can use your keyboard’s dictation or type a question.");
       return;
     }
-    const session = { recognition: new Recognition(), started: false, result: false, error: false, timeout: null };
+    let instance;
+    try { instance = new Recognition(); } catch {
+      onNotice("This browser couldn’t initialize voice input. Use your keyboard’s dictation or type a question.");
+      return;
+    }
+    const session = { recognition: instance, started: false, result: false, error: false, timeout: null };
     const recognition = session.recognition;
     active = session;
     recognition.lang = "en-US";
@@ -81,6 +88,7 @@ export function createDictationController({ Recognition, onState, onTranscript, 
       onNotice(recognitionError(event.error));
       // Some engines never send an end event after an error.
       reset(session);
+      try { recognition.abort(); } catch { /* Already ended. */ }
     };
     recognition.onend = () => {
       if (active !== session) return;

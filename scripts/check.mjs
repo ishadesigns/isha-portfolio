@@ -33,6 +33,11 @@ for (const file of htmlFiles) {
   checks++;
   assert.match(html, /data-window="resume"/, `${file}: in-site résumé window`);
   checks++;
+  assert.match(html, /data-window="awards"/, `${file}: separate Awards window`);
+  assert.match(html, /aria-label="Send question"/, `${file}: named icon send control`);
+  assert.match(html, /aria-label="Start voice input"/, `${file}: named microphone control`);
+  assert(!/Lumi|résumé|Résumé|data-guide-place|data-guide-motion/.test(html), `${file}: requested companion and Resume presentation`);
+  checks += 4;
   assert.match(html, /world-app.js/, `${file}: spatial world behavior`);
   checks++;
   assert.match(
