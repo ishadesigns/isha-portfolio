@@ -15,6 +15,10 @@
 .space-status {
   align-items: flex-start;
 }
+.space-identity > span:first-child {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 .world-status {
   pointer-events: auto;
   display: flex;
