@@ -3136,4 +3136,6 @@ p {
 }
 
 /* The visitor’s motion preference also stops smooth anchor scrolling. */
-html.reduce-motion { scroll-behavior: auto !important; }
+html.reduce-motion {
+  scroll-behavior: auto !important;
+}
