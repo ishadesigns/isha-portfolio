@@ -182,23 +182,6 @@ p {
   letter-spacing: 0.025em;
   margin-top: 3px;
 }
-.monogram {
-  position: relative;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 36px;
-  letter-spacing: -5px;
-  line-height: 1;
-  padding-right: 14px;
-}
-.monogram > span {
-  position: absolute;
-  font-size: 15px;
-  top: -4px;
-  right: 0;
-  letter-spacing: 0;
-  color: var(--accent);
-}
 .top-nav {
   position: absolute;
   left: 50%;
@@ -1949,9 +1932,6 @@ p {
   }
   .wordmark-sub {
     font-size: 9px;
-  }
-  .monogram {
-    font-size: 32px;
   }
   .top-nav {
     position: relative;
