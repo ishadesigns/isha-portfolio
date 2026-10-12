@@ -2,14 +2,56 @@ import { projects, profile, faq } from "./content.mjs";
 import { resume } from "./resume.mjs";
 import { icon } from "./site.mjs";
 
+const thirdPerson = (text) =>
+  text
+    .replace(/\bI connect\b/g, "She connects")
+    .replace(/\bI\b/g, "Isha")
+    .replace(/\bWe\b/g, "The team")
+    .replace(/\bwe\b/g, "the team");
 export function guideKnowledge() {
   const entries = [
+    {
+      id: "lumi",
+      topic: "lumi",
+      tags: ["lumi", "bot", "guide", "dictate", "read aloud", "voice input"],
+      title: "Your little portfolio companion",
+      answer:
+        "I’m Lumi, a browser-only guide with built-in answers from Isha’s portfolio and résumé. Ask about her projects, research, experience, skills, or getting in touch. I can link you to the relevant window. Dictate fills the question field for you to review, and Read aloud uses an available browser voice. I’m not a generative AI service.",
+      link: "work",
+      label: "Explore the portfolio",
+    },
+    {
+      id: "play",
+      topic: "play",
+      tags: ["game", "play", "pairs", "memory", "cards"],
+      title: "A little room to play",
+      answer:
+        "Spatial Pairs is an untimed memory game: uncover twelve cards and find six matching shapes. It is a playful experiment in attention and noticing patterns. Mismatched cards stay visible until you choose another card, so there is no rush. Tap, press Enter, or use arrow keys to play.",
+      link: "playground",
+      label: "Play Spatial Pairs",
+    },
+    {
+      id: "room",
+      topic: "room",
+      tags: [
+        "pan",
+        "room",
+        "look around",
+        "background",
+        "environment",
+        "battery",
+      ],
+      title: "Look beyond the window",
+      answer:
+        "Use Look around in the status bar, then Clear view to explore the wider room. Drag, use arrow keys, or tap the direction buttons. The dock opens your portfolio windows again. The status bar shows your local time; battery is a device reading when the browser supports it, and clearly labeled Demo otherwise.",
+      link: "home",
+      label: "Return to the space",
+    },
     {
       id: "intro",
       topic: "intro",
       tags: [
-        "who",
-        "isha",
+        "who is isha",
         "intro",
         "introduce",
         "overview",
@@ -18,7 +60,7 @@ export function guideKnowledge() {
         "hi",
       ],
       title: "Meet Isha",
-      answer: resume.summary,
+      answer: thirdPerson(resume.summary),
       link: "about",
       label: "Meet Isha",
     },
@@ -65,7 +107,7 @@ export function guideKnowledge() {
       topic: "career",
       tags: ["resume", "résumé", "cv", "credentials"],
       title: "Résumé",
-      answer: `${resume.summary}\n\nHer experience spans Geny Labs, Tindoori Labs, BMW Group, Walmart–Myntra, and Reliance. You can read roles, impact, education, and skills inside the résumé window.`,
+      answer: `${thirdPerson(resume.summary)}\n\nHer experience spans Geny Labs, Tindoori Labs, BMW Group, Walmart–Myntra, and Reliance. You can read roles, impact, education, and skills inside the résumé window.`,
       link: "resume",
       label: "Open résumé",
     },
@@ -252,7 +294,7 @@ export function guideKnowledge() {
       ],
       kind: "role",
       title: `Isha’s role in ${p.name}`,
-      answer: `${p.role}. ${p.timeline}. Team: ${p.team}.\n\n${p.roleText}`,
+      answer: `${p.role}. ${p.timeline}. Team: ${p.team}.\n\n${thirdPerson(p.roleText)}`,
       project: p.slug,
       label: "Read the full case study",
     });
@@ -294,8 +336,8 @@ export function guideKnowledge() {
       kind: "research",
       title: `Research behind ${p.name}`,
       answer: research.length
-        ? research.map((s) => `${s.title}\n${s.text}`).join("\n\n")
-        : p.roleText,
+        ? research.map((s) => `${s.title}\n${thirdPerson(s.text)}`).join("\n\n")
+        : thirdPerson(p.roleText),
       project: p.slug,
       label: "Explore the process",
     });
@@ -357,7 +399,7 @@ export function guideKnowledge() {
       "visa",
       "citizenship",
       "address",
-      "phone",
+      "phone number",
       "relationship",
       "religion",
       "medical",
@@ -377,12 +419,12 @@ export function roomExplorer() {
   return `<section class="room-explorer" hidden role="region" aria-label="Explore the room" tabindex="0" aria-describedby="room-explorer-help"><div class="room-explorer-note"><p class="space-eyebrow">A LITTLE MORE ROOM</p><h2>Look beyond the window.</h2><p id="room-explorer-help">Drag to look around, or use the arrow keys and direction buttons. Your portfolio windows are one click away.</p><button type="button" data-room-return>Return to portfolio ${icon("arrow")}</button></div></section><p class="sr-only" role="status" aria-live="polite" data-room-status></p>`;
 }
 export function spatialGame() {
-  return `<section class="spatial-game" aria-label="Spatial Pairs game"><div class="game-intro"><div><p class="space-eyebrow">A SMALL EXPERIMENT IN ATTENTION</p><h2>Spatial Pairs</h2><p>Six pairs. A little intuition.<br>Find the matching shapes hiding in the glass.</p></div><div class="game-orbit-mark" aria-hidden="true">${icon("layers")}</div></div><div class="game-toolbar"><div class="game-stats"><span><strong data-game-pairs>0 / 6</strong> pairs found</span><span><strong data-game-moves>0</strong> moves</span></div><button type="button" data-game-reset>New game ${icon("refresh")}</button></div><div class="game-board" role="group" aria-label="Twelve memory cards" aria-describedby="game-instructions">${Array.from({ length: 12 }, (_, i) => `<button type="button" class="game-card" disabled aria-label="Card ${i + 1}, face down"><span aria-hidden="true">${icon("spark")}</span></button>`).join("")}</div><p class="game-feedback" data-game-feedback role="status" aria-live="polite" aria-atomic="true">Choose two cards to begin.</p><p class="game-instructions" id="game-instructions">Tap or press Enter to turn a card. Tab or arrow keys move between cards. There’s no timer—take your time.</p><noscript><p>Enable JavaScript to play Spatial Pairs.</p></noscript></section>`;
+  return `<section class="spatial-game" aria-label="Spatial Pairs game"><div class="game-intro"><div><p class="space-eyebrow">PLAY / A LITTLE FOCUS</p><h2>Spatial Pairs</h2><p>Six pairs. Find your constellation.</p></div><div class="game-orbit-mark" aria-hidden="true">${icon("layers")}</div></div><div class="game-toolbar"><div class="game-stats"><span><strong data-game-pairs>0 / 6</strong> pairs found</span><span><strong data-game-moves>0</strong> moves</span></div><button type="button" data-game-reset>New game ${icon("refresh")}</button></div><div class="game-board" role="group" aria-label="Twelve memory cards" aria-describedby="game-instructions">${Array.from({ length: 12 }, (_, i) => `<button type="button" class="game-card" disabled aria-label="Card ${i + 1}, face down"><span aria-hidden="true">${icon("spark")}</span></button>`).join("")}</div><p class="game-feedback" data-game-feedback role="status" aria-live="polite" aria-atomic="true">Choose two cards to begin.</p><p class="game-instructions" id="game-instructions">Tap or press Enter to turn a card. Tab or arrow keys move between cards. There’s no timer—take your time.</p><noscript><p>Enable JavaScript to play Spatial Pairs.</p></noscript></section>`;
 }
 
 export function guideWidget(base) {
   const knowledge = JSON.stringify(guideKnowledge()).replaceAll("<", "\\u003c");
-  return `<aside class="portfolio-guide" aria-label="Lumi portfolio guide"><button type="button" class="guide-launch" data-guide-open aria-controls="guide-panel" aria-expanded="false" aria-describedby="guide-move-help"><span class="lumi-body" aria-hidden="true"><span class="lumi-ring"></span><span class="lumi-visor"><i></i><i></i></span><span class="lumi-glint"></span></span><span class="guide-launch-label">Ask Lumi</span></button><p class="sr-only" id="guide-move-help">Open with Enter. Drag Lumi to move, or use arrow keys while this button is focused. Place guide offers one-click positions.</p><section class="guide-panel" id="guide-panel" hidden role="dialog" aria-modal="false" aria-labelledby="guide-title"><div class="guide-header"><div class="guide-mini" aria-hidden="true"><span class="lumi-visor"><i></i><i></i></span></div><div><h2 id="guide-title">Lumi</h2><p>YOUR PORTFOLIO COMPANION</p></div><button type="button" data-guide-close aria-label="Close Lumi guide">${icon("close")}</button></div><div class="guide-tools"><button type="button" data-guide-place-toggle aria-expanded="false" aria-controls="guide-placement">Place guide</button><button type="button" data-guide-motion aria-pressed="false">Pause floating</button><button type="button" data-guide-clear>Clear chat</button></div><div class="guide-placement" id="guide-placement" hidden role="group" aria-label="Place Lumi">${[
+  return `<aside class="portfolio-guide" aria-label="Lumi portfolio guide"><button type="button" class="guide-launch" data-guide-open aria-controls="guide-panel" aria-expanded="false" aria-describedby="guide-move-help"><span class="lumi-body" aria-hidden="true"><span class="lumi-ring"></span><span class="lumi-visor"><i></i><i></i></span><span class="lumi-glint"></span></span><span class="guide-launch-label">Ask Lumi</span></button><p class="sr-only" id="guide-move-help">Open with Enter. Drag Lumi to move, or use arrow keys while this button is focused. Place guide offers one-click positions.</p><dialog class="guide-panel" id="guide-panel" hidden role="dialog" aria-modal="true" aria-labelledby="guide-title"><div class="guide-header"><div class="guide-mini" aria-hidden="true"><span class="lumi-visor"><i></i><i></i></span></div><div><h2 id="guide-title">Lumi</h2><p>YOUR PORTFOLIO COMPANION</p></div><button type="button" data-guide-close aria-label="Close Lumi guide">${icon("close")}</button></div><div class="guide-tools"><button type="button" data-guide-place-toggle aria-expanded="false" aria-controls="guide-placement">Place guide</button><button type="button" data-guide-motion aria-pressed="false">Pause floating</button><button type="button" data-guide-clear>Clear chat</button></div><div class="guide-placement" id="guide-placement" hidden role="group" aria-label="Place Lumi">${[
     ["top-left", "Top left"],
     ["top-right", "Top right"],
     ["bottom-left", "Bottom left"],
@@ -394,5 +436,5 @@ export function guideWidget(base) {
     )
     .join(
       "",
-    )}</div><div class="guide-conversation" role="log" aria-label="Conversation with Lumi" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="guide-message guide-answer"><span class="guide-speaker">LUMI</span><p>Hi, I’m Lumi. Ask me about Isha’s work, research, experience, or the human behind it.</p><p class="guide-boundary">I use built-in answers from this portfolio and résumé.</p></div></div><div class="guide-suggestions" role="group" aria-label="Suggested questions"><button type="button" data-guide-question="What did Isha do at BMW?">BMW & Vision Pro</button><button type="button" data-guide-question="What is Isha working on now?">Current role</button><button type="button" data-guide-question="Tell me about Isha">Meet Isha</button></div><form class="guide-form"><label for="guide-question">Your question</label><textarea id="guide-question" name="question" rows="2" maxlength="500" placeholder="What’s her research approach?" required></textarea><div class="guide-form-actions"><button type="button" data-guide-mic aria-pressed="false">${icon("mic")}<span>Dictate</span></button><button type="submit">Send ${icon("arrow")}</button></div></form><p class="guide-voice-note" data-guide-voice-note>Voice input uses your browser’s speech service and microphone permission. Review the text before sending.</p><p class="sr-only" data-guide-status role="status" aria-live="polite" aria-atomic="true"></p></section><script type="application/json" id="guide-knowledge">${knowledge}</script></aside>`;
+    )}</div><div class="guide-conversation" role="log" aria-label="Conversation with Lumi" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="guide-message guide-answer"><span class="guide-speaker">LUMI</span><p>Hi, I’m Lumi. Ask me about Isha’s work, research, experience, or the human behind it.</p><p class="guide-boundary">I use built-in answers from this portfolio and résumé.</p></div></div><div class="guide-suggestions" role="group" aria-label="Suggested questions"><button type="button" data-guide-question="What did Isha do at BMW?">BMW & Vision Pro</button><button type="button" data-guide-question="What is Isha working on now?">Current role</button><button type="button" data-guide-question="Tell me about Isha">Meet Isha</button></div><form class="guide-form"><label for="guide-question">Your question</label><textarea id="guide-question" name="question" rows="2" maxlength="500" placeholder="What’s her research approach?" required></textarea><div class="guide-form-actions"><button type="button" data-guide-mic aria-pressed="false">${icon("mic")}<span>Dictate</span></button><button type="submit">Send ${icon("arrow")}</button></div></form><p class="guide-voice-note" data-guide-voice-note>Voice input uses your browser’s speech service and microphone permission. Review the text before sending.</p><p class="sr-only" data-guide-status role="status" aria-live="polite" aria-atomic="true"></p></dialog><script type="application/json" id="guide-knowledge">${knowledge}</script></aside>`;
 }

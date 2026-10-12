@@ -275,8 +275,8 @@ function newGame() {
     const front = document.createElement("span");
     front.className = "game-card-front";
     front.innerHTML =
-      '<span class="game-card-orbit">✧</span><span class="game-card-number">' +
-      String(i + 1).padStart(2, "0") +
+      '<span class="game-card-orbit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 2.7 6.3L21 12l-6.3 2.7L12 21l-2.7-6.3L3 12l6.3-2.7z" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></span><span class="game-card-number">' +
+      String(i + 1) +
       "</span>";
     const back = document.createElement("span");
     back.className = "game-card-back";
@@ -383,7 +383,8 @@ let guideTopic = "",
   recognition = null,
   dictating = false,
   speakingButton = null,
-  guidePaused = false;
+  guidePaused = false,
+  speechStartTimer;
 const SpeechRecognition =
   window.SpeechRecognition || window.webkitSpeechRecognition;
 const canSpeak = !!window.speechSynthesis && !!window.SpeechSynthesisUtterance;
@@ -400,10 +401,12 @@ function stopSpeaking() {
   speakingButton?.setAttribute("aria-pressed", "false");
   if (speakingButton) speakingButton.textContent = "Read aloud";
   speakingButton = null;
+  clearTimeout(speechStartTimer);
   root.classList.remove("lumi-speaking");
 }
 function closeGuide(restore = true) {
   if (guide.hidden) return;
+  guide.close();
   guide.hidden = true;
   $$("[data-guide-open]").forEach((b) =>
     b.setAttribute("aria-expanded", "false"),
@@ -420,6 +423,7 @@ function openGuide() {
   if (roomActive) setRoomView(false);
   roomMenu(false);
   guide.hidden = false;
+  guide.showModal();
   $$("[data-guide-open]").forEach((b) =>
     b.setAttribute("aria-expanded", "true"),
   );
@@ -578,7 +582,7 @@ function dictate() {
     status("Listening. Your words will appear in the question field.");
   };
   recognition.onresult = (event) => {
-    question.value = [...event.results]
+    question.value = Array.from(event.results)
       .map((result) => result[0].transcript)
       .join(" ")
       .slice(0, 500);
@@ -627,6 +631,7 @@ function speakAnswer(button) {
     null;
   utterance.rate = 0.98;
   utterance.onstart = () => {
+    clearTimeout(speechStartTimer);
     root.classList.add("lumi-speaking");
     button.textContent = "Stop reading";
     button.setAttribute("aria-pressed", "true");
@@ -642,7 +647,17 @@ function speakAnswer(button) {
       );
     }
   };
+  button.textContent = "Stop reading";
+  button.setAttribute("aria-pressed", "true");
   speechSynthesis.speak(utterance);
+  speechStartTimer = setTimeout(() => {
+    if (speakingButton === button && !speechSynthesis.speaking) {
+      stopSpeaking();
+      status(
+        "Read aloud needs an available browser voice. You can still read the answer here.",
+      );
+    }
+  }, 4000);
 }
 document.addEventListener("visibilitychange", () => {
   if (document.hidden) {
@@ -743,7 +758,14 @@ document.addEventListener("click", (event) => {
       );
     }
     roomMenu(false);
-    if (target.closest(".guide-panel")) closeGuide(false);
+    if (target.closest(".guide-panel")) {
+      closeGuide(false);
+      requestAnimationFrame(() =>
+        $(".spatial-panel:not([hidden]) .spatial-scroll")?.focus({
+          preventScroll: true,
+        }),
+      );
+    }
   }
 });
 document.addEventListener("keydown", (event) => {
@@ -759,3 +781,15 @@ document.addEventListener("keydown", (event) => {
     setRoomView(false);
   }
 });
+
+new MutationObserver(() => {
+  if (roomActive) setRoomView(false, false);
+  if (!guide.hidden) {
+    closeGuide(false);
+    requestAnimationFrame(() =>
+      $(".spatial-panel:not([hidden]) .spatial-scroll")?.focus({
+        preventScroll: true,
+      }),
+    );
+  }
+}).observe(root, { attributes: true, attributeFilter: ["data-view"] });

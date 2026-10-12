@@ -28,14 +28,27 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
       link: "work",
       label: "Explore her work",
     };
+  if (
+    /\b(lumi|bot|chatbot|who are you|what can you do|are you ai|dictate|read aloud|voice input)\b/.test(
+      q,
+    )
+  )
+    return knowledge.entries.find((e) => e.id === "lumi");
   if (knowledge.privateTopics.some((word) => contains(q, word))) return unknown;
   const explicit = knowledge.topics.filter((topic) => {
     const entry = knowledge.entries.find((e) => e.id === topic);
     return entry.tags.some((tag) => contains(q, tag));
   });
-  const isCurrent = /\bgeny\b/.test(q) || (/\b(now|current|currently|latest)\b/.test(q) && /\b(role|work|working|job|experience|isha|she|her)\b/.test(q));
-  if(!explicit.length && isCurrent) return knowledge.entries.find(e=>e.id==='current');
-  const newDomain = /\b(education|study|studied|college|skills|tools|software|resume|cv|career|contact|email|geny|tindoori|reliance|awards|hobbies|travel)\b/.test(q);
+  const isCurrent =
+    /\bgeny\b/.test(q) ||
+    (/\b(now|current|currently|latest)\b/.test(q) &&
+      /\b(role|work|working|job|experience|isha|she|her)\b/.test(q));
+  if (!explicit.length && isCurrent)
+    return knowledge.entries.find((e) => e.id === "current");
+  const newDomain =
+    /\b(education|study|studied|college|skills|tools|software|resume|cv|career|contact|email|geny|tindoori|reliance|awards|hobbies|travel)\b/.test(
+      q,
+    );
   let kind =
     /\b(results?|outcomes?|metrics?|impact|numbers|success|measured)\b/.test(q)
       ? "results"
@@ -50,7 +63,9 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
     return knowledge.entries.find((e) => e.id === "nda");
   let topic =
     explicit[0] ||
-    (kind && !newDomain && knowledge.topics.includes(previousTopic) ? previousTopic : "");
+    (kind && !newDomain && knowledge.topics.includes(previousTopic)
+      ? previousTopic
+      : "");
   if (topic) {
     const selected = explicit.length > 1 ? explicit : [topic];
     const answers = selected.map(
@@ -111,7 +126,11 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
     .split(" ")
     .filter((word) => !stop.has(word) && word.length > 1);
   const ranked = knowledge.entries
-    .filter((e) => (!knowledge.topics.includes(e.topic) || e.kind === "job") && (e.id !== "current" || isCurrent))
+    .filter(
+      (e) =>
+        (!knowledge.topics.includes(e.topic) || e.kind === "job") &&
+        (e.id !== "current" || isCurrent),
+    )
     .map((entry) => ({
       entry,
       score:
