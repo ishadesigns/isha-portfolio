@@ -28,7 +28,7 @@ for (const file of htmlFiles) {
     checks++;
   }
   for (const match of html.matchAll(/(?:src|href)="([^"]+)"/g)) {
-    const target = match[1].split("#")[0];
+    const target = match[1].split(/[?#]/)[0];
     if (!target || /^(https?:|mailto:|data:)/.test(target)) continue;
     assert(
       !target.startsWith("/"),

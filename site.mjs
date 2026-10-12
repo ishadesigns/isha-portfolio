@@ -1,5 +1,12 @@
 import { profile, projects, faq } from "./content.mjs";
 import { siteUrl } from "./config.mjs";
+import { readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+// Invalidate browser caches when either the styles or interaction code changes.
+const assetVersion = createHash("sha256")
+  .update(readFileSync(new URL("./styles.css", import.meta.url)))
+  .update(readFileSync(new URL("./app.js", import.meta.url)))
+  .digest("hex").slice(0, 12);
 export const icons = {
   arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
   up: '<path d="M6 18 18 6M6 6h12v12"/>',
@@ -45,7 +52,7 @@ export function shell(
     imageName = "bmw-cover",
   } = {},
 ) {
-  return `<!doctype html><html lang="en" data-theme="day"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#edf0ee"><meta name="description" content="${description}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:type" content="website"><meta property="og:image" content="${siteUrl}assets/${imageName}.webp"><meta property="og:url" content="${siteUrl}${pagePath}"><meta property="og:site_name" content="Isha Kumari"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${siteUrl}${pagePath}"><title>${title}</title><link rel="icon" href="${base}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${base}styles.css"><script src="${base}app.js" defer></script></head><body class="${home ? "home-page" : "case-page"}"><div class="ambient" aria-hidden="true"><div class="ambient-blue"></div><div class="ambient-peach"></div><div class="ambient-light"></div></div>${header(base, home)}${body}${footer(base)}${dock(base, home)}<div class="toast glass" role="status" aria-live="polite"></div>${home ? '<dialog class="case-dialog" aria-labelledby="dialog-title"><div class="dialog-topbar glass"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="dialog-title">Case study</span><div><a class="dialog-full-page" href="#" aria-label="Open case study as full page">' + icon("up") + '</a><button class="dialog-close" type="button" aria-label="Close case study">' + icon("close") + '</button></div></div><div class="dialog-content"></div></dialog>' : ""}</body></html>`;
+  return `<!doctype html><html lang="en" data-theme="day"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#edf0ee"><meta name="description" content="${description}"><meta property="og:title" content="${title}"><meta property="og:description" content="${description}"><meta property="og:type" content="website"><meta property="og:image" content="${siteUrl}assets/${imageName}.webp"><meta property="og:url" content="${siteUrl}${pagePath}"><meta property="og:site_name" content="Isha Kumari"><meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="${siteUrl}${pagePath}"><title>${title}</title><link rel="icon" href="${base}favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="${base}styles.css?v=${assetVersion}"><script src="${base}app.js?v=${assetVersion}" defer></script></head><body class="${home ? "home-page" : "case-page"}"><div class="ambient" aria-hidden="true"><div class="ambient-blue"></div><div class="ambient-peach"></div><div class="ambient-light"></div></div>${header(base, home)}${body}${footer(base)}${dock(base, home)}<div class="toast glass" role="status" aria-live="polite"></div>${home ? '<dialog class="case-dialog" aria-labelledby="dialog-title"><div class="dialog-topbar glass"><span class="window-dots" aria-hidden="true"><i></i><i></i><i></i></span><span id="dialog-title">Case study</span><div><a class="dialog-full-page" href="#" aria-label="Open case study as full page">' + icon("up") + '</a><button class="dialog-close" type="button" aria-label="Close case study">' + icon("close") + '</button></div></div><div class="dialog-content"></div></dialog>' : ""}</body></html>`;
 }
 export function home() {
   const p = projects;
