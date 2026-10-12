@@ -24,6 +24,7 @@ npm run check
 | File | Controls |
 | --- | --- |
 | `content.mjs` | Project copy, metrics, contact links, résumé, FAQ |
+| `config.mjs` | Published site URL for canonical links and social metadata |
 | `site.mjs` | Page structure, navigation, hero, project cards, case study templates |
 | `styles.css` | Colors, typography, glass materials, animations, all responsive layouts |
 | `app.js` | Theme preferences, filtering, motion, material demo, case study dialogs |

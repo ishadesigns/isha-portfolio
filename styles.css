@@ -3134,3 +3134,6 @@ p {
     object-fit: contain;
   }
 }
+
+/* The visitor’s motion preference also stops smooth anchor scrolling. */
+html.reduce-motion { scroll-behavior: auto !important; }
