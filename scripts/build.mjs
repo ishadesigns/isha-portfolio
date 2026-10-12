@@ -35,10 +35,11 @@ for (const file of [
   "arrival.css",
   "arrival-app.js",
   "sound-app.js",
+  "welcome-media.js",
   "spatial-audio.js",
 ])
   await writeFile(`dist/${file}`, await readFile(file));
-const runtimeModules = ["arrival-app", "sound-app", "spatial-audio", "world-app", "guide-engine", "voice-support", "room-motion", "orbit-app", "orbit-motion"];
+const runtimeModules = ["welcome-media", "arrival-app", "sound-app", "spatial-audio", "world-app", "guide-engine", "voice-support", "room-motion", "orbit-app", "orbit-motion"];
 for (const name of runtimeModules) {
   let code = await readFile(`${name}.js`, "utf8");
   for (const dep of runtimeModules) {

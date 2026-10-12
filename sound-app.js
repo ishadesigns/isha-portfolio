@@ -1,10 +1,12 @@
 import {createSpatialAudio,createWelcomeCue} from './spatial-audio.js';
+import {createWelcomePlayer} from './welcome-media.js';
 export const spatialSound=createSpatialAudio({
   AudioContext:window.AudioContext||window.webkitAudioContext,
   active:()=>!document.hidden,
   onState:state=>{document.documentElement.dataset.spatialAudio=state;}
 });
-export const welcomeCue=createWelcomeCue({sound:spatialSound,active:()=>!document.hidden,onState:state=>{document.documentElement.dataset.welcomeSound=state;}});
+const welcomePlayer=createWelcomePlayer({element:document.querySelector('#welcome-audio'),active:()=>!document.hidden,onState:state=>{document.documentElement.dataset.welcomePlayback=state;},onProgress:time=>{document.documentElement.dataset.welcomeTime=time.toFixed(3);}});
+export const welcomeCue=createWelcomeCue({sound:welcomePlayer,active:()=>!document.hidden,onState:state=>{document.documentElement.dataset.welcomeSound=state;}});
 // Try on every page load, including refreshes and direct links. A blocked cue gets
 // one fresh, gesture-authorized attempt rather than playing an expired request.
 if(document.readyState==='complete')welcomeCue.load();
@@ -21,4 +23,4 @@ document.addEventListener('click',e=>{
   if(e.target.closest('.spatial-panel,.spatial-dock,.space-status,.portfolio-guide,.room-controls,.room-explorer,dialog'))spatialSound.click();
 },true);
 document.addEventListener('visibilitychange',()=>{if(document.hidden){pointer=null;welcomeCue.pause();spatialSound.suspend();}});
-window.addEventListener('pagehide',e=>{if(e.persisted)spatialSound.suspend();else spatialSound.dispose();});
+window.addEventListener('pagehide',e=>{welcomeCue.pause();if(e.persisted)spatialSound.suspend();else spatialSound.dispose();});

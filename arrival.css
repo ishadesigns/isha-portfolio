@@ -1,13 +1,15 @@
-/* Welcome is available immediately beneath a brief, rounded headset reveal. */
+/* Welcome is available immediately beneath a settling, rounded headset reveal. */
 .arrival-layer {position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden;}
 .arrival-layer[hidden] {display:none;}
 .spatial-ready.arrival-complete .panel-home {animation:none;}
-html[data-arrival] .panel-home {opacity:1;pointer-events:auto;animation:none;}
+html[data-arrival] .panel-home {opacity:.2;pointer-events:auto;animation:none;}
 .arrival-lens {position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 50% 47%,transparent 16%,#10150fd9 50%,#070b07 76%);transform-origin:center;}
 .arrival-replay {display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:22px;padding:7px 13px;margin-top:6px;color:#355541;background:#e2e9d9;font-size:.75rem;}
 .arrival-replay .icon {height:15px;width:15px;}
-html[data-arrival="running"] .arrival-lens {animation:arrival-lens 1.05s cubic-bezier(.16,1,.3,1) both;}
-@keyframes arrival-lens {0% {opacity:1;scale:.72} 40% {opacity:.65} 100% {opacity:0;scale:1.9}}
+html[data-arrival="running"] .arrival-lens {animation:arrival-lens 2.7s cubic-bezier(.4,0,.2,1) both;}
+@keyframes arrival-lens {0%,16% {opacity:1;scale:.72} 46% {opacity:.8;scale:1} 72% {opacity:.35;scale:1.5} 100% {opacity:0;scale:1.9}}
+html[data-arrival="running"] .panel-home {animation:arrival-focus 2.7s ease-in-out both;}
+@keyframes arrival-focus {0%,16% {opacity:.2} 50% {opacity:.65} 82%,100% {opacity:1}}
 @media (prefers-reduced-motion:reduce) {.arrival-layer {display:none;}}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
 .spatial-ready.space-reflow,.spatial-ready.space-reflow .spatial-site {height:auto;min-height:100%;overflow:auto;}

@@ -10,6 +10,7 @@ const mime = {
   ".svg": "image/svg+xml",
   ".webp": "image/webp",
   ".json": "application/json",
+  ".wav": "audio/wav",
 };
 createServer(async (req, res) => {
   try {

@@ -12,7 +12,7 @@ function start() {
  playing=true;layer.hidden=false;
  document.querySelector('.panel-home .spatial-scroll').scrollTop=0;
  root.dataset.arrival='pending';void layer.offsetWidth;root.dataset.arrival='running';
- finishTimer=setTimeout(finish,1100);
+ finishTimer=setTimeout(finish,2700);
 }
 document.querySelector('[data-arrival-replay]').addEventListener('click',()=>{start();welcomeCue.replay();});
 document.addEventListener('keydown',e=>{if(playing&&(e.key==='Escape'||e.key==='Tab'))finish();});
