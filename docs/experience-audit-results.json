@@ -1,0 +1,2299 @@
+{
+  "date": "2026-10-12 UTC",
+  "scope": "Résumé and project-studio development checks; not conformance certification",
+  "reports": [
+    {
+      "axeVersion": "4.14.0",
+      "view": "home",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 39,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".satellite-bmw > .satellite-label > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".satellite-bmw > .satellite-caption > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".satellite-bmw > .satellite-caption > small"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".satellite-bloom > .satellite-label > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".satellite-bloom > .satellite-caption > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                ".satellite-bloom > .satellite-caption > small"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Welcome window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#home > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-content > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1 > em"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-intro"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-disciplines > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-disciplines > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-disciplines > span:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-button[href$=\"./#work\"][data-open=\"work\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".welcome-guide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".welcome-bottom"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".welcome-bottom > a[href$=\"./#about\"][data-open=\"about\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "work",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Selected work window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#work > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".work-app > .app-heading > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".work-app > .app-heading > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[data-filter=\"spatial\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[data-filter=\"product\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[data-filter=\"research\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-project-image[href$=\"bmw/\"][data-case=\"bmw\"] > .space-project-category"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "article[data-category=\"spatial\"] > .space-project-copy > .project-number"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "h2 > a[href$=\"bmw/\"][data-case=\"bmw\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "article[data-category=\"spatial\"] > .space-project-copy > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".space-project-image[href$=\"chemistry/\"][data-case=\"chemistry\"] > .space-project-category"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "article[data-category=\"product\"] > .space-project-copy > .project-number"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "h2 > a[href$=\"chemistry/\"][data-case=\"chemistry\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "article[data-category=\"product\"] > .space-project-copy > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".space-project-image[href$=\"bloom/\"][data-case=\"bloom\"] > .space-project-category"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because element contains an image node"
+            },
+            {
+              "target": [
+                "article[data-category=\"research\"] > .space-project-copy > .project-number"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "h2 > a[href$=\"bloom/\"][data-case=\"bloom\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "article[data-category=\"research\"] > .space-project-copy > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "about",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 41,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move About Isha window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#about > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-app-intro > div:nth-child(2) > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-app-lead"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-app-lead > em"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-app-intro > div:nth-child(2) > p:nth-child(4)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-tags > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-tags > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".about-tags > span:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-open"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".about-app-story > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "resume",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 41,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Résumé window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume-experience > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume-experience > h2"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-role:nth-child(1) > .resume-role-heading > div > .resume-company"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".resume-role:nth-child(1) > .resume-role-heading > div > h3"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".resume-role:nth-child(1) > .resume-role-heading > div > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".resume-role:nth-child(1) > .resume-role-heading > .resume-dates"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "details[open=\"\"] > summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "details[open=\"\"] > ul > li:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "playground",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 39,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Playground window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#playground > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".play-app > .app-heading > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".play-app > .app-heading > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".spatial-field-notes > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".spatial-field-notes > h2"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".spatial-field-notes > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".spatial-material > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".material-pane > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".material-pane > p > em"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".material-footer > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".material-hint"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "contact",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 37,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Let’s connect window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#contact > .spatial-titlebar > .window-context"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".contact-app > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1 > em"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".contact-app > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".contact-app > .space-button[href=\"mailto:mehtaisha132@gmail.com\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".copy-email"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".contact-socials > a[target=\"_blank\"][rel=\"noopener noreferrer\"]:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".contact-socials > a[href$=\"ishadesigns\"][target=\"_blank\"][rel=\"noopener noreferrer\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                ".contact-signoff"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "bmw",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#case > .spatial-titlebar > .window-grip[data-drag=\"\"][aria-describedby=\"window-move-help\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-back"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-intro > .section-marker"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-project-name"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".studio-toolbar > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "bmw",
+      "interaction": "focused viewer",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 25,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inspector-header > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#artifact-dialog-title"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-inspector-count=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-zoom-level=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".inspector-description"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"out\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"in\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "chemistry",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#case > .spatial-titlebar > .window-grip[data-drag=\"\"][aria-describedby=\"window-move-help\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-back"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-intro > .section-marker"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-project-name"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".nda-note"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".studio-toolbar > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "chemistry",
+      "interaction": "focused viewer",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 25,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inspector-header > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#artifact-dialog-title"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-inspector-count=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-zoom-level=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".inspector-description"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"out\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"in\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "bloom",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-recenter > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Move Bloom window\"] > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-back"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-intro > .section-marker"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-project-name"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".studio-toolbar > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "project": "bloom",
+      "interaction": "focused viewer",
+      "viewport": {
+        "height": 784,
+        "width": 1920
+      },
+      "violations": [],
+      "passedRuleCount": 25,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inspector-header > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#artifact-dialog-title"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-inspector-count=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-zoom-level=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".inspector-description"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"out\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"in\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "viewport": {
+        "height": 740,
+        "width": 320
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-intro > .section-marker"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-project-name"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".studio-toolbar > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "interaction": "mobile focused viewer",
+      "viewport": {
+        "height": 740,
+        "width": 320
+      },
+      "violations": [],
+      "passedRuleCount": 24,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inspector-header > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "#artifact-dialog-title"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-inspector-count=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-zoom-level=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"reset\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                ".inspector-description"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"out\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"in\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "resume",
+      "viewport": {
+        "height": 740,
+        "width": 320
+      },
+      "violations": [],
+      "passedRuleCount": 41,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume-experience > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            },
+            {
+              "target": [
+                "#resume-experience > h2"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "resume",
+      "preference": "200% text + WCAG spacing",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".resume-intro > div > p:nth-child(3)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it's partially obscured by another element"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "interaction": "focused viewer",
+      "preference": "200% text + WCAG spacing",
+      "viewport": {
+        "height": 844,
+        "width": 390
+      },
+      "violations": [],
+      "passedRuleCount": 25,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".inspector-header > div > .space-eyebrow"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "#artifact-dialog-title"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-inspector-count=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                "span[data-zoom-level=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"reset\"]"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            },
+            {
+              "target": [
+                ".inspector-description"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "nodes": [
+            {
+              "target": [
+                "button[data-inspector-close=\"\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"-1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-inspector-step=\"1\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"out\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[data-zoom=\"in\"]"
+              ],
+              "reason": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "resume",
+      "viewport": {
+        "height": 196,
+        "width": 320
+      },
+      "violations": [],
+      "passedRuleCount": 41,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                "#resume-skills > h2"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume-skills > div:nth-child(2) > h3"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "#resume-skills > div:nth-child(2) > p"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "axeVersion": "4.14.0",
+      "view": "case",
+      "viewport": {
+        "height": 740,
+        "width": 320
+      },
+      "violations": [],
+      "passedRuleCount": 40,
+      "manualReview": [
+        {
+          "id": "color-contrast",
+          "nodes": [
+            {
+              "target": [
+                ".space-identity > span:nth-child(1)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-identity > span:nth-child(2)"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".space-availability"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"home\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"work\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"about\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[data-app=\"resume\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#playground\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "a[href$=\"./#contact\"] > .dock-app-label > .dock-label-wide"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-intro > .section-marker"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-project-name"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                "h1"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".case-summary"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            },
+            {
+              "target": [
+                ".studio-toolbar > span"
+              ],
+              "reason": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

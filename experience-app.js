@@ -44,6 +44,7 @@
   async function selectArtifact(root, button) {
     const id = ++loadId;
     const image = root.querySelector("[data-studio-image]");
+    const previous = root.querySelector('[data-artifact][aria-pressed="true"]');
     root.setAttribute("aria-busy", "true");
     buttons(root).forEach((item) =>
       item.setAttribute("aria-pressed", String(item === button)),
@@ -52,7 +53,17 @@
     preload.src = new URL(button.dataset.src, document.baseURI).href;
     try {
       await preload.decode();
-    } catch {}
+    } catch {
+      if (id === loadId && root.isConnected) {
+        root.setAttribute("aria-busy", "false");
+        buttons(root).forEach((item) =>
+          item.setAttribute("aria-pressed", String(item === previous)),
+        );
+        root.querySelector("[data-artifact-status]").textContent =
+          "This image couldn’t load. Choose another artifact.";
+      }
+      return;
+    }
     if (id !== loadId || !root.isConnected) return;
     image.src = preload.src;
     image.alt = button.dataset.alt;
@@ -147,6 +158,9 @@
   });
   // Focus restores to the image's Inspect button after both Escape and Close.
   dialog.addEventListener("close", () => {
+    const selected = studio && buttons(studio)[index];
+    if (selected && selected.getAttribute("aria-pressed") !== "true")
+      selectArtifact(studio, selected);
     studio?.querySelector("[data-inspect]")?.focus({ preventScroll: true });
   });
   // Let native controls and the image scroll region keep ordinary keyboard behavior.

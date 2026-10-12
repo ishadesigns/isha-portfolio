@@ -36,10 +36,16 @@ Checked states included:
 
 Axe reports some contrast checks as **incomplete**, rather than passed, where an image, gradient, transformed satellite, or scroll clipping prevents background calculation. These remain explicitly listed in the evidence. The main glass surfaces use `rgba(244,247,239,.96)`, bounding the darkest possible surface at approximately RGB (234,237,229). Against that bound, ink `#202c24` is 12.28:1, body/muted text `#425047` is 7.19:1, accent `#355541` is 7.03:1, labels `#35463b` are 8.50:1, and focus `#21517a` is 7.04:1. White text over the project-category overlay retains at least 9.90:1 even above a pure-white image. These calculations cover those specified tokens, not every pixel or original case-study image.
 
-The production build passes 354 static checks, including image alternatives, routes, unique IDs, ARIA references, skip navigation, named navigation, status announcements, unrestricted zoom, and inclusion of the accessibility stylesheet. Checks reject local audit instrumentation and custom-domain configuration. Audit scripts and axe are excluded from deployment.
+The production build passes 467 static checks, including image alternatives, routes, unique IDs, ARIA references, skip navigation, named navigation, status announcements, unrestricted zoom, and inclusion of the accessibility stylesheet. Checks reject local audit instrumentation and custom-domain configuration. Audit scripts and axe are excluded from deployment.
 
 ## Remaining manual release checks
 
 A full VoiceOver + Safari and NVDA + Firefox/Chrome walkthrough has **not** been performed. Actual browser zoom, physical iOS/Android touch, forced-colors settings, and reduced-motion settings still need device/assistive-technology confirmation. Viewport and text stress tests are useful proxies, not replacements. Review the clarity and completeness of image alternatives with a screen-reader user, especially project diagrams containing embedded UI text.
 
 Do not claim complete WCAG compliance or certification based on automated scans. Keep these manual checks in the release process, and repeat affected checks when navigation, content, or visual tokens change.
+
+## Résumé and project studio verification
+
+The follow-up implementation adds a native résumé reader and artifact studios to all three projects. `experience-audit-results.json` records 19 successful automated states covering the six dock destinations, three project studios and focused dialogs, mobile résumé and inspection, enlarged text/spacing, and short-viewport résumé reading. A shortened dock label initially caused a Label in Name finding; it was repaired by using consistent Home/Play labels. The focused viewer uses a native modal dialog, Escape, focus restoration, descriptive image labels, announced selection/zoom, and ordinary keyboard-scrollable zoom content. Buttons stay reachable at zoom limits. Mobile artifact trays reflow into a two-column grid instead of requiring sideways scrolling.
+
+Manually exercised résumé section jumps, project links, artifact selection, next image, 150% image zoom, Close/Escape, and reading-story jumps. Verified the selected inspector artifact persists when returning to the studio, and that the case window stays open. Project launch and gallery transitions respect reduced-motion preferences and use short compositor animations rather than a continuous 3D renderer. The manual assistive-technology/device limitations above still apply.

@@ -41,3 +41,11 @@ The accessible Behance references establish translucent panels, rounded windows,
 - https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits
 - https://vercel.com/docs/plans/hobby
 - https://vercel.com/pricing
+
+## Résumé app source
+
+The original homepage links to two Drive PDFs. The rebuilt résumé uses the homepage’s first link: `https://drive.google.com/file/d/1bMh25tbI3JcUFS4FD0a6Ta2a8GJ4GFv4/view?usp=drive_link`. It includes Geny Labs (Oct 2025–Present), Tindoori Labs (May–Oct 2025), BMW (Mar–May 2024), Walmart–Myntra (Oct 2020–May 2023), and Reliance (Sep 2018–Oct 2020). This version was downloaded, text-extracted, and visually reviewed.
+
+The About-page PDF (`1G4TvDpUMEDjZkQifp59djIf087OMFKzG`) is a different version: it describes Tindoori as the current role and contains different metrics and a 200 CLUB entry. We do not merge the two versions. `resume.mjs` retains the homepage version’s dates, education, awards, skill groups, and reported impact. Its introduction is a concise editorial summary, not a verbatim quotation. The displayed name is Isha and contact uses the already-public email/social links. The source PDF remains optional; the original remote file is not changed. Résumé metrics are attributed to that source, not independently verified.
+
+Project studios inspect the user’s existing visual artifacts. Switching images, opening focused view, browsing, and zoom are real interactions; screenshots are presented as design artifacts and are not represented as running BMW/Myntra/Bloom apps. No new project outcomes or 3D product models were invented.

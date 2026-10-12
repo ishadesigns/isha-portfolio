@@ -622,10 +622,10 @@
     font-size: 0.6875rem;
   }
   [data-app="playground"] .dock-label-wide {
-    display: none;
+    display: inline;
   }
   .dock-label-short {
-    display: inline;
+    display: none;
   }
   .resume-app {
     padding: 24px 18px;
@@ -657,8 +657,13 @@
     gap: 10px;
     margin: 14px 4px;
   }
+  .artifact-tray {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
   .artifact-thumb {
-    flex-basis: 106px;
+    min-width: 0;
   }
   .artifact-dialog {
     width: calc(100vw - 20px);

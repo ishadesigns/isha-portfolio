@@ -23,6 +23,10 @@ npm run check
 
 | File | Controls |
 | --- | --- |
+| `resume.mjs` | Source-backed résumé content and résumé window |
+| `artifact-studio.mjs` | Project galleries and focused image viewer markup |
+| `experience-app.js` | Artifact selection, focused viewing, zoom, and résumé section navigation |
+| `experience.css` | Résumé, project studio, inspector, and dock appearance |
 | `content.mjs` | Project copy, metrics, contact links, résumé, FAQ |
 | `config.mjs` | Published site URL for canonical links and social metadata |
 | `spatial.mjs` | Immersive room, windows, dock, project cards, and page metadata |
@@ -45,10 +49,12 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 ## What works
 
-- A persistent room with floating glass windows for Welcome, Work, About, Playground, Contact, and case studies.
+- A persistent room with floating glass windows for Welcome, Work, About, Playground, Contact, Résumé, and case studies.
 - Three complete, directly linkable case studies. Direct URLs open the same immersive workspace.
 - Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, single-click Arrange controls, expansion, closing, and recentering.
 - Navigation through the dock; content scrolls inside the active window. Browser Back/Forward and hash deep links work.
+- In-site résumé reader with career disclosures, section navigation, skills, education, awards, and an optional PDF source link.
+- Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance.
 - Project filters, animated window transitions, and pointer-driven environmental depth.

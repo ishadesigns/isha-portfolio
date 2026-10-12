@@ -89,7 +89,10 @@
       if (selected) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
     });
-    document.title = `${view === "case" ? windowNames.case : view === "idle" ? "Your space" : windowNames[view]} — Isha`;
+    document.title =
+      view === "home"
+        ? "Isha"
+        : `${view === "case" ? windowNames.case : view === "idle" ? "Your space" : windowNames[view]} — Isha`;
     if (focus && windows.has(view)) {
       const content = $(".spatial-scroll", windows.get(view));
       content.scrollTop = 0;
@@ -138,7 +141,42 @@
       normalizeArticle(seededArticle, location.href),
     );
 
-  async function openCase(slug, push = true, focus = true) {
+  function animateLaunch(panel, source) {
+    if (reduceMotion || !source) return;
+    panel.getAnimations().forEach((animation) => animation.cancel());
+    const target = panel.getBoundingClientRect();
+    const dx = Math.max(
+      -innerWidth * 0.4,
+      Math.min(
+        innerWidth * 0.4,
+        source.x + source.width / 2 - target.x - target.width / 2,
+      ),
+    );
+    const dy = Math.max(
+      -innerHeight * 0.4,
+      Math.min(
+        innerHeight * 0.4,
+        source.y + source.height / 2 - target.y - target.height / 2,
+      ),
+    );
+    const baseTransform = innerHeight <= 540 ? "" : "translate(-50%, -50%)";
+    panel.animate(
+      [
+        {
+          transform: `${baseTransform} translate(${dx}px,${dy}px) scale(.72) rotateY(-5deg)`,
+          opacity: 0,
+          filter: "blur(5px)",
+        },
+        {
+          transform: `${baseTransform} translate(0,0) scale(1) rotateY(0)`,
+          opacity: 1,
+          filter: "blur(0)",
+        },
+      ],
+      { duration: 520, easing: "cubic-bezier(.16,1,.3,1)" },
+    );
+  }
+  async function openCase(slug, push = true, focus = true, source = null) {
     if (!caseNames[slug]) return openWindow("work", push, focus);
     const id = ++requestId;
     activeCase = slug;
@@ -184,6 +222,7 @@
     casePanel.setAttribute("aria-label", `${caseNames[slug]} window`);
     if (push) updateHash(`#case-${slug}`);
     showWindow("case", { focus });
+    animateLaunch(casePanel, source);
     content.innerHTML =
       '<div class="case-loading"><p>Opening case study…</p></div>';
     content.scrollTop = 0;
@@ -248,7 +287,8 @@
     )
       return;
     e.preventDefault();
-    if (link.dataset.case) openCase(link.dataset.case);
+    if (link.dataset.case)
+      openCase(link.dataset.case, true, true, link.getBoundingClientRect());
     else openWindow(link.dataset.open);
   });
   // Native links still work without this enhancement, including direct case-study pages.

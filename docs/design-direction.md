@@ -3,7 +3,7 @@
 The user’s governing vision is that opening the website feels like being **inside an Apple Vision Pro**. The spatial environment is the navigation model for the whole experience, not a decorative hero on a conventional scrolling website.
 
 - A persistent room surrounds the visitor throughout navigation.
-- Work, About, Playground, Contact, and case studies open as floating glass windows.
+- Work, About, Playground, Contact, Résumé, and case studies open as floating glass windows.
 - The dock is the primary navigation. Scrolling happens within a window.
 - Windows support moving, expanding, closing, and recentering on desktop.
 - Mobile retains the room and dock, with windows adapted to usable touch sizes.
@@ -27,3 +27,7 @@ Desktop, tablet, and mobile usability and **WCAG 2.2 Level AA** are governing re
 - Keep focus visible and unobscured, avoid keyboard traps, and respect reduced motion and forced colors.
 - Use meaningful image alternatives. Add captions/transcripts if audio or video is introduced later.
 - Audit visible windows and menus, not only the homepage. Combine automated checks with manual keyboard, zoom, responsive, and assistive-technology review. Never describe an automated pass as a full WCAG certification.
+
+## Project and résumé interactions
+
+The user wants work to feel like inspecting an app inside Vision Pro, informed by the ryOS/iPod motion reference. Project launch motion, a dimensional artifact stage, selectable visual assets, and a focused zoom viewer implement that direction. Keep artifact captions and the full research narrative accessible. The résumé is an in-site spatial reader, with its PDF retained as an optional source link. Dock controls should have strong visual priority and legible labels rather than washed-out colors. The displayed name and preview title must remain Isha.

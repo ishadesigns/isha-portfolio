@@ -11,6 +11,11 @@ const htmlFiles = [
 let checks = 0;
 for (const file of htmlFiles) {
   const html = await readFile(resolve(root, file), "utf8");
+  if (file !== "index.html") {
+    assert.match(html, /data-studio/, `${file}: project artifact studio`);
+    assert.match(html, /data-inspect/, `${file}: focused inspection entry`);
+    checks += 2;
+  }
   assert.equal(
     (html.match(/<h1[ >]/g) || []).length,
     1,
@@ -20,6 +25,15 @@ for (const file of htmlFiles) {
   assert.match(html, /<html lang="en"/);
   checks++;
   assert.match(html, /<title>[^<]+<\/title>/);
+  checks++;
+  assert(
+    !/\bkumari\b/i.test(html.replace(/<[^>]+>/g, " ")),
+    `${file}: visible branding is Isha only`,
+  );
+  checks++;
+  assert.match(html, /data-window="resume"/, `${file}: in-site résumé window`);
+  checks++;
+  assert.match(html, /experience-app.js/, `${file}: inspection interactions`);
   checks++;
   assert.match(html, /<meta name="description"/);
   checks++;
