@@ -11,6 +11,10 @@ const assetVersion = createHash("sha256")
   .digest("hex")
   .slice(0, 12);
 export const icons = {
+  compass: '<circle cx="12" cy="12" r="9"/><path d="m16 8-2 6-6 2 2-6z"/>',
+  mic: '<rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3m-4 0h8"/>',
+  refresh:
+    '<path d="M20 7v5h-5M4 17v-5h5M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/>',
   document: '<path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6m-6 4h6"/>',
   arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
   up: '<path d="M6 18 18 6M6 6h12v12"/>',

@@ -1,0 +1,398 @@
+import { projects, profile, faq } from "./content.mjs";
+import { resume } from "./resume.mjs";
+import { icon } from "./site.mjs";
+
+export function guideKnowledge() {
+  const entries = [
+    {
+      id: "intro",
+      topic: "intro",
+      tags: [
+        "who",
+        "isha",
+        "intro",
+        "introduce",
+        "overview",
+        "designer",
+        "hello",
+        "hi",
+      ],
+      title: "Meet Isha",
+      answer: resume.summary,
+      link: "about",
+      label: "Meet Isha",
+    },
+    {
+      id: "current",
+      topic: "geny",
+      tags: [
+        "current",
+        "now",
+        "currently",
+        "latest",
+        "geny",
+        "voice",
+        "conversational",
+        "ai",
+      ],
+      title: "Current work",
+      answer: `Isha’s résumé lists Product Designer at Geny Labs from Oct 2025 to Present, on the founding team for an AI voice assistant. ${resume.experience[0].points.join(" ")}`,
+      link: "resume",
+      label: "Read her résumé",
+    },
+    {
+      id: "career",
+      topic: "career",
+      tags: [
+        "experience",
+        "career",
+        "employment",
+        "employers",
+        "jobs",
+        "worked",
+        "background",
+        "years",
+      ],
+      title: "Career",
+      answer: resume.experience
+        .map((j) => `${j.role} at ${j.company} (${j.dates}).`)
+        .join("\n\n"),
+      link: "resume",
+      label: "Explore experience",
+    },
+    {
+      id: "resume",
+      topic: "career",
+      tags: ["resume", "résumé", "cv", "credentials"],
+      title: "Résumé",
+      answer: `${resume.summary}\n\nHer experience spans Geny Labs, Tindoori Labs, BMW Group, Walmart–Myntra, and Reliance. You can read roles, impact, education, and skills inside the résumé window.`,
+      link: "resume",
+      label: "Open résumé",
+    },
+    {
+      id: "education",
+      topic: "education",
+      tags: [
+        "education",
+        "study",
+        "studied",
+        "college",
+        "university",
+        "degree",
+        "scad",
+        "nift",
+        "school",
+        "masters",
+      ],
+      title: "Education",
+      answer: resume.education
+        .map(([degree, school, dates]) => `${degree} — ${school}, ${dates}.`)
+        .join("\n\n"),
+      link: "resume",
+      label: "Read education",
+    },
+    {
+      id: "skills",
+      topic: "skills",
+      tags: [
+        "skills",
+        "tool",
+        "tools",
+        "figma",
+        "software",
+        "programming",
+        "code",
+        "coding",
+        "react",
+        "swiftui",
+        "typescript",
+        "javascript",
+        "html",
+        "css",
+        "technical",
+      ],
+      title: "Skills & toolkit",
+      answer: resume.skills
+        .map(([title, copy]) => `${title}: ${copy}`)
+        .join("\n\n"),
+      link: "resume",
+      label: "Explore her toolkit",
+    },
+    {
+      id: "awards",
+      topic: "awards",
+      tags: ["awards", "award", "indigo", "ida", "honorable", "recognition"],
+      title: "Recognition",
+      answer:
+        "The résumé lists 3 Silver and 2 Bronze Indigo Design Awards and an International Design Awards honorable mention. The Bloom case study also lists Indigo Design Award Winner 2025 and IDA Honorable Mention 2024.",
+      project: "bloom",
+      label: "Explore Bloom",
+    },
+    {
+      id: "about",
+      topic: "about",
+      tags: [
+        "about",
+        "human",
+        "personal",
+        "hobbies",
+        "hobby",
+        "travel",
+        "travels",
+        "personality",
+        "fun",
+        "outside",
+        "coffee",
+        "running",
+      ],
+      title: "The human behind the work",
+      answer:
+        "Isha is curious by default and reflective by habit. Solo travel taught her to navigate uncertainty, make trade-offs, and connect across cultures. She starts design with conversations and observations, looking for the human patterns beneath an interface. Her playground notes mention notebooks, iced lattes, and long runs.",
+      link: "about",
+      label: "Read about Isha",
+    },
+    {
+      id: "approach",
+      topic: "about",
+      tags: [
+        "approach",
+        "process",
+        "method",
+        "methods",
+        "philosophy",
+        "thinking",
+        "systems",
+        "design",
+        "research",
+      ],
+      title: "Design approach",
+      answer:
+        "Isha connects research, systems thinking, and interaction design. She uses conversations, observations, and synthesis to understand why people behave as they do, then balances product value with platform and business constraints. BMW, Chemistry, and Bloom each show that approach in a different context.",
+      link: "work",
+      label: "See the projects",
+    },
+    {
+      id: "projects",
+      topic: "projects",
+      tags: [
+        "projects",
+        "portfolio",
+        "work",
+        "case",
+        "cases",
+        "case studies",
+        "recommend",
+        "recommendation",
+        "best",
+        "selected",
+      ],
+      title: "Selected work",
+      answer: projects.map((p) => `${p.name}: ${p.summary}`).join("\n\n"),
+      link: "work",
+      label: "Open selected work",
+    },
+    {
+      id: "contact",
+      topic: "contact",
+      tags: [
+        "contact",
+        "email",
+        "reach",
+        "hire",
+        "hiring",
+        "available",
+        "availability",
+        "opportunities",
+        "collaborate",
+        "collaboration",
+        "connect",
+        "recruiter",
+      ],
+      title: "Get in touch",
+      answer: `The portfolio says Isha is open to product design and UX opportunities. Email her at ${profile.email}, or use the LinkedIn link in Contact. For details that aren’t published here, Isha is the right person to ask.`,
+      link: "contact",
+      label: "Open contact",
+    },
+  ];
+  for (const p of projects) {
+    const tags =
+      p.slug === "bmw"
+        ? ["bmw", "vision pro", "apple", "spatial", "automotive", "car"]
+        : p.slug === "chemistry"
+          ? [
+              "chemistry",
+              "myntra",
+              "fashion",
+              "shopping",
+              "ecommerce",
+              "e-commerce",
+            ]
+          : ["bloom", "sleep", "device", "diffuser", "bedside", "sensory"];
+    entries.push({
+      id: p.slug,
+      topic: p.slug,
+      tags,
+      title: p.name,
+      answer: `${p.summary}\n\n${p.overview}`,
+      project: p.slug,
+      label: `Open ${p.name} studio`,
+    });
+    entries.push({
+      id: p.slug + "-role",
+      topic: p.slug,
+      tags: [
+        ...tags,
+        "role",
+        "contribution",
+        "responsibilities",
+        "contributed",
+        "did",
+        "team",
+        "timeline",
+      ],
+      kind: "role",
+      title: `Isha’s role in ${p.name}`,
+      answer: `${p.role}. ${p.timeline}. Team: ${p.team}.\n\n${p.roleText}`,
+      project: p.slug,
+      label: "Read the full case study",
+    });
+    entries.push({
+      id: p.slug + "-results",
+      topic: p.slug,
+      tags: [
+        ...tags,
+        "results",
+        "outcomes",
+        "metrics",
+        "impact",
+        "measured",
+        "numbers",
+        "success",
+      ],
+      kind: "results",
+      title: `${p.name}: results & findings`,
+      answer: `${p.metrics.map(([n, label]) => `${n} ${label}`).join("; ")}.\n\n${p.metricsLabel || "These are reported project outcomes. The original project does not publish a complete measurement methodology."}`,
+      project: p.slug,
+      label: "Read the reported findings",
+    });
+    const research = p.sections.filter((s) =>
+      /research|understand/i.test(s.label),
+    );
+    entries.push({
+      id: p.slug + "-research",
+      topic: p.slug,
+      tags: [
+        ...tags,
+        "research",
+        "interviews",
+        "interview",
+        "testing",
+        "usability",
+        "users",
+        "insights",
+      ],
+      kind: "research",
+      title: `Research behind ${p.name}`,
+      answer: research.length
+        ? research.map((s) => `${s.title}\n${s.text}`).join("\n\n")
+        : p.roleText,
+      project: p.slug,
+      label: "Explore the process",
+    });
+  }
+  for (const job of resume.experience.slice(1))
+    entries.push({
+      id: "job-" + job.company,
+      topic: job.project || "career",
+      kind: "job",
+      tags: [
+        ...job.company.toLowerCase().split(/\s|—/).filter(Boolean),
+        "job",
+        "employment",
+        "worked",
+        "career",
+      ],
+      title: job.company,
+      answer: `${job.role}, ${job.dates}. ${job.domain}.\n\n${job.points.join("\n\n")}`,
+      link: "resume",
+      label: "Read career details",
+    });
+  entries.push({
+    id: "nda",
+    topic: "chemistry",
+    tags: [
+      "nda",
+      "confidential",
+      "confidentiality",
+      "protected",
+      "private",
+      "full process",
+    ],
+    title: "Public work & confidentiality",
+    answer:
+      "The Chemistry project shares selected public work. The full process is protected by an NDA. This guide only uses the public portfolio and the linked résumé, and cannot share confidential material.",
+    project: "chemistry",
+    label: "Read the public case study",
+  });
+  for (const [i, [q, a]] of faq.entries())
+    entries.push({
+      id: "faq-" + i,
+      topic: "about",
+      tags: q
+        .toLowerCase()
+        .replace(/[^a-z\s]/g, "")
+        .split(/\s+/)
+        .filter((w) => w.length > 4),
+      title: q,
+      answer: a,
+      link: "about",
+      label: "Read the portfolio FAQ",
+    });
+  return {
+    name: "Isha",
+    entries,
+    topics: ["bmw", "chemistry", "bloom"],
+    privateTopics: [
+      "salary",
+      "visa",
+      "citizenship",
+      "address",
+      "phone",
+      "relationship",
+      "religion",
+      "medical",
+      "health history",
+      "age",
+      "date of birth",
+    ],
+  };
+}
+
+const batterySvg =
+  '<svg viewBox="0 0 28 16" class="hud-battery-icon" aria-hidden="true"><rect x="1" y="2" width="22" height="12" rx="3" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M25 6v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect data-battery-fill x="3" y="4" width="17" height="8" rx="1.5" fill="currentColor"/></svg>';
+export function worldStatus() {
+  return `<div class="world-status"><div class="space-availability"><span class="status-dot"></span> Open to opportunities</div><div class="world-hud"><span class="hud-spatial">${icon("layers")}<span>Spatial space</span></span><time data-world-clock aria-label="Your local time">Local time</time><span class="hud-battery" title="Illustrative battery when device status is unavailable">${batterySvg}<span data-battery-label>Demo</span><span class="sr-only" data-battery-description>Illustrative battery, not a device reading</span></span><button type="button" data-look-toggle aria-expanded="false" aria-controls="room-controls">${icon("compass")}<span>Look around</span></button><button type="button" data-guide-open class="guide-inline" aria-expanded="false" aria-controls="guide-panel">${icon("spark")}<span>Lumi</span></button></div><div class="room-controls" id="room-controls" hidden><p>Look around your space</p><div class="room-direction-buttons" role="group" aria-label="Room direction">${["left", "up", "down", "right"].map((d) => `<button type="button" data-pan="${d}" aria-label="Look ${d}"><span class="move-${d}" aria-hidden="true">${icon("arrow")}</span></button>`).join("")}<button type="button" data-pan="center">Center</button></div><div class="room-options"><button type="button" data-room-clear aria-pressed="false">Clear view</button><button type="button" data-ambient-motion aria-pressed="false">${icon("pause")}<span>Pause ambient motion</span></button></div><p class="room-help">Clear view, then drag the room or use arrow keys. Direction buttons work with touch too.</p></div></div>`;
+}
+export function roomExplorer() {
+  return `<section class="room-explorer" hidden role="region" aria-label="Explore the room" tabindex="0" aria-describedby="room-explorer-help"><div class="room-explorer-note"><p class="space-eyebrow">A LITTLE MORE ROOM</p><h2>Look beyond the window.</h2><p id="room-explorer-help">Drag to look around, or use the arrow keys and direction buttons. Your portfolio windows are one click away.</p><button type="button" data-room-return>Return to portfolio ${icon("arrow")}</button></div></section><p class="sr-only" role="status" aria-live="polite" data-room-status></p>`;
+}
+export function spatialGame() {
+  return `<section class="spatial-game" aria-label="Spatial Pairs game"><div class="game-intro"><div><p class="space-eyebrow">A SMALL EXPERIMENT IN ATTENTION</p><h2>Spatial Pairs</h2><p>Six pairs. A little intuition.<br>Find the matching shapes hiding in the glass.</p></div><div class="game-orbit-mark" aria-hidden="true">${icon("layers")}</div></div><div class="game-toolbar"><div class="game-stats"><span><strong data-game-pairs>0 / 6</strong> pairs found</span><span><strong data-game-moves>0</strong> moves</span></div><button type="button" data-game-reset>New game ${icon("refresh")}</button></div><div class="game-board" role="group" aria-label="Twelve memory cards" aria-describedby="game-instructions">${Array.from({ length: 12 }, (_, i) => `<button type="button" class="game-card" disabled aria-label="Card ${i + 1}, face down"><span aria-hidden="true">${icon("spark")}</span></button>`).join("")}</div><p class="game-feedback" data-game-feedback role="status" aria-live="polite" aria-atomic="true">Choose two cards to begin.</p><p class="game-instructions" id="game-instructions">Tap or press Enter to turn a card. Tab or arrow keys move between cards. There’s no timer—take your time.</p><noscript><p>Enable JavaScript to play Spatial Pairs.</p></noscript></section>`;
+}
+
+export function guideWidget(base) {
+  const knowledge = JSON.stringify(guideKnowledge()).replaceAll("<", "\\u003c");
+  return `<aside class="portfolio-guide" aria-label="Lumi portfolio guide"><button type="button" class="guide-launch" data-guide-open aria-controls="guide-panel" aria-expanded="false" aria-describedby="guide-move-help"><span class="lumi-body" aria-hidden="true"><span class="lumi-ring"></span><span class="lumi-visor"><i></i><i></i></span><span class="lumi-glint"></span></span><span class="guide-launch-label">Ask Lumi</span></button><p class="sr-only" id="guide-move-help">Open with Enter. Drag Lumi to move, or use arrow keys while this button is focused. Place guide offers one-click positions.</p><section class="guide-panel" id="guide-panel" hidden role="dialog" aria-modal="false" aria-labelledby="guide-title"><div class="guide-header"><div class="guide-mini" aria-hidden="true"><span class="lumi-visor"><i></i><i></i></span></div><div><h2 id="guide-title">Lumi</h2><p>YOUR PORTFOLIO COMPANION</p></div><button type="button" data-guide-close aria-label="Close Lumi guide">${icon("close")}</button></div><div class="guide-tools"><button type="button" data-guide-place-toggle aria-expanded="false" aria-controls="guide-placement">Place guide</button><button type="button" data-guide-motion aria-pressed="false">Pause floating</button><button type="button" data-guide-clear>Clear chat</button></div><div class="guide-placement" id="guide-placement" hidden role="group" aria-label="Place Lumi">${[
+    ["top-left", "Top left"],
+    ["top-right", "Top right"],
+    ["bottom-left", "Bottom left"],
+    ["bottom-right", "Bottom right"],
+  ]
+    .map(
+      ([id, label]) =>
+        `<button type="button" data-guide-place="${id}">${label}</button>`,
+    )
+    .join(
+      "",
+    )}</div><div class="guide-conversation" role="log" aria-label="Conversation with Lumi" aria-live="polite" aria-relevant="additions text" tabindex="0"><div class="guide-message guide-answer"><span class="guide-speaker">LUMI</span><p>Hi, I’m Lumi. Ask me about Isha’s work, research, experience, or the human behind it.</p><p class="guide-boundary">I use built-in answers from this portfolio and résumé.</p></div></div><div class="guide-suggestions" role="group" aria-label="Suggested questions"><button type="button" data-guide-question="What did Isha do at BMW?">BMW & Vision Pro</button><button type="button" data-guide-question="What is Isha working on now?">Current role</button><button type="button" data-guide-question="Tell me about Isha">Meet Isha</button></div><form class="guide-form"><label for="guide-question">Your question</label><textarea id="guide-question" name="question" rows="2" maxlength="500" placeholder="What’s her research approach?" required></textarea><div class="guide-form-actions"><button type="button" data-guide-mic aria-pressed="false">${icon("mic")}<span>Dictate</span></button><button type="submit">Send ${icon("arrow")}</button></div></form><p class="guide-voice-note" data-guide-voice-note>Voice input uses your browser’s speech service and microphone permission. Review the text before sending.</p><p class="sr-only" data-guide-status role="status" aria-live="polite" aria-atomic="true"></p></section><script type="application/json" id="guide-knowledge">${knowledge}</script></aside>`;
+}

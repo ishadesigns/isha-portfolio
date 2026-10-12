@@ -32,11 +32,13 @@
   const motionPreference = matchMedia("(prefers-reduced-motion: reduce)");
   let reduceMotion = motionPreference.matches;
   function followMotionPreference() {
-    reduceMotion = motionPreference.matches;
+    reduceMotion =
+      motionPreference.matches || root.dataset.userMotion === "off";
     root.classList.toggle("reduce-motion", reduceMotion);
   }
   followMotionPreference();
   motionPreference.addEventListener("change", followMotionPreference);
+  document.addEventListener("worldmotionchange", followMotionPreference);
 
   function toast(message) {
     clearTimeout(toastTimer);
@@ -316,7 +318,13 @@
   );
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
-      if ($(".artifact-dialog[open]")) return;
+      if (
+        $(".artifact-dialog[open]") ||
+        !$("#guide-panel").hidden ||
+        !$("#room-controls").hidden ||
+        root.classList.contains("room-looking")
+      )
+        return;
       e.preventDefault();
       if ($('.window-arrange[aria-expanded="true"]')) {
         closePlacements(true);

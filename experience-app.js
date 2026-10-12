@@ -79,7 +79,10 @@
     root.setAttribute("aria-busy", "false");
     root.querySelector("[data-artifact-status]").textContent =
       `${button.dataset.alt}. ${button.dataset.caption}`;
-    if (!reducedMotion.matches)
+    if (
+      !reducedMotion.matches &&
+      document.documentElement.dataset.userMotion !== "off"
+    )
       image.animate(
         [
           {

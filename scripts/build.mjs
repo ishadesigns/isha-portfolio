@@ -1,6 +1,7 @@
 import { mkdir, cp, writeFile, rm, readFile } from "node:fs/promises";
 import { spatialPage } from "../spatial.mjs";
 import { projects } from "../content.mjs";
+import { createHash } from "node:crypto";
 import { siteUrl } from "../config.mjs";
 await rm("dist", { recursive: true, force: true });
 await mkdir("dist", { recursive: true });
@@ -13,8 +14,22 @@ for (const file of [
   "accessibility.css",
   "experience.css",
   "experience-app.js",
+  "world.css",
+  "world-app.js",
+  "guide-engine.js",
 ])
   await cp(file, `dist/${file}`);
+const guideVersion = createHash("sha256")
+  .update(await readFile("guide-engine.js"))
+  .digest("hex")
+  .slice(0, 12);
+await writeFile(
+  "dist/world-app.js",
+  (await readFile("world-app.js", "utf8")).replace(
+    '"./guide-engine.js"',
+    `"./guide-engine.js?v=${guideVersion}"`,
+  ),
+);
 await writeFile("dist/index.html", spatialPage());
 for (const p of projects) {
   await mkdir(`dist/projects/${p.slug}`, { recursive: true });
