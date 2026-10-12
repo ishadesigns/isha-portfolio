@@ -324,14 +324,10 @@ function setAvatar(x, y, announce = false) {
   launcher.style.bottom = "auto";
   if (announce) status("Siri moved.");
 }
-function placeAvatar(corner) {
-  const rect = launcher.getBoundingClientRect(),
-    safeTop = parseFloat(root.style.getPropertyValue("--space-top")) || 100;
-  setAvatar(
-    corner.endsWith("left") ? 18 : innerWidth - rect.width - 18,
-    corner.startsWith("top") ? safeTop + 12 : innerHeight - rect.height - 18,
-    true,
-  );
+function resetAvatar() {
+  avatarPosition = null;
+  for (const property of ["left", "top", "right", "bottom"]) launcher.style.removeProperty(property);
+  status("Siri returned to its home position.");
 }
 launcher.addEventListener("pointerdown", (event) => {
   if (event.button !== 0) return;
@@ -581,7 +577,7 @@ document.addEventListener("click", (event) => {
   }
   if (target.matches(".space-recenter")) {
     moveRoom(0, 0, true);
-    placeAvatar("bottom-right");
+    resetAvatar();
   }
   if (target.hasAttribute("data-open") || target.hasAttribute("data-case")) {
     if (roomActive) {
