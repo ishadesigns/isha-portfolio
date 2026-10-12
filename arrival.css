@@ -46,4 +46,3 @@ html[data-arrival="running"] :is(.project-satellite,.space-hint) { animation: ar
 .arrival-replay:focus-visible {outline:3px solid #21517a;outline-offset:3px;}
 @media (max-width:540px) {.arrival-portal {height:min(390px,calc(100dvh - 220px));width:calc(100vw - 28px);}}
 @media (forced-colors:active) {.arrival-replay {background:Canvas;color:CanvasText;border-color:CanvasText;}}
-

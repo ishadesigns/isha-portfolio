@@ -1,0 +1,63 @@
+[
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 840,
+      "width": 1920
+    },
+    "violations": [],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 38
+  },
+  {
+    "axeVersion": "4.14.0",
+    "view": "playground",
+    "viewport": {
+      "height": 840,
+      "width": 1920
+    },
+    "violations": [
+      {
+        "help": "All touch targets must be 24px large, or leave sufficient space",
+        "id": "target-size",
+        "impact": "serious",
+        "nodes": [
+          {
+            "checks": [
+              {
+                "data": {
+                  "height": 9.4,
+                  "messageKey": "partiallyObscured",
+                  "minSize": 24,
+                  "width": 120
+                },
+                "id": "target-size",
+                "message": "Target has insufficient size because it is partially obscured (smallest space is 120px by 9.4px, should be at least 24px by 24px)"
+              },
+              {
+                "data": {
+                  "closestOffset": 1.8,
+                  "minOffset": 24
+                },
+                "id": "target-offset",
+                "message": "Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 1.8px instead of at least 24px."
+              }
+            ],
+            "html": "<button class=\"orbit-object orbit-fujifilm\" type=\"button\" data-orbit-object=\"fujifilm\" aria-label=\"Fujifilm X half\" aria-pressed=\"false\" style=\"width: 118.167px; height: 118px; transform: translate3d(55.2px, 10px, 0px) rotate(0.9deg);\">",
+            "summary": "Fix any of the following:\n  Target has insufficient size because it is partially obscured (smallest space is 120px by 9.4px, should be at least 24px by 24px)\n  Target has insufficient space to its closest neighbors. Safe clickable space has a diameter of 1.8px instead of at least 24px.",
+            "target": [
+              ".orbit-fujifilm"
+            ]
+          }
+        ]
+      }
+    ],
+    "incompleteRuleIds": [
+      "color-contrast"
+    ],
+    "passedRuleCount": 38
+  }
+]
