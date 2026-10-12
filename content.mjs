@@ -5,6 +5,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/ishakumari7/",
   instagram: "https://www.instagram.com/isha_mehta16/",
   github: "https://github.com/ishadesigns",
+  twitter: "https://x.com/mehtaisha16",
   resume:
     "https://drive.google.com/file/d/1bMh25tbI3JcUFS4FD0a6Ta2a8GJ4GFv4/view",
 };
@@ -279,4 +280,17 @@ export const faq = [
     "How do you think about success metrics?",
     "I choose measures around the decision or behavior an experience should improve. My published projects include time to decision, buyer confidence, engagement, retention, add-to-bag conversion, and qualitative research insights.",
   ],
+];
+
+// LinkedIn Featured copy, checked against the two official award entries.
+export const bloomAwardDescription = "Bloom began with a mission to explore the booming sleep industry and identify opportunities for impactful design innovation. Through rigorous research and strategic analysis, the team recognized the rising consumer preference for natural sleep solutions and designed a multi-sensory, user-centric sleep product that transforms stress into serenity.";
+export const awards = [
+  { id: "ida", title: "IDA Design Award", year: "2024", recognition: "Honorable Mention", image: "bloom-featured-ida", href: "https://www.idesignawards.com/social/zoom.php?eid=9-59317-24", label: "View the IDA award", description: bloomAwardDescription },
+  { id: "indigo", title: "Indigo Design Award", year: "2025", recognition: "3 Silver · 2 Bronze", image: "bloom-featured-indigo", href: "https://www.indigoaward.com/winners/9906", label: "View the Indigo award", description: bloomAwardDescription },
+];
+export const interests = [
+  { title: "Long runs", image: "sneakers", alt: "White New Balance sneakers from Isha’s original About page", text: "New Balance on, screen off. Long runs are part of my rhythm between analog and digital." },
+  { title: "Iced lattes", image: "coffee", alt: "An iced latte", text: "A little coffee, a little pause. Ideas unfold somewhere between screen and page." },
+  { title: "Friends on repeat", image: "friends-sticker", alt: "The cast of Friends", text: "A familiar favorite away from the screen: Friends." },
+  { title: "Pen & paper", image: "notebook", alt: "Open notebook with a pen", text: "I explore AI tools, but I think best with pen and paper." },
 ];

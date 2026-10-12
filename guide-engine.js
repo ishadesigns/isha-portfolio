@@ -47,7 +47,7 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
   if (!explicit.length && isCurrent)
     return knowledge.entries.find((e) => e.id === "current");
   const newDomain =
-    /\b(education|study|studied|college|skills|tools|software|resume|cv|career|contact|email|geny|tindoori|reliance|awards|hobbies|travel)\b/.test(
+    /\b(education|study|studied|college|skills|tools|software|resume|cv|career|contact|email|geny|tindoori|reliance|awards|hobbies|travel|friends|sneakers|interests)\b/.test(
       q,
     );
   let kind =

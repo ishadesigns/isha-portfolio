@@ -1442,3 +1442,129 @@ html:not(.world-ready) .window-reading-progress {
   .siri-ring, .siri-ring-front { border-color: CanvasText; }
   .siri-shell-line { border-color: CanvasText; }
 }
+
+.app-awards {
+  background: linear-gradient(145deg, #92723d, #695024);
+  color: #fff;
+}
+.awards-app { padding: 34px; }
+.awards-app > h1,
+.awards-app > h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 550;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  margin: 15px 0;
+}
+.awards-intro { max-width: 38rem; }
+.award-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 27px 0;
+}
+.award-card {
+  overflow: hidden;
+  border-radius: 24px;
+  background: #fafbf7;
+  border: 1px solid #b5c1ae;
+}
+.award-image { display: block; }
+.award-image img { width: 100%; display: block; aspect-ratio: 480 / 319; object-fit: contain; }
+.award-copy { padding: 22px; }
+.award-copy h2 { font-size: 1.5rem; line-height: 1.25; margin: 12px 0; }
+.award-copy p:not(.space-eyebrow) { font-size: 0.9375rem; line-height: 1.75; }
+.award-copy > a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 0;
+  margin-top: 12px;
+  color: #355541;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.award-copy > a .icon { width: 17px; height: 17px; }
+.about-interests { margin-top: 40px; padding-top: 30px; border-top: 1px solid #b4c0aa; }
+.about-interests > h2 { font-size: 1.875rem; line-height: 1.2; margin: 13px 0; }
+.interests-intro { max-width: 42rem; }
+.interest-folders { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 17px; margin-top: 30px; align-items: start; }
+.interest-folder {
+  position: relative;
+  border: 1px solid #a3b399;
+  border-radius: 0 20px 20px 20px;
+  background: #e0e8d9;
+  margin-top: 13px;
+  box-shadow: 0 7px 14px #3555410e;
+}
+.interest-folder::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -14px;
+  width: 46%;
+  height: 14px;
+  background: #e0e8d9;
+  border: 1px solid #a3b399;
+  border-bottom: none;
+  border-radius: 9px 12px 0 0;
+}
+.interest-folder summary {
+  display: block;
+  cursor: pointer;
+  border-radius: inherit;
+  list-style: none;
+  min-height: 44px;
+}
+.interest-folder summary::-webkit-details-marker { display: none; }
+.interest-art { display: block; height: 148px; padding: 10px; overflow: hidden; }
+.interest-art img { width: 100%; height: 100%; object-fit: contain; transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+.interest-label { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 10px 14px 14px; font-weight: 600; font-size: 0.875rem; color: #2d4c3b; }
+.interest-toggle { font-size: 1.25rem; line-height: 1; }
+.interest-folder[open] .interest-toggle { transform: rotate(45deg); }
+.interest-folder p { padding: 0 14px 15px; font-size: 0.8125rem; line-height: 1.65; }
+.interest-folder:hover .interest-art img,
+.interest-folder[open] .interest-art img { transform: translateY(-5px) rotate(-3deg); }
+.interest-folder:nth-child(2) .interest-art img { scale: 1.7; }
+.interest-folder:nth-child(3) .interest-art img { scale: 1.5; }
+@media (max-width: 1100px) { .interest-folders { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 780px) {
+  .awards-app { padding: 25px 20px; }
+  .award-copy { padding: 18px; }
+}
+@media (max-width: 540px) {
+  .award-cards { grid-template-columns: minmax(0, 1fr); }
+  .interest-folders { gap: 13px; }
+  .interest-art { height: 110px; }
+  .interest-label { padding: 10px; font-size: 0.8125rem; }
+  .interest-folder p { padding-inline: 10px; }
+  .spatial-dock {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: min(350px, calc(100vw - 20px));
+    max-width: calc(100vw - 20px);
+    gap: 7px 4px;
+    padding: 10px;
+    border-radius: 28px;
+  }
+  .spatial-dock > a,
+  .spatial-dock > [data-app="playground"] {
+    width: 100%;
+    min-width: 44px;
+    gap: 4px;
+    padding: 3px 0;
+  }
+  .spatial-dock-divider { display: none; }
+  .spatial-dock .space-recenter { width: 100%; min-width: 44px; gap: 8px; padding: 3px 0; }
+  .spatial-dock .space-recenter .icon { width: 26px; height: 26px; margin: 4px 0; }
+  .dock-app-label { font-size: 0.6875rem; }
+}
+@media (prefers-reduced-motion: reduce) { .interest-art img { transition: none; } }
+.world-quiet .interest-art img,
+.world-quiet .guide-suggestions button .icon { transition: none; }
+@media (forced-colors: active) {
+  .award-card, .interest-folder, .interest-folder::before { background: Canvas; border-color: CanvasText; color: CanvasText; }
+}

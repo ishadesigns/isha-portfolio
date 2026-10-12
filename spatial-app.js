@@ -24,6 +24,7 @@
     work: "Selected work",
     about: "About Isha",
     resume: "Resume",
+    awards: "Awards",
     playground: "Playground",
     contact: "Let’s connect",
     case: "Case study",

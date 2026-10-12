@@ -1,4 +1,4 @@
-import { projects, profile, faq } from "./content.mjs";
+import { projects, profile, faq, awards, interests } from "./content.mjs";
 import { resume } from "./resume.mjs";
 import { icon } from "./site.mjs";
 
@@ -169,8 +169,8 @@ export function guideKnowledge() {
       title: "Recognition",
       answer:
         "The resume lists 3 Silver and 2 Bronze Indigo Design Awards and an International Design Awards honorable mention. The Bloom case study also lists Indigo Design Award Winner 2025 and IDA Honorable Mention 2024.",
-      project: "bloom",
-      label: "Explore Bloom",
+      link: "awards",
+      label: "Explore the awards",
     },
     {
       id: "about",
@@ -188,10 +188,13 @@ export function guideKnowledge() {
         "outside",
         "coffee",
         "running",
+        "friends",
+        "sneakers",
+        "interests",
       ],
       title: "The human behind the work",
       answer:
-        "Isha is curious by default and reflective by habit. Solo travel taught her to navigate uncertainty, make trade-offs, and connect across cultures. She starts design with conversations and observations, looking for the human patterns beneath an interface. Her playground notes mention notebooks, iced lattes, and long runs.",
+        "Isha is curious by default and reflective by habit. Solo travel taught her to navigate uncertainty, make trade-offs, and connect across cultures. She starts design with conversations and observations, looking for the human patterns beneath an interface. Her interests include long runs, iced lattes, Friends, and pen-and-paper thinking.",
       link: "about",
       label: "Read about Isha",
     },
