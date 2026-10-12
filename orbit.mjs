@@ -13,8 +13,8 @@ export const orbitItems=[
  {id:'friends',label:'Friends',title:'Friends, the TV show',image:'friends-sticker',copy:'A familiar favorite away from the screen: Friends.',link:'about'},
  {id:'gossip',label:'Gossip Girl',title:'Gossip Girl sticker',image:'orbit-gossip',copy:'A little New York drama, in sticker form. Gossip Girl joins Isha’s orbit.',link:'about'},
  {id:'city',label:'Sex & the City',title:'Sex and the City sticker',image:'orbit-city',copy:'Another New York favorite, in sticker form: Sex and the City.',link:'about'},
- {id:'instax',label:'Pink Instax',title:'Instax mini 13 · Candy Pink',image:'orbit-instax',copy:'A pink camera for little memories you can hold. The joy of an instant photo, in the orbit.',link:'about'},
- {id:'teddy',label:'Pink teddy',title:'A little pink teddy',image:'orbit-teddy',copy:'Soft, pink, and here for a little joy. Give this tiny companion a nudge.',link:'about'},
+ {id:'instax',label:'Instax',title:'Instax mini 13 · Candy Pink',image:'orbit-instax',copy:'A pink camera for little memories you can hold. The joy of an instant photo, in the orbit.',link:'about'},
+ {id:'teddy',label:'Teddy',title:'Teddy',image:'orbit-teddy',copy:'Soft, pink, and here for a little joy. Give this tiny companion a nudge.',link:'about'},
 ];
 export const orbitArtFile = (item) => `orbit-${item.id}-${createHash("sha256").update(item.art).digest("hex").slice(0,8)}.svg`;
 export function orbitPlay(base) {

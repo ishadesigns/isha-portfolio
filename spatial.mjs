@@ -31,6 +31,8 @@ export const version = createHash("sha256")
   .update(readFileSync(new URL("./orbit.css", import.meta.url)))
   .update(readFileSync(new URL("./arrival.css", import.meta.url)))
   .update(readFileSync(new URL("./arrival-app.js", import.meta.url)))
+  .update(readFileSync(new URL("./sound-app.js", import.meta.url)))
+  .update(readFileSync(new URL("./spatial-audio.js", import.meta.url)))
   .digest("hex")
   .slice(0, 12);
 const image = (base, name, alt, eager = false, cls = "") =>
