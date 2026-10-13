@@ -5,8 +5,8 @@ const knowledge = guideKnowledge();
 const answer = (question, previous = "") =>
   guideAnswer(question, knowledge, previous);
 const checks = [
-  ["What can you do?", "", "siri", /built-in answers/],
-  ["Who is Siri?", "", "siri", /browser-only/],
+  ["What can you do?", "", "luke", /built-in answers/],
+  ["Who is Luke?", "", "luke", /browser-only/],
   ["Tell me about her interests", "bmw", "about", /Friends/],
   ["What awards has she won?", "", "awards", /Silver/],
   ["Tell me about Bloom’s Indigo award", "bloom", "awards", /2025/],
@@ -52,11 +52,13 @@ assert.equal(compare.link, "work");
 const claimed = answer("What are the Chemistry outcomes?");
 assert.match(claimed.answer, /reported|methodology/i);
 assert.equal(answer("What awards has she won?").link, "awards");
+assert.equal(answer("Who are you?").link, "geny");
+assert.match(answer("Who is Luke?").answer,/inspired by her work at Geny Labs/);
 for (const entry of knowledge.entries) {
   assert(entry.answer.length > 0);
   assert(!/\bkumari\b/i.test(entry.answer));
   assert(entry.link || entry.project);
 }
 console.log(
-  `Passed ${checks.length + 9} guide behavior checks and ${knowledge.entries.length} source-entry validations.`,
+  `Passed ${checks.length + 11} guide behavior checks and ${knowledge.entries.length} source-entry validations.`,
 );

@@ -25,6 +25,7 @@
     about: "About Isha",
     resume: "Resume",
     awards: "Awards",
+    geny: "Geny Labs",
     playground: "Playground",
     contact: "Let’s connect",
     case: "Case study",

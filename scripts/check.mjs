@@ -36,7 +36,7 @@ for (const file of htmlFiles) {
   assert.match(html, /data-window="awards"/, `${file}: separate Awards window`);
   assert.match(html, /aria-label="Send question"/, `${file}: named icon send control`);
   assert.match(html, /aria-label="Start voice input"/, `${file}: named microphone control`);
-  assert(!/Lumi|résumé|Résumé|data-guide-place|data-guide-motion/.test(html), `${file}: requested companion and Resume presentation`);
+  assert(!/\b(?:Lumi|Siri|SIRI)\b|résumé|Résumé|RÉSUMÉ|data-guide-place|data-guide-motion/.test(html), `${file}: Luke and plain Resume presentation`);
   checks += 4;
   assert.match(html, /world-app.js/, `${file}: spatial world behavior`);
   checks++;
@@ -49,6 +49,9 @@ for (const file of htmlFiles) {
   assert.match(html, /aria-modal="true"/, `${file}: native focused dialogs`);
   checks++;
   assert.match(html, /data-orbit-reset/, `${file}: interactive orbit`);
+  assert.match(html, /data-orbit-constellation/, `${file}: accessible constellation mode`);
+  assert.match(html, /data-window="geny"/, `${file}: Geny Labs placeholder destination`);
+  checks += 2;
   assert.match(html, /data-battery-label>100%<\//, `${file}: full-charge illustration`);
   assert(!/data-arrival-skip|data-arrival-sound|arrival-caption|arrival-portal|arrival-scan/.test(html), `${file}: clean visual arrival`);
   assert.match(html, /id="welcome-audio"[^>]+welcome-chime.wav/, `${file}: native welcome audio`);

@@ -233,7 +233,7 @@ export const projects = [
         title: "Make the room part of the experience.",
         text: "The device brings together an aroma diffuser, speaker, motion sensors, and 360-degree ambient light. Voice control and personalized soundscapes support an experience that extends beyond the screen.",
         image: "bloom-device",
-        alt: "Bloom bedside device render with ambient ilsirination",
+        alt: "Bloom bedside device render with ambient lighting",
       },
       {
         label: "04 / Interface",
@@ -285,8 +285,8 @@ export const faq = [
 // LinkedIn Featured copy, checked against the two official award entries.
 export const bloomAwardDescription = "Bloom began with a mission to explore the booming sleep industry and identify opportunities for impactful design innovation. Through rigorous research and strategic analysis, the team recognized the rising consumer preference for natural sleep solutions and designed a multi-sensory, user-centric sleep product that transforms stress into serenity.";
 export const awards = [
-  { id: "ida", title: "IDA Design Award", year: "2024", recognition: "Honorable Mention", image: "bloom-featured-ida", href: "https://www.idesignawards.com/social/zoom.php?eid=9-59317-24", label: "View the IDA award", description: bloomAwardDescription },
-  { id: "indigo", title: "Indigo Design Award", year: "2025", recognition: "3 Silver · 2 Bronze", image: "bloom-featured-indigo", href: "https://www.indigoaward.com/winners/9906", label: "View the Indigo award", description: bloomAwardDescription },
+  { id: "ida", title: "IDA Design Award", year: "2024", recognition: "Honorable Mention", image: "bloom-featured-ida", href: "https://www.idesignawards.com/social/zoom.php?eid=9-59317-24", label: "View the IDA award" },
+  { id: "indigo", title: "Indigo Design Award", year: "2025", recognition: "3 Silver · 2 Bronze", image: "bloom-featured-indigo", href: "https://www.indigoaward.com/winners/9906", label: "View the Indigo award" },
 ];
 export const interests = [
   { title: "Long runs", image: "sneakers", alt: "White New Balance sneakers from Isha’s original About page", text: "New Balance on, screen off. Long runs are part of my rhythm between analog and digital." },

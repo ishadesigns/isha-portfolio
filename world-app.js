@@ -222,7 +222,7 @@ new MutationObserver(() => {
 }).observe($(".panel-case .spatial-scroll"), { childList: true });
 updateReading();
 
-// Siri: source-backed answers, optional browser voice, and a movable character.
+// Luke: source-backed answers, optional browser voice, and a movable character.
 const guide = $("#guide-panel"),
   launcher = $(".guide-launch"),
   log = $(".guide-conversation"),
@@ -258,7 +258,7 @@ function stopSpeaking() {
   speakingButton = null;
   clearTimeout(speechStartTimer);
   currentUtterance = null;
-  root.classList.remove("siri-speaking");
+  root.classList.remove("luke-speaking");
 }
 function closeGuide(restore = true) {
   if (guide.hidden) return;
@@ -300,12 +300,12 @@ function setAvatar(x, y, announce = false) {
   launcher.style.top = `${avatarPosition.y}px`;
   launcher.style.right = "auto";
   launcher.style.bottom = "auto";
-  if (announce) status("Siri moved.");
+  if (announce) status("Luke moved.");
 }
 function resetAvatar() {
   avatarPosition = null;
   for (const property of ["left", "top", "right", "bottom"]) launcher.style.removeProperty(property);
-  status("Siri returned to its home position.");
+  status("Luke returned to its home position.");
 }
 launcher.addEventListener("pointerdown", (event) => {
   if (event.button !== 0) return;
@@ -326,20 +326,20 @@ launcher.addEventListener("pointermove", (event) => {
   if (Math.hypot(dx, dy) > 6) avatarDrag.moved = true;
   if (avatarDrag.moved) {
     event.preventDefault();
-    root.classList.add("siri-dragging");
+    root.classList.add("luke-dragging");
     setAvatar(avatarDrag.origin.x + dx, avatarDrag.origin.y + dy);
   }
 });
 function stopAvatarDrag() {
   suppressClick = !!avatarDrag?.moved;
   avatarDrag = null;
-  root.classList.remove("siri-dragging");
+  root.classList.remove("luke-dragging");
 }
 launcher.addEventListener("pointerup", stopAvatarDrag);
 launcher.addEventListener("pointercancel", stopAvatarDrag);
 launcher.addEventListener("lostpointercapture", () => {
   avatarDrag = null;
-  root.classList.remove("siri-dragging");
+  root.classList.remove("luke-dragging");
 });
 launcher.addEventListener("keydown", (event) => {
   if (!event.key.startsWith("Arrow")) return;
@@ -374,7 +374,7 @@ function reply(value) {
   message.className = "guide-message guide-answer";
   const author = document.createElement("span");
   author.className = "guide-speaker";
-  author.textContent = "SIRI";
+  author.textContent = "LUKE";
   const title = document.createElement("p");
   title.className = "guide-answer-title";
   title.textContent = answer.title;
@@ -430,7 +430,7 @@ const dictation = createDictationController({
     const label = state === "listening" ? "Stop voice input" : "Start voice input";
     mic.setAttribute("aria-label", label);
     mic.title = label;
-    root.classList.toggle("siri-listening", state === "listening");
+    root.classList.toggle("luke-listening", state === "listening");
     guide.dataset.dictation = state;
   },
   onTranscript(text) { question.value = text; },
@@ -464,7 +464,7 @@ function speakAnswer(button) {
   utterance.onstart = () => {
     if (currentUtterance !== utterance) return;
     clearTimeout(speechStartTimer);
-    root.classList.add("siri-speaking");
+    root.classList.add("luke-speaking");
     button.textContent = "Stop reading";
     button.setAttribute("aria-pressed", "true");
   };

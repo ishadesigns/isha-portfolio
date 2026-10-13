@@ -6,12 +6,23 @@
 .orbit-toolbar p { max-width: 36rem; font-size: .875rem !important; line-height: 1.6; }
 .orbit-toolbar button { display: inline-flex; flex: none; gap: 8px; align-items: center; min-height: 44px; border-radius: 24px; padding: 10px 16px; background: #355541; color: #fff; font-size: .875rem; }
 .orbit-toolbar .icon { width: 16px; height: 16px; }
+.orbit-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.orbit-actions [data-orbit-constellation] { background: #e0e8d9; color: #2d4936; border: 1px solid #9aaf92; }
+.orbit-actions [data-orbit-constellation][aria-pressed="true"] { background: #355541; color: #fff; }
+.orbit-actions button:focus-visible { outline: 3px solid #21517a; outline-offset: 3px; }
+.orbit-constellation { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; transition: opacity .5s; }
+.orbit-star-path { fill: none; stroke: #6f9179; stroke-width: 1.5; stroke-dasharray: 3 7; }
+.orbit-star { fill: #fff; stroke: #6f9179; stroke-width: 2; }
+.orbit-scene[data-mode="constellation"] .orbit-constellation { opacity: .85; }
+.orbit-scene[data-mode="constellation"] { background: radial-gradient(ellipse at 20% 10%,#f5e6e5 0,transparent 45%),radial-gradient(ellipse at 85% 85%,#d1e5de 0,transparent 52%),#e8e9e2; }
+.orbit-mode-note:not(:empty) { font-size: .8125rem; line-height: 1.5; margin-top: 12px; color: #425847; }
+@media (prefers-reduced-motion:reduce) {.orbit-constellation {transition:none;}}
 .orbit-scene { position: relative; height: clamp(420px,55vh,540px); isolation: isolate; overflow: hidden; border-radius: 28px; border: 1px solid #abbca6; background: radial-gradient(ellipse at 20% 10%,#f8e6e1 0,transparent 45%),radial-gradient(ellipse at 85% 85%,#d5e8e5 0,transparent 52%),#e8e9e2; }
 .orbit-scene::before { content: ''; position: absolute; inset: 25px; border: 1px solid #ffffff8c; border-radius: 50%; transform: rotate(-18deg) scaleY(.7); pointer-events: none; }
 .orbit-object { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 20px; padding: 2px; background: transparent; min-width: 44px; min-height: 44px; touch-action: none; cursor: grab; color: #263a2e; will-change: transform; }
-.orbit-object-art { overflow: visible; display: grid; place-items: center; width: 100%; height: 80px; flex: 1; min-height: 45px; pointer-events: none; filter: drop-shadow(0 7px 5px #3a534624); }
+.orbit-object-art { position: relative; overflow: visible; width: 100%; height: 80px; flex: 1; min-height: 32px; pointer-events: none; filter: drop-shadow(0 7px 5px #3a534624); }
 .orbit-object-art img,
-.orbit-object-art svg { display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+.orbit-object-art svg { position: absolute; inset: 0; display: block; width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
 .orbit-latte .orbit-object-art img { transform: scale(1.6); }
 .orbit-friends .orbit-object-art img { transform: scale(1.45); }
 
@@ -28,6 +39,8 @@
 .about-studio-notes .spatial-field-notes { max-width: 100%; }
 .about-studio-notes .spatial-field-notes > div { max-height: 180px; }
 @media (max-width:540px) {
+ .orbit-toolbar { flex-direction: column; }
+ .orbit-actions { justify-content: flex-start; }
  .orbit-toolbar { align-items: start; gap: 10px; }
  .orbit-toolbar button { padding: 10px 12px; }
  .orbit-scene { height: 460px; border-radius: 22px; }
@@ -41,14 +54,14 @@
 }
 .orbit-detail[hidden] { display: none; }
 @media (min-width:781px) {
- .panel-playground .play-app { padding: 16px 26px; }
+ .panel-playground .play-app { padding: 12px 26px; }
  .orbit-intro { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
- .orbit-intro .space-eyebrow { font-size: .625rem; }
- .orbit-intro h1,.orbit-intro h2 { font-size: 1.875rem; margin: 6px 0 2px; }
+ .orbit-intro .space-eyebrow { font-size: .625rem; line-height: 1.2; }
+ .orbit-intro h1,.orbit-intro h2 { font-size: 1.625rem; margin: 4px 0 2px; }
  .orbit-intro > p { max-width: 17rem; font-size: .875rem; line-height: 1.5; }
- .orbit-toolbar { margin: 9px 0 11px; }
+ .orbit-toolbar { margin: 6px 0 8px; }
  .orbit-toolbar p { font-size: .8125rem !important; line-height: 1.45; }
- .orbit-scene { height: max(260px,calc(var(--available-height,520px) - 216px)); }
+ .orbit-scene { height: max(206px,calc(var(--available-height,520px) - 198px)); }
 }
 
 .orbit-gossip .orbit-object-art img,.orbit-city .orbit-object-art img { transform: scale(1.1); }

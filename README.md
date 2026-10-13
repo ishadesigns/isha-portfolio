@@ -23,9 +23,9 @@ npm run check
 
 | File | Controls |
 | --- | --- |
-| `world.mjs` | Room status, Siri UI, and public guide knowledge |
+| `world.mjs` | Room status, Luke UI, and public guide knowledge |
 | `world-app.js` | Room camera controls, scrolling effects, guide movement, and browser voice |
-| `world.css` | Spatial status, Siri, and room styling |
+| `world.css` | Spatial status, Luke, and room styling |
 | `orbit.mjs` | Orbit content, vector artwork, and Play markup |
 | `orbit-app.js` | Object dragging, tossing, selection, and animation lifecycle |
 | `orbit-motion.js` | Bounded motion and collision behavior |
@@ -68,8 +68,8 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
 - A spatial status bar with local time and an illustrative 100% full-charge indicator.
-- Siri, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and device reduced-motion support.
-- Isha’s Orbit: ten bouncing projects and favorite things, drag/toss interaction, keyboard movement, click-to-explore stories, and Remix.
+- Luke, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and device reduced-motion support.
+- Isha’s Orbit: eleven bouncing favorite things, drag/toss interaction, keyboard movement, click-to-explore stories, Remix, and a connected constellation you can reshape and release.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.
 - Project filters, animated window transitions, and pointer-driven environmental depth.
 - Field notes and the GitHub experiments link inside About Me; the material color demo has been retired.
@@ -110,10 +110,16 @@ npm run preview
 
 Visit `http://127.0.0.1:4173/?audit=1`. Reports appear as JSON in `#audit-results`. Optional local stress modes: `contrast=dark`, `contrast=light`, `text=200`, and `spacing=1`. Navigate through all windows and projects. Rebuild with `npm run build` afterward; `npm run check` intentionally rejects an instrumented build. The deployed site includes neither axe nor the audit runner.
 
-## Browser voice and Siri
+## Browser voice and Luke
 
 No AI API key or backend is used. Answers are retrieved from the portfolio and resume data in `world.mjs`; `npm test` checks routing, follow-ups, unknown/private questions, and source-entry validity. GitHub Actions runs these checks before deployment.
 
 Dictate uses SpeechRecognition / webkitSpeechRecognition where available. A user click starts permission and capture; text is editable before Send. Browser speech services may send audio to their provider. Read aloud uses SpeechSynthesis, preferring enhanced, premium, natural, or neural English voices when available, with a standard device voice as fallback. Support, installed voices, and permission behavior vary by browser. Unsupported or failed voice input leaves text chat available. Chat is not saved; no site preferences or conversations are stored locally.
 
 See `docs/world-features.md` for verification and remaining hardware/assistive-technology checks.
+
+## Welcome audio and entry
+
+The automatic reveal lasts 2.7 seconds and uses a subtle pale-gray rectangle with rounded corners. A native audio player makes one welcome attempt per document. If the browser refuses autoplay, ordinary navigation stays silent rather than triggering a delayed welcome. The existing Replay arrival button explicitly starts the sound and reveal again. In-flight welcome requests share one attempt; only explicit replay resets the cue. Audible autoplay on direct visits depends on the visitor’s browser settings, not their audio output device. Click ticks still play after interaction.
+
+Luke’s introduction links to the Geny Labs placeholder window. The guide retains built-in portfolio answers and optional browser dictation/read-aloud. Awards presents one shared Bloom description followed by the two directly linked award names. About Me links to Play between the interest folders and Field Notes.

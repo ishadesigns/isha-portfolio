@@ -1,4 +1,15 @@
 export const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+// A responsive star map with generous cells; reversing alternate rows makes a
+// continuous constellation rather than drawing a line back across each row.
+export function constellationLayout(bodies,bounds) {
+ const cols=bounds.width<450?3:bounds.width<560?4:bounds.width>=700?6:5;
+ const rows=Math.ceil(bodies.length/cols);
+ return bodies.map((b,i)=>{
+  const row=Math.floor(i/cols),col=row%2?cols-1-i%cols:i%cols;
+  return {x:clamp((col+.5)*bounds.width/cols-b.w/2,10,Math.max(10,bounds.width-b.w-10)),
+   y:clamp((row+.5)*bounds.height/rows-b.h/2+Math.sin(i*1.8)*8,10,Math.max(10,bounds.height-b.h-10))};
+ });
+}
 export function stepOrbit(bodies,bounds,seconds) {
  const dt=clamp(seconds,0,0.05), pad=10;
  for(const b of bodies) {

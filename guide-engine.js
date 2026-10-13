@@ -30,11 +30,11 @@ export function guideAnswer(question, knowledge, previousTopic = "") {
       label: "Explore her work",
     };
   if (
-    /\b(siri|bot|chatbot|who are you|what can you do|are you ai|dictate|read aloud|voice input)\b/.test(
+    /\b(luke|bot|chatbot|who are you|what can you do|are you ai|dictate|read aloud|voice input)\b/.test(
       q,
     )
   )
-    return knowledge.entries.find((e) => e.id === "siri");
+    return knowledge.entries.find((e) => e.id === "luke");
   if (knowledge.privateTopics.some((word) => contains(q, word))) return unknown;
   if (/\b(awards?|indigo|ida|recognition)\b/.test(q))
     return knowledge.entries.find((e) => e.id === "awards");
