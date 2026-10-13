@@ -75,16 +75,22 @@ export function createSpatialAudio({AudioContext,now=()=>performance.now(),activ
 
 // Each document gets a fresh cue. Browser permission is not a saved site preference.
 export function createWelcomeCue({sound,active=()=>true,onState=()=>{}}) {
-  let played=false,generation=0;
+  let played=false,generation=0,pending=null;
   onState('pending');
-  async function attempt() {
-    if(played||!active())return false;
+  function attempt() {
+    if(played||!active())return Promise.resolve(false);
+    if(pending)return pending;
     const id=++generation;
-    const audible=await sound.arrival();
-    if(id!==generation)return false;
-    played=audible;onState(played?'played':'pending');return audible;
+    pending=(async()=>{
+      try {
+        const audible=await sound.arrival();
+        if(id!==generation)return false;
+        played=audible;onState(played?'played':'blocked');return audible;
+      } finally {if(id===generation)pending=null;}
+    })();
+    return pending;
   }
-  function replay(){played=false;onState('pending');return attempt();}
-  function pause(){++generation;sound.stopArrival();}
+  function replay(){pause();played=false;onState('pending');return attempt();}
+  function pause(){++generation;pending=null;sound.stopArrival();}
   return {load:attempt,interact:attempt,replay,pause};
 }

@@ -2,14 +2,14 @@
 .arrival-layer {position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden;}
 .arrival-layer[hidden] {display:none;}
 .spatial-ready.arrival-complete .panel-home {animation:none;}
-html[data-arrival] .panel-home {opacity:.2;pointer-events:auto;animation:none;}
-.arrival-lens {position:absolute;inset:0;border-radius:50%;background:radial-gradient(ellipse at 50% 47%,transparent 16%,#10150fd9 50%,#070b07 76%);transform-origin:center;}
+html[data-arrival] .panel-home {opacity:.72;pointer-events:auto;animation:none;}
+.arrival-lens {position:absolute;inset:12px;border-radius:clamp(24px,4vw,54px);background:radial-gradient(ellipse at 50% 47%,#eff1e800 20%,#a9aca55c 60%,#7e847b8c 100%);transform-origin:center;}
 .arrival-replay {display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:22px;padding:7px 13px;margin-top:6px;color:#355541;background:#e2e9d9;font-size:.75rem;}
 .arrival-replay .icon {height:15px;width:15px;}
 html[data-arrival="running"] .arrival-lens {animation:arrival-lens 2.7s cubic-bezier(.4,0,.2,1) both;}
-@keyframes arrival-lens {0%,16% {opacity:1;scale:.72} 46% {opacity:.8;scale:1} 72% {opacity:.35;scale:1.5} 100% {opacity:0;scale:1.9}}
+@keyframes arrival-lens {0%,16% {opacity:1;scale:.94} 46% {opacity:.7;scale:1} 72% {opacity:.25;scale:1.08} 100% {opacity:0;scale:1.16}}
 html.spatial-ready[data-arrival="running"] .panel-home {animation:arrival-focus 2.7s ease-in-out both;}
-@keyframes arrival-focus {0%,16% {opacity:.2} 50% {opacity:.65} 82%,100% {opacity:1}}
+@keyframes arrival-focus {0%,16% {opacity:.72} 50% {opacity:.88} 82%,100% {opacity:1}}
 @media (prefers-reduced-motion:reduce) {.arrival-layer {display:none;}}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
 .spatial-ready.space-reflow,.spatial-ready.space-reflow .spatial-site {height:auto;min-height:100%;overflow:auto;}

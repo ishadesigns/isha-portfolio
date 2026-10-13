@@ -7,12 +7,11 @@ export const spatialSound=createSpatialAudio({
 });
 const welcomePlayer=createWelcomePlayer({element:document.querySelector('#welcome-audio'),active:()=>!document.hidden,onState:state=>{document.documentElement.dataset.welcomePlayback=state;},onProgress:time=>{document.documentElement.dataset.welcomeTime=time.toFixed(3);}});
 export const welcomeCue=createWelcomeCue({sound:welcomePlayer,active:()=>!document.hidden,onState:state=>{document.documentElement.dataset.welcomeSound=state;}});
-// Try on every page load, including refreshes and direct links. A blocked cue gets
-// one fresh, gesture-authorized attempt rather than playing an expired request.
+// One automatic attempt per document. A refused cue stays silent: unrelated
+// pointer presses must never launch a delayed welcome while someone is browsing.
+// The existing Replay arrival button is the explicit, gesture-authorized retry.
 if(document.readyState==='complete')welcomeCue.load();
 else document.addEventListener('DOMContentLoaded',()=>welcomeCue.load(),{once:true});
-document.addEventListener('pointerdown',e=>{if(e.isTrusted&&e.isPrimary&&e.button===0)welcomeCue.interact();},{passive:true});
-document.addEventListener('keydown',e=>{if(e.isTrusted&&!e.repeat)welcomeCue.interact();});
 let pointer=null,lastDrag=-Infinity;
 document.addEventListener('pointerdown',e=>{if(e.isPrimary)pointer={id:e.pointerId,x:e.clientX,y:e.clientY};},{passive:true});
 document.addEventListener('pointerup',e=>{if(pointer?.id===e.pointerId){if(Math.hypot(e.clientX-pointer.x,e.clientY-pointer.y)>6)lastDrag=performance.now();pointer=null;}},{passive:true});
