@@ -1,8 +1,14 @@
-# Isha — Spatial Portfolio
+# Isha — Product Design Portfolio · In Progress
 
-An independent, static UX design portfolio inspired by spatial interfaces. The existing Framer site and custom domain are untouched.
+I’m building a new product design portfolio that brings my work into an interactive, Apple Vision Pro–inspired space. It’s a work in progress: a place to explore my projects, get to know me, and experience the ideas behind my design practice.
 
-**Production:** https://ishadesigns.github.io/isha-portfolio/
+**[Explore the new portfolio →](https://ishadesigns.github.io/isha-portfolio/)**
+
+The spatial direction grows out of my work at BMW, where I designed a vehicle configuration and exploration experience for Apple Vision Pro. Floating windows, immersive project views, and a navigation dock carry that curiosity about spatial interaction into the portfolio itself. **[Explore BMW × Apple Vision Pro →](https://ishadesigns.github.io/isha-portfolio/projects/bmw/)**
+
+The portfolio also introduces **Luke**, a voice-enabled companion inspired by my work on AI voice assistants at **[Geny Labs](https://ishadesigns.github.io/isha-portfolio/#geny)**. Ask Luke about my projects, experience, or approach to design through text or supported browser voice input, and listen to answers with optional read-aloud. Luke uses built-in answers grounded in my portfolio and resume.
+
+This independent, static website is being built and refined in public. The existing Framer portfolio and custom domain remain in place while the new experience takes shape.
 
 ## Run locally
 
