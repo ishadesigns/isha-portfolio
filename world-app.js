@@ -162,7 +162,7 @@ function updateReading() {
     $$("[data-window]").forEach((panel) => {
       if (panel.hidden) return;
       const content = $(".spatial-scroll", panel);
-      const short = innerHeight <= 540;
+      const short = innerHeight <= 540 && !root.classList.contains('workspace-fullscreen');
       const available = short
         ? Math.max(0, panel.scrollHeight - innerHeight)
         : content.scrollHeight - content.clientHeight;
@@ -184,6 +184,7 @@ $$(".spatial-scroll").forEach((content) =>
 );
 window.addEventListener("scroll", updateReading, { passive: true });
 window.addEventListener("resize", updateReading);
+document.addEventListener('workspacechange', updateReading);
 new MutationObserver(updateReading).observe(root, {
   subtree: true,
   attributes: true,
@@ -541,7 +542,7 @@ document.addEventListener("click", (event) => {
   if (target.hasAttribute("data-room-return")) setRoomView(false);
   if (target.hasAttribute("data-scroll-top")) {
     const panel = target.closest("[data-window]");
-    if (innerHeight <= 540)
+    if (innerHeight <= 540 && !root.classList.contains('workspace-fullscreen'))
       panel.scrollIntoView({
         block: "start",
         behavior: calm() ? "instant" : "smooth",

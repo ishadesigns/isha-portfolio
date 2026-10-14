@@ -61,7 +61,7 @@ This is a **project site**, deliberately isolated from any user site or custom d
 
 - A persistent room with floating glass windows for Welcome, Work, About, Awards, Playground, Contact, Resume, and case studies.
 - Three complete, directly linkable case studies. Direct URLs open the same immersive workspace.
-- Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, single-click Arrange controls, expansion, closing, and recentering.
+- Desktop window movement using a title bar or grab handle, plus keyboard arrow movement, expansion, closing, and recentering.
 - Navigation through the dock; content scrolls inside the active window. Browser Back/Forward and hash deep links work.
 - In-site resume reader with career disclosures, section navigation, skills, education, awards, and an optional PDF source link.
 - Project studios with animated artifact selection, focused image inspection, zoom, and keyboard/touch controls.
@@ -120,6 +120,10 @@ See `docs/world-features.md` for verification and remaining hardware/assistive-t
 
 ## Welcome audio and entry
 
-The automatic reveal lasts 2.7 seconds and uses a subtle pale-gray rectangle with rounded corners. A native audio player makes one welcome attempt per document. If the browser refuses autoplay, ordinary navigation stays silent rather than triggering a delayed welcome. The existing Replay arrival button explicitly starts the sound and reveal again. In-flight welcome requests share one attempt; only explicit replay resets the cue. Audible autoplay on direct visits depends on the visitor’s browser settings, not their audio output device. Click ticks still play after interaction.
+Welcome loads immediately with no visual reveal or fade. A native audio player makes one welcome attempt per document. If the browser refuses autoplay, ordinary navigation stays silent rather than triggering a delayed welcome. The Play welcome sound button explicitly plays the chime without a visual effect. In-flight welcome requests share one attempt; only explicit replay resets the cue. Audible autoplay on direct visits depends on the visitor’s browser settings, not their audio output device. Click ticks still play after interaction.
 
 Luke’s introduction links to the Geny Labs placeholder window. The guide retains built-in portfolio answers and optional browser dictation/read-aloud. Awards presents one shared Bloom description followed by the two directly linked award names. About Me links to Play between the interest folders and Field Notes.
+
+## Full-viewport navigation
+
+Initial Welcome is compact. Navigation and project links open full-size, opaque app surfaces spanning the browser viewport; the expand/restore button returns each to its compact size. The header, dock, and Luke stay above the app, with measured safe areas protecting readable content. The dock utility is Explore Vision Pro. The title-bar Arrange control is removed. See `docs/fullscreen-workspace.md` for behavior and browser verification.

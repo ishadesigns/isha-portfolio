@@ -72,6 +72,7 @@
     button.setAttribute("aria-label", `${expanded ? "Restore" : "Expand"} ${windowNames[panel.dataset.window]} window`);
     if (panel.dataset.window === activeView) root.classList.toggle("workspace-fullscreen", expanded);
     updateMoveControls();
+    document.dispatchEvent(new Event('workspacechange'));
   }
   function showWindow(view, { focus = true, expanded = true } = {}) {
     activeView = view;
@@ -450,7 +451,7 @@
   // Text preferences and wrapping can change navigation height without a viewport resize.
   // Keep the reading window outside those occupied areas.
   function updateAvailableSpace() {
-    root.classList.toggle("space-reflow", innerWidth < 1000 && parseFloat(getComputedStyle(root).fontSize) > 22);
+    root.classList.toggle("space-reflow", innerHeight < 320 || (innerWidth < 1000 && parseFloat(getComputedStyle(root).fontSize) > 22));
     const header = $(".space-status").getBoundingClientRect();
     const dock = $(".spatial-dock").getBoundingClientRect();
     root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);
