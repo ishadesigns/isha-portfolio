@@ -1,7 +1,5 @@
 /* Welcome has no opening fade, mask, or loading animation. */
 .spatial-ready .panel-home,.spatial-ready .project-satellite {animation:none;}
-.arrival-replay {display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:22px;padding:7px 13px;margin-top:6px;color:#355541;background:#e2e9d9;font-size:.75rem;}
-.arrival-replay .icon {height:15px;width:15px;}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
 .spatial-ready.space-reflow,.spatial-ready.space-reflow .spatial-site {height:auto;min-height:100%;overflow:auto;}
 .space-reflow .spatial-site {display:flex;flex-direction:column;}
@@ -24,8 +22,6 @@
 .space-reflow .orbit-scene {height:560px;}
 
 .space-reflow .orbit-toolbar {flex-direction:column;align-items:flex-start;}
-.arrival-replay:focus-visible {outline:3px solid #21517a;outline-offset:3px;}
-@media (forced-colors:active) {.arrival-replay {background:Canvas;color:CanvasText;border-color:CanvasText;}}
 
 /* Full viewport app surface. Chrome floats above; reading content stays in the
    measured safe area between the header and dock. No OS fullscreen API needed. */

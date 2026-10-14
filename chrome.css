@@ -41,6 +41,15 @@ html.immersive-chrome .spatial-titlebar .window-context {max-width:max(0px,calc(
 html.immersive-chrome .spatial-titlebar .window-expand {position:absolute;top:0;right:60px;}
 html.immersive-chrome .spatial-titlebar .window-scroll-top {position:absolute;top:0;right:104px;}
 html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .spatial-controls {top:0;right:12px;}
+/* Smaller visible window actions, with an unchanged 44px touch/focus target. */
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded :is(.window-dismiss,.window-expand) {width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border:0;background:transparent;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none;isolation:isolate;}
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .window-dismiss {position:relative;left:auto;}
+html.immersive-chrome :is(.window-dismiss,.window-expand)::before {content:"";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:32px;height:32px;border:1px solid #c0cebd;border-radius:50%;background:#edf2e7;pointer-events:none;z-index:-1;}
+html.immersive-chrome .window-dismiss::before {border-color:#71866f;}
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .window-dismiss > .icon {width:14px;height:14px;}
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .window-expand > .icon {width:16px;height:16px;}
+html.immersive-chrome :is(.window-dismiss,.window-expand):hover::before {background:#dce7d5;}
+html.immersive-chrome :is(.window-dismiss,.window-expand):focus-visible {outline-offset:-3px;}
 @media (max-width:900px) {html.immersive-chrome .window-context {display:none;}}
 @media (max-width:540px) {
  html.immersive-chrome .space-island {width:104px;}
@@ -65,3 +74,4 @@ html.immersive-chrome .guide-launch {bottom:16px;}
 html.immersive-chrome[data-dock-visible="true"] .guide-launch {bottom:calc(var(--space-bottom,145px) + 8px);}
 @media (prefers-reduced-motion:reduce) {html.immersive-chrome .spatial-dock,html.immersive-chrome .space-status-details,.island-capsule,.dock-reveal span {transition:none;}}
 @media (forced-colors:active) {.island-capsule,.space-status-details {background:Canvas!important;color:CanvasText!important;border-color:CanvasText!important;} .island-eyes i,.dock-reveal span {background:CanvasText;} .island-ring {border-color:CanvasText;}}
+@media (forced-colors:active) {html.immersive-chrome :is(.window-dismiss,.window-expand)::before {background:Canvas;border-color:ButtonText;}}
