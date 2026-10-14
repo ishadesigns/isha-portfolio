@@ -10,7 +10,7 @@ export const welcomeCue=createWelcomeCue({sound:welcomePlayer,active:()=>!docume
 // One automatic attempt per document. A refused cue stays silent: unrelated
 // pointer presses must never launch a delayed welcome while someone is browsing.
 // The existing Replay arrival button is the explicit, gesture-authorized retry.
-if(document.readyState==='complete')welcomeCue.load();
+if(document.readyState!=='loading')welcomeCue.load();
 else document.addEventListener('DOMContentLoaded',()=>welcomeCue.load(),{once:true});
 let pointer=null,lastDrag=-Infinity;
 document.addEventListener('pointerdown',e=>{if(e.isPrimary)pointer={id:e.pointerId,x:e.clientX,y:e.clientY};},{passive:true});

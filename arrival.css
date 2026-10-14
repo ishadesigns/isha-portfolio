@@ -1,16 +1,7 @@
-/* Welcome is available immediately beneath a settling, rounded headset reveal. */
-.arrival-layer {position:fixed;inset:0;z-index:80;pointer-events:none;overflow:hidden;}
-.arrival-layer[hidden] {display:none;}
-.spatial-ready.arrival-complete .panel-home {animation:none;}
-html[data-arrival] .panel-home {opacity:.72;pointer-events:auto;animation:none;}
-.arrival-lens {position:absolute;inset:12px;border-radius:clamp(24px,4vw,54px);background:radial-gradient(ellipse at 50% 47%,#eff1e800 20%,#a9aca55c 60%,#7e847b8c 100%);transform-origin:center;}
+/* Welcome has no opening fade, mask, or loading animation. */
+.spatial-ready .panel-home,.spatial-ready .project-satellite {animation:none;}
 .arrival-replay {display:inline-flex;align-items:center;gap:8px;min-height:44px;border-radius:22px;padding:7px 13px;margin-top:6px;color:#355541;background:#e2e9d9;font-size:.75rem;}
 .arrival-replay .icon {height:15px;width:15px;}
-html[data-arrival="running"] .arrival-lens {animation:arrival-lens 2.7s cubic-bezier(.4,0,.2,1) both;}
-@keyframes arrival-lens {0%,16% {opacity:1;scale:.94} 46% {opacity:.7;scale:1} 72% {opacity:.25;scale:1.08} 100% {opacity:0;scale:1.16}}
-html.spatial-ready[data-arrival="running"] .panel-home {animation:arrival-focus 2.7s ease-in-out both;}
-@keyframes arrival-focus {0%,16% {opacity:.72} 50% {opacity:.88} 82%,100% {opacity:1}}
-@media (prefers-reduced-motion:reduce) {.arrival-layer {display:none;}}
 /* Enlarged text must have a readable page, even when chrome consumes the viewport. */
 .spatial-ready.space-reflow,.spatial-ready.space-reflow .spatial-site {height:auto;min-height:100%;overflow:auto;}
 .space-reflow .spatial-site {display:flex;flex-direction:column;}
@@ -35,3 +26,45 @@ html.spatial-ready[data-arrival="running"] .panel-home {animation:arrival-focus 
 .space-reflow .orbit-toolbar {flex-direction:column;align-items:flex-start;}
 .arrival-replay:focus-visible {outline:3px solid #21517a;outline-offset:3px;}
 @media (forced-colors:active) {.arrival-replay {background:Canvas;color:CanvasText;border-color:CanvasText;}}
+
+/* Full viewport app surface. Chrome floats above; reading content stays in the
+   measured safe area between the header and dock. No OS fullscreen API needed. */
+html.workspace-fullscreen:not(.room-looking) .spatial-environment {visibility:hidden;}
+html.workspace-fullscreen .spatial-workspace {perspective:none;}
+html.workspace-fullscreen .spatial-panel.is-expanded {
+ position:fixed; inset:0; left:0; top:0; width:100%; max-width:none;
+ height:100dvh; max-height:none; min-height:0; margin:0;
+ transform:none; translate:0 0!important; animation:none; transition:none;
+ border:0; border-radius:0; box-shadow:none; background:#f4f7ef;
+ backdrop-filter:none; -webkit-backdrop-filter:none;
+ padding-top:var(--workspace-top,100px); padding-bottom:var(--workspace-bottom,150px);
+ --available-height:calc(100dvh - var(--workspace-top,100px) - var(--workspace-bottom,150px));
+}
+html.workspace-fullscreen .spatial-panel.is-expanded .spatial-titlebar {
+ padding-inline:clamp(16px,3vw,48px); padding-right:calc(clamp(16px,3vw,48px) + 52px);
+ min-height:62px; background:#f4f7ef;
+}
+html.workspace-fullscreen .spatial-panel.is-expanded .spatial-scroll {
+ overflow:auto; border-radius:0; min-height:0; flex:1;
+ scroll-padding-block:20px;
+}
+html.workspace-fullscreen .spatial-panel.is-expanded .spatial-scroll > :is(.welcome-content,.work-app,.about-app,.resume-app,.awards-app,.play-app,.contact-app,.case-article,.geny-placeholder) {max-width:1200px; margin-inline:auto;}
+html.workspace-fullscreen .spatial-panel.is-expanded .spatial-controls {
+ position:absolute; top:calc(var(--workspace-top,100px) + 9px); right:clamp(16px,3vw,48px);
+ bottom:auto; left:auto; width:44px; height:44px;
+}
+html.workspace-fullscreen .spatial-panel.is-expanded .window-dismiss {position:static; width:44px; height:44px;}
+html.workspace-fullscreen .spatial-panel.is-expanded .window-handle {display:none;}
+html.workspace-fullscreen [data-home-orbit] {display:none!important;}
+html.workspace-fullscreen .window-expand {display:grid;}
+@media (max-width:780px) {
+ .window-expand {display:grid;}
+ html.workspace-fullscreen .spatial-panel.is-expanded .spatial-titlebar {padding-left:16px;}
+}
+/* Enlarged text uses normal flow, so navigation never consumes the reading area. */
+html.workspace-fullscreen.space-reflow .spatial-panel.is-expanded {
+ position:relative; inset:auto; min-height:100dvh; height:auto; max-height:none;
+ padding:0; width:100%;
+}
+html.workspace-fullscreen.space-reflow .spatial-panel.is-expanded .spatial-scroll {overflow:visible;}
+html.workspace-fullscreen.space-reflow .spatial-panel.is-expanded .spatial-controls {top:9px;}

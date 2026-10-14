@@ -65,7 +65,10 @@ for (const file of htmlFiles) {
   assert(!orbitData.some(item => item.project || ['bmw','bloom'].includes(item.id)), `${file}: personal favorites only in Play`);
   checks += 5;
   assert.match(html, /type="text" id="guide-question"/, `${file}: single-line composer`);
-  assert.match(html, /class="dock-look-toggle" data-look-toggle/, `${file}: room controls in dock`);
+  assert.match(html, /class="dock-look-toggle"[^>]*data-look-toggle/, `${file}: room controls in dock`);
+  assert(!/window-arrange|window-placement|arrival-layer|arrival-lens|data-arrival=/.test(html), `${file}: removed placement button and opening veil`);
+  assert.match(html, /aria-label="Explore Vision Pro"/, `${file}: spatial exploration label`);
+  checks += 2;
   assert(!/data-ambient-motion|data-game-reset|SPATIAL PAIRS/.test(html), `${file}: retired controls and game removed`);
   checks += 3;
   checks++;

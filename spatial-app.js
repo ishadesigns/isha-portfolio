@@ -63,20 +63,17 @@
     oldHeading.replaceWith(heading);
     return heading;
   }
-  function closePlacements(restoreFocus = false) {
-    const trigger = document.querySelector(
-      '.window-arrange[aria-expanded="true"]',
-    );
-    $$(".window-placement").forEach((menu) => {
-      menu.hidden = true;
-    });
-    $$(".window-arrange").forEach((button) =>
-      button.setAttribute("aria-expanded", "false"),
-    );
-    if (restoreFocus) trigger?.focus({ preventScroll: true });
+  function setExpanded(panel, expanded) {
+    panel.classList.toggle("is-expanded", expanded);
+    panel.style.setProperty("--drag-x", "0px");
+    panel.style.setProperty("--drag-y", "0px");
+    const button = $(".window-expand", panel);
+    button.setAttribute("aria-pressed", String(expanded));
+    button.setAttribute("aria-label", `${expanded ? "Restore" : "Expand"} ${windowNames[panel.dataset.window]} window`);
+    if (panel.dataset.window === activeView) root.classList.toggle("workspace-fullscreen", expanded);
+    updateMoveControls();
   }
-  function showWindow(view, { focus = true } = {}) {
-    closePlacements();
+  function showWindow(view, { focus = true, expanded = true } = {}) {
     activeView = view;
     windows.forEach((panel, id) => {
       panel.hidden = id !== view;
@@ -88,6 +85,8 @@
     });
     $(".space-idle").hidden = view !== "idle";
     root.dataset.view = view;
+    root.classList.toggle("workspace-fullscreen", view !== "idle" && expanded);
+    if(windows.has(view))setExpanded(windows.get(view), expanded);
     $$("[data-app]").forEach((link) => {
       const selected = link.dataset.app === (view === "case" ? "work" : view);
       if (selected) link.setAttribute("aria-current", "page");
@@ -118,12 +117,12 @@
     if (location.hash !== hash) history.pushState({ spatial: hash }, "", hash);
     routedURL = location.href;
   }
-  function openWindow(view, push = true, focus = true) {
+  function openWindow(view, push = true, focus = true, expanded = focus || view !== "home") {
     if (!windows.has(view) && view !== "idle") view = "home";
     requestId++;
     activeCase = "";
     if (push) updateHash(view === "idle" ? "#space" : `#${view}`);
-    showWindow(view, { focus });
+    showWindow(view, { focus, expanded });
   }
   function normalizeArticle(article, pageURL) {
     $$("[src]", article).forEach((el) =>
@@ -146,6 +145,7 @@
     );
 
   function animateLaunch(panel, source) {
+    if(panel.classList.contains('is-expanded'))return;
     if (reduceMotion || !source) return;
     panel.getAnimations().forEach((animation) => animation.cancel());
     const target = panel.getBoundingClientRect();
@@ -191,10 +191,6 @@
       "aria-label",
       `Move ${caseNames[slug]} window`,
     );
-    $(".window-arrange", casePanel).setAttribute(
-      "aria-label",
-      `Arrange ${caseNames[slug]} window`,
-    );
     $(".window-dismiss", casePanel).setAttribute(
       "aria-label",
       `Close ${caseNames[slug]} window`,
@@ -206,10 +202,6 @@
     $(".window-handle", casePanel).setAttribute(
       "aria-label",
       `Move ${caseNames[slug]} window using handle`,
-    );
-    $(".window-placement", casePanel).setAttribute(
-      "aria-label",
-      `Position ${caseNames[slug]} window`,
     );
     $$("[data-move]", casePanel).forEach((button) =>
       button.setAttribute(
@@ -320,7 +312,7 @@
 
   function dismissWindow() {
     openWindow(
-      activeView === "home" ? "idle" : activeView === "case" ? "work" : "home",
+      activeView === "home" ? "idle" : activeView === "case" ? "work" : "home", true, true, activeView === "case",
     );
   }
   $$(".window-dismiss").forEach((button) =>
@@ -336,56 +328,21 @@
       )
         return;
       e.preventDefault();
-      if ($('.window-arrange[aria-expanded="true"]')) {
-        closePlacements(true);
-        return;
-      }
       if (activeView === "idle") openWindow("home");
       else dismissWindow();
     }
   });
-  $$(".window-arrange").forEach((button) =>
-    button.addEventListener("click", () => {
-      const opening = button.getAttribute("aria-expanded") !== "true";
-      closePlacements();
-      if (opening) {
-        button.setAttribute("aria-expanded", "true");
-        const menu = document.getElementById(
-          button.getAttribute("aria-controls"),
-        );
-        menu.hidden = false;
-        $("button", menu).focus({ preventScroll: true });
-      }
-    }),
-  );
-  document.addEventListener("click", (event) => {
-    if (!event.target.closest(".window-arrange,.window-placement"))
-      closePlacements();
-  });
   $$(".window-expand").forEach((button) =>
     button.addEventListener("click", () => {
       const panel = button.closest("[data-window]");
-      const expanded = panel.classList.toggle("is-expanded");
-      panel.style.setProperty("--drag-x", "0px");
-      panel.style.setProperty("--drag-y", "0px");
-      button.setAttribute("aria-pressed", String(expanded));
-      button.setAttribute(
-        "aria-label",
-        `${expanded ? "Restore" : "Expand"} ${windowNames[panel.dataset.window]} window`,
-      );
+      setExpanded(panel, !panel.classList.contains("is-expanded"));
     }),
   );
   function recenter() {
     windows.forEach((panel) => {
       panel.style.setProperty("--drag-x", "0px");
       panel.style.setProperty("--drag-y", "0px");
-      panel.classList.remove("is-expanded");
-      const expand = $(".window-expand", panel);
-      expand.setAttribute("aria-pressed", "false");
-      expand.setAttribute(
-        "aria-label",
-        `Expand ${windowNames[panel.dataset.window]} window`,
-      );
+      setExpanded(panel, false);
     });
     toast("Windows recentered");
   }
@@ -436,7 +393,7 @@
     const panel = handle.closest("[data-window]");
     let drag = null;
     handle.addEventListener("pointerdown", (e) => {
-      if (e.button !== 0 || innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"))) return;
+      if (panel.classList.contains("is-expanded") || e.button !== 0 || innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"))) return;
       e.preventDefault();
       drag = {
         pointer: e.pointerId,
@@ -467,7 +424,7 @@
     handle.addEventListener("lostpointercapture", stopDrag);
     handle.addEventListener("keydown", (e) => {
       if (
-        innerWidth <= 780 ||
+        panel.classList.contains("is-expanded") || innerWidth <= 780 ||
         (innerHeight <= 540 || root.classList.contains("space-reflow")) ||
         !["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)
       )
@@ -486,7 +443,7 @@
   });
   function updateMoveControls() {
     $$("[data-drag]").forEach((handle) => {
-      handle.disabled = innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"));
+      handle.disabled = handle.closest('[data-window]').classList.contains('is-expanded') || innerWidth <= 780 || (innerHeight <= 540 || root.classList.contains("space-reflow"));
     });
   }
   updateMoveControls();
@@ -497,6 +454,8 @@
     const header = $(".space-status").getBoundingClientRect();
     const dock = $(".spatial-dock").getBoundingClientRect();
     root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);
+    root.style.setProperty("--workspace-top", `${Math.ceil(header.bottom) + 8}px`);
+    root.style.setProperty("--workspace-bottom", `${Math.ceil(innerHeight - dock.top) + 16}px`);
     root.style.setProperty(
       "--space-bottom",
       `${Math.ceil(innerHeight - dock.top) + (innerWidth <= 780 ? 28 : 68)}px`,
