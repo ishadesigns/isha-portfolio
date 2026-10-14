@@ -53,6 +53,9 @@ document.activeElement=home;dock.emit('focusin');assert.equal(root.dataset.dockV
 document.activeElement=outside;dock.emit('focusout');assert.equal(root.dataset.dockVisible,'false');
 island.emit('click');assert.equal(island.attributes['aria-expanded'],'true');assert.equal(details.inert,false);
 emit('pointerdown',{target:guide});assert.equal(island.attributes['aria-expanded'],'true','Luke dialog does not dismiss its focus return target');
+const guideEscape=emit('keydown',{key:'Escape',target:guide});
+assert.equal(guideEscape.stopped,undefined,'Luke receives its own Escape action before the island closes');
+assert.equal(island.attributes['aria-expanded'],'true');
 emit('keydown',{key:'Escape'});assert.equal(document.activeElement,island);assert.equal(details.inert,true);
 island.emit('click');emit('pointerdown');assert.equal(details.inert,true);
 room.hidden=false;mutate();assert.equal(root.dataset.dockVisible,'true','room menu retains navigation');

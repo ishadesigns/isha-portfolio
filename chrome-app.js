@@ -55,7 +55,7 @@
     if(e.target.closest('a[data-open],a[data-case]')){pinned=false;focused=false;renderDock();}
   });
   document.addEventListener('keydown',e=>{
-    if(e.key!=='Escape'||!immersive)return;
+    if(e.key!=='Escape'||!immersive||e.target.closest('.guide-panel'))return;
     if(statusOpen){e.preventDefault();e.stopPropagation();showStatus(false,true);}
     else if(dock.contains(document.activeElement)||document.activeElement===toggle){
       e.preventDefault();e.stopPropagation();pinned=false;focused=false;dockHover=false;edgeHover=false;
