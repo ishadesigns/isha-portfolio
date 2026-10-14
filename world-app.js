@@ -185,6 +185,7 @@ $$(".spatial-scroll").forEach((content) =>
 window.addEventListener("scroll", updateReading, { passive: true });
 window.addEventListener("resize", updateReading);
 document.addEventListener('workspacechange', updateReading);
+document.addEventListener('chromechange', updateReading);
 new MutationObserver(updateReading).observe(root, {
   subtree: true,
   attributes: true,

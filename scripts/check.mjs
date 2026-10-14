@@ -68,6 +68,9 @@ for (const file of htmlFiles) {
   assert.match(html, /class="dock-look-toggle"[^>]*data-look-toggle/, `${file}: room controls in dock`);
   assert(!/window-arrange|window-placement|arrival-layer|arrival-lens|data-arrival=/.test(html), `${file}: removed placement button and opening veil`);
   assert.match(html, /aria-label="Explore Vision Pro"/, `${file}: spatial exploration label`);
+  assert.match(html, /aria-controls="space-status-details"/, `${file}: named interactive status island`);
+  assert.match(html, /aria-controls="spatial-navigation"/, `${file}: keyboard and touch dock reveal`);
+  checks += 2;
   checks += 2;
   assert(!/data-ambient-motion|data-game-reset|SPATIAL PAIRS/.test(html), `${file}: retired controls and game removed`);
   checks += 3;

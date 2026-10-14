@@ -453,13 +453,16 @@
   function updateAvailableSpace() {
     root.classList.toggle("space-reflow", innerHeight < 320 || (innerWidth < 1000 && parseFloat(getComputedStyle(root).fontSize) > 22));
     const header = $(".space-status").getBoundingClientRect();
-    const dock = $(".spatial-dock").getBoundingClientRect();
+    const dock = $(".spatial-dock");
+    const bottom = parseFloat(getComputedStyle(dock).bottom) || 0;
+    const occupied = dock.offsetHeight + bottom;
+    const immersive = root.classList.contains('immersive-chrome');
     root.style.setProperty("--space-top", `${Math.ceil(header.height) + 12}px`);
     root.style.setProperty("--workspace-top", `${Math.ceil(header.bottom) + 8}px`);
-    root.style.setProperty("--workspace-bottom", `${Math.ceil(innerHeight - dock.top) + 16}px`);
+    root.style.setProperty("--workspace-bottom", `${immersive && root.dataset.dockVisible==='false' ? 12 : Math.ceil(occupied) + 16}px`);
     root.style.setProperty(
       "--space-bottom",
-      `${Math.ceil(innerHeight - dock.top) + (innerWidth <= 780 ? 28 : 68)}px`,
+      `${Math.ceil(occupied) + (innerWidth <= 780 ? 28 : 68)}px`,
     );
   }
   if ("ResizeObserver" in window) {
@@ -468,6 +471,7 @@
     chromeSize.observe($(".spatial-dock"));
   }
   updateAvailableSpace();
+  document.addEventListener('chromechange',updateAvailableSpace);
   let resizeFrame;
   window.addEventListener("resize", () => {
     cancelAnimationFrame(resizeFrame);

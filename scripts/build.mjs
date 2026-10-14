@@ -32,6 +32,8 @@ for (const file of [
   "orbit-app.js",
   "orbit-motion.js",
   "orbit.css",
+  "chrome.css",
+  "chrome-app.js",
   "arrival.css",
   "arrival-app.js",
   "sound-app.js",
