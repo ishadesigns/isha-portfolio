@@ -45,6 +45,8 @@ npm run check
 | `accessibility.css` | Contrast, touch targets, focus, text resizing, short-viewport reflow, and forced colors |
 | `styles.css` | Shared typography and case-study article styling |
 | `spatial-app.js` | Window navigation, movement, expansion, recentering, filters, and case studies |
+| `chrome-app.js` | Full-screen island disclosure, hover/touch dock reveal, and keyboard focus |
+| `chrome.css` | Compact dock proportions and immersive chrome layout |
 | `public/assets/` | Local optimized project images and personal photos |
 | `scripts/build.mjs` | Static page generation |
 | `.github/workflows/pages.yml` | Automatic GitHub Pages publication |
@@ -68,6 +70,7 @@ This is a **project site**, deliberately isolated from any user site or custom d
 - Responsive desktop, tablet, and mobile layouts.
 - A consistent daylight appearance, a wider room, directional/drag/keyboard camera controls, and Clear view.
 - A spatial status bar with local time and an illustrative 100% full-charge indicator.
+- Full-screen apps collapse status into an interactive island and hide the dock until the pointer approaches the bottom edge. Touch and keyboard users can activate the bottom handle. The desktop dock is approximately 23% shorter.
 - Luke, a movable browser-only portfolio guide with built-in answers, source links, optional dictation and read-aloud, and device reduced-motion support.
 - Isha’s Orbit: eleven bouncing favorite things, drag/toss interaction, keyboard movement, click-to-explore stories, Remix, and a connected constellation you can reshape and release.
 - Native scrolling enhanced with progress, edge shadows, entry motion, and Back to top.

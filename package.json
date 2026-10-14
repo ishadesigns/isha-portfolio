@@ -9,7 +9,7 @@
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
     "preview": "node scripts/serve.mjs dist",
-    "test": "node tests/guide.test.mjs && node tests/voice.test.mjs && node tests/motion.test.mjs && node tests/audio.test.mjs && node tests/welcome-media.test.mjs && node tests/sound-events.test.mjs"
+    "test": "node tests/guide.test.mjs && node tests/voice.test.mjs && node tests/motion.test.mjs && node tests/audio.test.mjs && node tests/welcome-media.test.mjs && node tests/sound-events.test.mjs && node tests/chrome.test.mjs"
   },
   "engines": {
     "node": ">=20"
