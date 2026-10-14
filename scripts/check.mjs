@@ -70,6 +70,10 @@ for (const file of htmlFiles) {
   assert.match(html, /aria-label="Explore Vision Pro"/, `${file}: spatial exploration label`);
   assert.match(html, /aria-controls="space-status-details"/, `${file}: named interactive status island`);
   assert.match(html, /aria-controls="spatial-navigation"/, `${file}: keyboard and touch dock reveal`);
+  const dockMarkup=html.match(/<nav class="spatial-dock"[^>]*>([\s\S]*?)<\/nav>/)[1];
+  assert(!dockMarkup.includes('space-recenter'), `${file}: no duplicate dock recenter`);
+  assert.match(html, /class="space-recenter" aria-label="Recenter space">Recenter<\/button>/, `${file}: recenter inside room controls`);
+  checks += 2;
   checks += 2;
   checks += 2;
   assert(!/data-ambient-motion|data-game-reset|SPATIAL PAIRS/.test(html), `${file}: retired controls and game removed`);

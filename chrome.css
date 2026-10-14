@@ -13,8 +13,8 @@
  .spatial-dock :is(.dock-look-toggle,.space-recenter) > .icon {width:21px;height:21px;}
  .spatial-dock-divider {height:30px;}
 }
-html.immersive-chrome .space-status {position:fixed;inset:0 0 auto;height:56px;padding:0;display:block;z-index:48;pointer-events:none;}
-html.immersive-chrome .space-island {position:absolute;display:grid;place-items:center;top:4px;left:50%;transform:translateX(-50%);width:152px;min-width:44px;height:44px;padding:0;background:transparent;border-radius:26px;pointer-events:auto;}
+html.immersive-chrome .space-status {position:fixed;inset:0 0 auto;height:44px;padding:0;display:block;z-index:48;pointer-events:none;}
+html.immersive-chrome .space-island {position:absolute;display:grid;place-items:center;top:0;left:50%;transform:translateX(-50%);width:152px;min-width:44px;height:44px;padding:0;background:transparent;border-radius:26px;pointer-events:auto;}
 .island-capsule {display:flex;align-items:center;justify-content:space-between;width:128px;height:28px;padding:0 12px;border:1px solid #3b4b40;border-radius:24px;background:#14201b;box-shadow:inset 0 1px 1px #fff2,0 4px 12px #223d252b;transition:width .2s,background .2s;}
 .island-eyes {display:flex;gap:4px;align-items:center;}
 .island-eyes i {width:4px;height:7px;background:#f2f4df;border-radius:4px;box-shadow:0 0 4px #efffcd5c;}
@@ -23,8 +23,8 @@ html.immersive-chrome .space-island {position:absolute;display:grid;place-items:
 .space-island:hover .island-capsule,.island-open .island-capsule {background:#253a2e;width:136px;}
 .space-island:focus-visible {outline:3px solid #21517a;outline-offset:2px;}
 html.immersive-chrome .space-status-details {
- position:fixed;top:54px;left:50%;transform:translateX(-50%) translateY(-6px);
- width:min(450px,calc(100vw - 24px));max-height:calc(100dvh - 72px);overflow:auto;
+ position:fixed;top:48px;left:50%;transform:translateX(-50%) translateY(-6px);
+ width:min(450px,calc(100vw - 24px));max-height:calc(100dvh - 60px);overflow:auto;
  display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:18px;
  background:#f4f7eff5;border:1px solid #aebeaa;border-radius:24px;box-shadow:0 18px 45px #243c2930;
  opacity:0;visibility:hidden;pointer-events:none;transition:opacity .18s,transform .18s,visibility .18s;
@@ -33,7 +33,26 @@ html.immersive-chrome.island-open .space-status-details {opacity:1;visibility:vi
 html.immersive-chrome .space-status-details .space-identity {align-self:flex-start;background:transparent;box-shadow:none;border:0;padding:4px 0;}
 html.immersive-chrome .space-status-details .world-status {max-width:100%;width:100%;}
 html.immersive-chrome .space-status-details .world-hud {max-width:none;justify-content:flex-start;flex-wrap:wrap;padding:9px;}
-html.workspace-fullscreen.immersive-chrome .spatial-dock {bottom:48px;transition:transform .22s ease,opacity .18s ease,visibility .18s;}
+/* The island, title and window actions share one 44px row. Keep interactive
+   targets full-sized while removing the former empty row above the title. */
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .spatial-titlebar {position:relative;min-height:44px;height:44px;padding:0 152px 0 clamp(12px,2vw,32px);gap:8px;}
+html.immersive-chrome .spatial-titlebar .window-grip {max-width:calc(50vw - 100px);min-height:44px;padding-block:0;flex:none;}
+html.immersive-chrome .spatial-titlebar .window-context {max-width:max(0px,calc(50vw - 240px));}
+html.immersive-chrome .spatial-titlebar .window-expand {position:absolute;top:0;right:60px;}
+html.immersive-chrome .spatial-titlebar .window-scroll-top {position:absolute;top:0;right:104px;}
+html.workspace-fullscreen.immersive-chrome .spatial-panel.is-expanded .spatial-controls {top:0;right:12px;}
+@media (max-width:900px) {html.immersive-chrome .window-context {display:none;}}
+@media (max-width:540px) {
+ html.immersive-chrome .space-island {width:104px;}
+ html.immersive-chrome .island-capsule {width:88px;padding-inline:9px;}
+ html.immersive-chrome .island-line {width:15px;}
+ html.immersive-chrome .space-island:hover .island-capsule,html.immersive-chrome.island-open .island-capsule {width:94px;}
+ html.immersive-chrome .spatial-titlebar .window-grip {max-width:calc(50vw - 80px);font-size:.8125rem;gap:6px;}
+ html.immersive-chrome .spatial-titlebar .window-grip .icon {width:12px;height:12px;flex:none;}
+ html.immersive-chrome .spatial-titlebar .window-scroll-top {right:60px;top:44px;z-index:2;}
+}
+html.workspace-fullscreen.immersive-chrome .spatial-dock {bottom:20px;transition:transform .22s ease,opacity .18s ease,visibility .18s;}
+.room-controls .space-recenter {width:auto;min-width:44px;min-height:44px;font-size:inherit;}
 html.immersive-chrome[data-dock-visible="false"] .spatial-dock {transform:translate(-50%,calc(100% + 40px));opacity:0;visibility:hidden;pointer-events:none;}
 html.immersive-chrome[data-dock-visible="true"] .spatial-dock {opacity:1;visibility:visible;pointer-events:auto;}
 html.immersive-chrome .dock-sensor {display:flex;align-items:flex-end;justify-content:center;position:fixed;inset:auto 0 0;min-height:44px;height:44px;z-index:39;pointer-events:auto;}
