@@ -129,7 +129,7 @@ See `docs/world-features.md` for verification and remaining hardware/assistive-t
 
 ## Welcome audio and entry
 
-Welcome loads immediately with no visual reveal or fade. A native audio player makes one welcome attempt per document. If the browser refuses autoplay, ordinary navigation stays silent rather than triggering a delayed welcome. The Play welcome sound button explicitly plays the chime without a visual effect. In-flight welcome requests share one attempt; only explicit replay resets the cue. Audible autoplay on direct visits depends on the visitor’s browser settings, not their audio output device. Click ticks still play after interaction.
+Welcome loads immediately with no visual reveal or fade. A native audio player makes one welcome attempt per document. If the browser refuses autoplay, ordinary navigation stays silent rather than triggering a delayed welcome. Home has no manual welcome-sound control. In-flight welcome requests share one attempt. Audible autoplay on direct visits depends on the visitor’s browser settings, not their audio output device. Click ticks still play after interaction.
 
 Luke’s introduction links to the Geny Labs placeholder window. The guide retains built-in portfolio answers and optional browser dictation/read-aloud. Awards presents one shared Bloom description followed by the two directly linked award names. About Me links to Play between the interest folders and Field Notes.
 

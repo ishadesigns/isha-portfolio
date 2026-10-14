@@ -1,8 +1,8 @@
 # Arrival and personal Orbit — October 12, 2026
 
-Welcome appears directly beneath a 2.7-second settling reveal: a subtle pale-gray rectangle with softly rounded corners. There is no warped pane, oval mask, intro text, sound toggle, or skip control. Navigation remains available. No Apple footage or third-party music is shipped.
+Welcome now appears directly with no reveal, loading layer, or manual sound button. The earlier arrival experiments below are retained as implementation history. No Apple footage or third-party music is shipped.
 
-The native welcome player attempts once on each document load, including direct visits and refreshes. A refused autoplay request stays silent; ordinary pointer presses and keys do not retry it later. The existing Replay arrival button is the explicit gesture-authorized retry. In-flight cue requests share one promise so concurrent activation cannot restart an opening sound. Only explicit replay resets playback. Browser autoplay refusal cannot be bypassed in website code.
+The native welcome player attempts once on each document load, including direct visits and refreshes. A refused autoplay request stays silent; ordinary pointer presses and keys do not retry it later. Home no longer exposes a replay action. In-flight cue requests share one promise so concurrent automatic activation cannot restart an opening sound. Browser autoplay refusal cannot be bypassed in website code.
 
 `spatial-audio.js` synthesizes an original glass/pop click inspired by spatial UI; it does not include a sampled Apple system sound. One AudioContext and one cached 85 ms mono buffer serve all interactions. Trusted clicks inside the content windows, dock, header, guide, room controls, and dialogs get the cue. Pointer drags stay quiet. Burst duplicates, late autoplay unlocks, hidden tabs, and unavailable audio are handled without queued or unexpected playback. Audio playback does not replace visual feedback.
 
